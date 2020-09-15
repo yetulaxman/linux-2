@@ -1,19 +1,9 @@
 ---
 title:	Recap of Linux 1
 author:	CSC Training
-date:	2019-12
+date:	2019-12-01
 lang:	en
 ---
-
-
-# Let's install our virtual appliance
-
-- Open your machine in Windows
-- Find the application *VirtualBox* and launch it
-- In Main menu, find Import
-- Find the OVA file under `\\dogmi\common`
-- Click on it
-- IMPORTANT: check for new MAC-address
 
 
 # Let's open the machine and recall the most important commands

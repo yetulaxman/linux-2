@@ -1,0 +1,29 @@
+title: Linux 2 — Advanced command line use and Bash programming
+
+plugins:
+  - jekyll-sitemap
+
+collections:
+    lectures:
+        output: true
+    exercises:
+        output: true
+    extras:
+        output: true
+
+defaults:
+  -
+    scope:
+      path: "_lectures"
+    values:
+      layout: "slides-csc"
+  -
+    scope:
+      path: "_exercises"
+    values:
+      layout: "slides-csc"
+  -
+    scope:
+      path: "_extras"
+    values:
+      layout: "slides-csc"

@@ -1,7 +1,7 @@
 ---
 title:	Pipes and redirecting
 author:	CSC Training
-date:	  2019-12
+date:	  2019-12-01
 lang:	  en
 ---
 

@@ -1,21 +1,118 @@
 ---
-title:	Working with bash — shell internals
+title:	Linux 2 — Shell internals
 author:	CSC Training
-date:	  2019-12
-lang:	  en
+titleslide: True
+lang:	en
 ---
 
 
-# What is a shell?
+# What is a Bash used for?
 
-- At its base, a shell is simply a macro processor that executes commands.
-- A Unix shell is both a command interpreter and a programming language.
-  - As a command interpreter, the shell provides the user interface to the rich set of utilities.
-  - The programming language features allow these utilities to be combined.
-- Shells may be used interactively or non-interactively. In interactive mode, they accept input typed from the keyboard. When executing non-interactively, shells execute commands read from a file.
-- There are a multitude of different shells available.
-  - Bourne Again shell — bash — is probably dominant.
+- The Bash shell is both a command interpreter and a programming
+  language.
+    - As a command interpreter, the shell provides the user interface
+      to the rich set of utilities.
+    - The programming language features allow these utilities to be
+      combined.
 
+{:.Q}
+
+The discussion of the shell internals may feel abstract at
+first. Return to it later after going throug practical exercises. Did
+it help understanding the shell commands and scripts?
+
+
+# How does the shell work?
+
+At its base, a shell is simply a macro processor that executes
+commands. It parses the command line (or a line of a script), makes
+variable expansions *etc*, and finally, *tries* to execute the first
+word. The remaining words are agruments to the command.
+
+We'll return to *etc* in more detail later.
+
+{:.Q}
+
+Command search: Have you ever seen '...: command not
+found' error? How does the shell search for commands?!?
+
+
+# What is a command?
+
+A "command" can be a shell builtin, executable binary, executable
+script, shell function or shell alias. These all behave almost the
+same.
+
+{:.Q}
+
+Command types: Which commands can you use to find what a "command"
+more precisely is, and where it comes from? What is the precedence of
+different command types? For example, if you have a shell function and
+an alias with the same name, which one get executed?
+
+
+# Command inputs and outputs
+
+You can give inputs to a command through 1) *command arguments* and 2)
+the *standard input stream (stdin)*.
+
+Commands output results through 1) *standard output stream (stdout)*,
+2) *standard error stream (stderr)*, and 3) *command exit status*.
+
+{:.Q}
+
+Command inputs and outputs: What are the conventions of using
+different input and output channels, what type of data is communicated
+through different channels? Give examples for using each.
+
+
+# Sub-shells
+
+- Shell spawns sub-shells when explicitly asked to, and ...
+- Sub-shells inherit exported variables from their parent.
+- No variables or other shell environment changes propagate from the
+  sub-shell back to the parent.
+
+{:.Q}
+
+How do you run a command (or compound command!) in a sub-shell? Can
+you name situations when the shell creates a sub-shell? How would you
+change to another directory, run a command there, and then change back
+to the original directory with and without using sub-shell?
+
+
+# Interactive or non-interactive?
+
+- Shells can be started in interactive or non-interactive mode. In
+  interactive mode, they accept input typed from the keyboard. When
+  executing non-interactively, shells execute commands read from a
+  file.
+
+{:.Q}
+
+Which shell initialization files are read (in your machine) when
+interactive/non-interactive shell is started? What initializations
+should go to which initialization file and why?
+
+
+
+
+# Typing (editing) command line efficiently
+
+- know the shortcuts
+- use previously typed commands
+- save useful commands to a file for later reference
+
+
+# Command line editing
+
+- readline
+
+# Re-use command lines, history
+
+- set big enough history a
+
+https://www.shellhacks.com/tune-command-line-history-bash/
 
 # Shell operation — a seven-stroke cycle engine
 
@@ -143,7 +240,9 @@ $ mkdir -p exp/{jan,feb,mar,apr}/run{1..3}
 - Brace expansions may be nested.
 
 ```bash
+{% raw %}
 $ touch exp/{{jan,mar},feb/run{1,2}}/skip
+{% endraw %}
 ```
 
 
