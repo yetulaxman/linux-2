@@ -4,7 +4,7 @@ let currentSlide = 0;
 function resizeRem() {
     document.documentElement.style.setProperty(
         '--screen-font-size',
-        document.body.childNodes[currentSlide].offsetWidth/40 + "px");
+        document.body.childNodes[currentSlide].offsetWidth/45 + "px");
 }
 
 function hide(element) {

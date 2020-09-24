@@ -21,9 +21,9 @@ defaults:
     scope:
       path: "_exercises"
     values:
-      layout: "slides-csc"
+      layout: "default"
   -
     scope:
       path: "_extras"
     values:
-      layout: "slides-csc"
+      layout: "default"

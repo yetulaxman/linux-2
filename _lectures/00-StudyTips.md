@@ -1,5 +1,5 @@
 ---
-title: Linux 2 — Stydy tips
+title: Stydy tips
 titleslide: true
 ---
 
@@ -22,18 +22,16 @@ fellows in the discussion forum!
 
 # Man pages
 
-- Learn how to search and navigate in man pages
+- Learn how to search (`/`) and jump (`p`, `G`) in man pages
 - Learn the conventions (structure) of man pages, see `man man-pages`
+- At least half of the content of this course can be found from `man bash`
+- Different machines have different versions of the programs. Man pages
+  document exactly the version in your machine.
 
 {:.Q}
 
 Pager: What is pager and what does it do? Name few pagers? What pager
 is your man command using?
-
-TODO: Move to loops!
-Avoiding loops: Often you can avoid writing a loop by just realizing that a
-command can operate on multiple arguments, such as file names, instead
-of just a single one at a time. Can you find such commands?
 
 
 # Debugging shell scripts
@@ -45,6 +43,13 @@ are expanded and how the program flows.
 
 Command echoing: How do you turn off command echoing? What other means of
 shell script debugging can you find?
+
+
+# Keep notes
+
+Save useful commands and short scripts to a file for later reference, and push
+your notes to GitHub every now and then. Bash history keeps all the commands
+that you typed, but it also keeps the ones that did not work...
 
 
 # Bash-fu attitude!

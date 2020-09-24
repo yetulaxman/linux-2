@@ -1,0 +1,179 @@
+---
+title: Study Tips exercises
+---
+
+
+# Bash-fu attitude
+
+This exercise shows the evolution a Bash function. The function is a small part
+of a bigger script. The exercise is to read it, to understand how it works, and
+to spot different Bash language condtructs. It can be hard to follow at first,
+but return to this exercise later in the course, and see if it is any easier to
+read then.
+
+
+## Iteration 0, the original version
+
+First, let's figure out what this function is supposed to do. It can be a little
+difficult from the source only. In "real life" cases, spend some time here, ask
+the person who wrote it in the first place, etc. Sometimes it can be easier just
+to start cleaning the original script, and figure out what is going on while
+cleaning.
+
+```bash
+long_format="%-25s %8s %5s %7s %5s %8s %9s %9s %5s"
+desc_format="%-27s %8s/%-6s %8sk/%sk"
+
+# Quota query for login node local temp directories, one argument:
+#  1. Filesystem path (currently only /tmp and /local_scratch have quotas)
+function temp_quotaquery() {
+    local quota=$(quota -w --show-mntpoint | tail -n +3)
+    echo "${quota}" | while IFS= read -r line; do
+        if [[ "$1" == "desc" ]]; then
+            IFS=' '; local values=($line); unset IFS
+            printf "${desc_format}\n" \
+                   ${values[1]} \
+                   $(numfmt --to=iec ${values[2]}) \
+                   $(numfmt --to=iec ${values[3]}) \
+                   ${values[6]} \
+                   ${values[7]}
+        fi
+        if [[ "$1" == "long" ]]; then
+            IFS=' '; local values=($line); unset IFS
+            printf "${long_format}\n" \
+                   ${values[1]} \
+                   $(numfmt --to=iec ${values[2]}) $(numfmt --to=iec ${values[3]}) \
+                   $(numfmt --to=iec ${values[4]}) "-" $(numfmt --to=iec ${values[5]}) \
+                   ${values[6]} ${values[7]} "-"
+        fi
+    done
+}
+```
+
+In this function, you should be able to spot normal, local to the function, and
+environment *variable definitions*, a *command substitution*, *pipelines*,
+*quoting*, string and array *variable expansions*, a while loop, if statements
+and *conditional expression* *compound commands*, and the use of array *compound
+assignment* as a primitive parser. Also make a mental note, command `read` is
+very handy in parsing strings, and/or reading text line by line when combined
+with `while` loop. In short, looks like this function runs system command
+`quota`, and reformats it's output in two different ways :)
+
+For reference, the output of the `quota` command in the target machine is
+
+```console
+$ quota -w --show-mntpoint
+Disk quotas for user jlento (uid 8520): 
+     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
+/dev/mapper/rhel-tmp /tmp       0  1048576 2097152               1       0       0        
+/dev/mapper/local-scratch /local_scratch       0  83886080 104857600               5       0       0        
+```
+
+The command may list both mount points (file systems), one of them, or neither.
+
+
+## Iteration 1, cleaning and adding "tricks"
+
+Not really thinking what the function does, just cleaning it.
+
+- using the output format variable name as the function argument
+- since the (2) filesystems are known, looping over them one at the time, catching
+  possible errors
+- using `set` command and *positional* parameters "trick" to use short array
+  element references instead of the long ones
+
+
+```bash
+long_format="%-25s %8s %5s %7s %5s %8s %9s %9s %5s"
+desc_format="%-27s %8s/%-6s %8sk/%sk"
+
+# takes arguments "long_format" or "desc_format"
+function temp_quotaquery() {
+    local printstyle="$1"
+    for fs in /tmp /local_scratch; do
+        quota=$(quota --show-mntpoint -wsf $fs 2>/dev/null) || continue
+        set -- $(tail -1 <<<"$quota")
+        case "$printstyle" in
+            desc_format)
+                set -- $2 $3 $4 $7 $8
+                ;;
+            long_format)
+                set -- $2 $3 $4 $5 - $6 $7 $8 -
+                ;;
+            *)
+                echo "Internal error, bad argument" >&2
+                return 1;;
+        esac
+        printf "${!printstyle}\n" "$@"
+    done
+}
+```
+
+Having read the man page of `quota`command, a colleague immediately spotted an
+error in the script. In the case of the user exceeding the quota, the `quota`
+command returns non-zero exit value. This drops out likely the most important
+lines from the loop and output...
+
+In addition to the language construct in the zeroth version, you should spot the
+use of `for` loop and `case` *compound commands*, standard input, output and error
+*redirections*, command *list* `||`, *positional parameter* "trick" using `set`,
+variable *indirection* with `${!..}`, and *special parameter* `"$@"` (and the
+precise meaning of *quoting* here).
+
+All in all, slightly cleaner, although works incorrectly :)
+
+
+# Iteration 2, back to running the `quota`command only once
+
+This version is much more true to the original.
+
+```bash
+long_format="%-25s %8s %5s %7s %5s %8s %9s %9s %5s"
+desc_format="%-27s %8s/%-6s %8sk/%sk"
+
+function temp_quotaquery() {
+    local printstyle="$1"
+    while read line; do
+        set -- $line
+        case "$printstyle" in
+            desc_format)
+                set -- $2 $3 $4 $7 $8
+                ;;
+            long_format)
+                set -- $2 $3 $4 $5 - $6 $7 $8 -
+                ;;
+            *)
+                echo "Internal error, bad argument" >&2
+                return 1;;
+        esac
+        printf "${!printstyle}\n" "$@"
+    done < <(quota --show-mntpoint -ws | tail -n +3)
+}
+```
+
+In addition to the earlier language constructs, spot the *redirection* of
+*stdin* for the `while` loop *compound command* from the *process substitution*.
+There is a small practical difference between this redirection from the process
+substitution and simple piping of the output of the `quota` command to the
+`while` compound command. What is it? Ten points if you can tell it :)
+
+
+# Iteration 3, thinking again what the function should do...
+
+```bash
+# Takes the format string directly as an argument, note the use of
+# non-printing argument format "%.0s", for example call with:
+#
+#     temp_quotaquery "%.0s%-27s %8s/%-6s %.0s%.0s%8sk/%sk"
+#     temp_quotaquery "%.0s%-25s %8s %5s       - %5s %8s %9s %9s     -"
+#
+function temp_quotaquery() {
+    while read line; do
+        printf "$1\n" $line
+    done < <(quota --show-mntpoint -ws | tail -n +3)
+}
+```
+
+
+
+

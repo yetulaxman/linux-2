@@ -5,6 +5,8 @@ date:	  2019-12-01
 lang:	  en
 ---
 
+# TODO: Files, everything is a file, `lsof`
+
 
 # File descriptors
 

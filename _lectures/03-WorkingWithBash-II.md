@@ -1,5 +1,5 @@
 ---
-title:	Working with bash — programming constructs
+title:	Bash programming constructs
 author:	CSC Training
 date:	2019-12-01
 lang:	en
@@ -243,6 +243,12 @@ $ for ns in $(grep ^nameserver /etc/resolv.conf); do
 > done
 $ for ns in "$(grep ^nameserver /etc/resolv.conf)"; do ping -c1 ${ns##nameserver }; done
 ```
+
+{:.Q}
+
+Avoiding loops: Often you can avoid writing a loop by just realizing that a
+command can operate on multiple arguments, such as file names, instead
+of just a single one at a time. Can you find such commands?
 
 
 # Looping constructs

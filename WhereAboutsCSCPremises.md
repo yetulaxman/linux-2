@@ -1,5 +1,5 @@
 ---
-title:             Linux 2 — Advanced command line and Bash programming
+title:             Advanced command line and Bash programming
 presentation-date: 2019-12-01
 lang:	           en
 layout:            slides-csc

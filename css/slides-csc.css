@@ -119,6 +119,15 @@ h2, h3 {
     margin-right: var(--padding-left);
 }
 
+.slide > table {
+    border-spacing: 2em 0em;
+    font-size:80%;
+}
+
+.slide > ol {
+    margin-left: calc(1em + var(--padding-left));
+}
+
 .Q {
     margin-top: 1em;
     font-size: 80%;

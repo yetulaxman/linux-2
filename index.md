@@ -6,6 +6,12 @@ author: CSC Training
 CSC training course for advanced command line use, common GNU/Unix
 tools, and Bash programming.
 
+To whom: You are already using Linux command line and writing Bash
+scripts, but would like to know better how do these actually
+work. After this course you should be able to use command line more
+efficiently, and write more elegant shell scripts, and fix the
+misbehaving ones.
+
 Practicalities for the [online course]({{ site.baseurl }}{% link
 StudyGroupDec2020.md %}) and the regular [class room course at CSC's
 premises]({{ site.baseurl }}{% link WhereAboutsCSCPremises.md %}).
