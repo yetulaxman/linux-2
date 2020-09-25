@@ -6,18 +6,18 @@ title: Study Tips exercises
 # Bash-fu attitude
 
 This exercise shows the evolution a Bash function. The function is a small part
-of a bigger script. The exercise is to read it, to understand how it works, and
-to spot different Bash language condtructs. It can be hard to follow at first,
+of a larger script. The exercise is to read it, to understand how it works, and
+to spot different Bash language constructs. It can be hard to follow at first,
 but return to this exercise later in the course, and see if it is any easier to
 read then.
 
 
 ## Iteration 0, the original version
 
-First, let's figure out what this function is supposed to do. It can be a little
+First, let's figure out what this function is supposed to do. It can be
 difficult from the source only. In "real life" cases, spend some time here, ask
-the person who wrote it in the first place, etc. Sometimes it can be easier just
-to start cleaning the original script, and figure out what is going on while
+the person who wrote it in the first place, etc. Sometimes it can be easier to
+start cleaning the original script, and figure out what is going on while
 cleaning.
 
 ```bash
@@ -53,11 +53,11 @@ function temp_quotaquery() {
 In this function, you should be able to spot normal, local to the function, and
 environment *variable definitions*, a *command substitution*, *pipelines*,
 *quoting*, string and array *variable expansions*, a while loop, if statements
-and *conditional expression* *compound commands*, and the use of array *compound
-assignment* as a primitive parser. Also make a mental note, command `read` is
-very handy in parsing strings, and/or reading text line by line when combined
-with `while` loop. In short, looks like this function runs system command
-`quota`, and reformats it's output in two different ways :)
+and *conditional expression* *compound commands*, and the use of the array
+*compound assignment* as a primitive "parser". Also make a mental note, command
+`read` is very handy in parsing strings, and/or reading text line by line when
+combined with `while` loop. In short, looks like this function runs system
+command `quota`, and reformats it's output in two different ways :)
 
 For reference, the output of the `quota` command in the target machine is
 
@@ -70,6 +70,20 @@ Disk quotas for user jlento (uid 8520):
 ```
 
 The command may list both mount points (file systems), one of them, or neither.
+If your system does not have quotas, you can make a Bash function which acts
+like one.
+
+```bash
+quota () {
+echo "Disk quotas for user jlento (uid 8520): 
+     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
+/dev/mapper/rhel-tmp /tmp       0  1048576 2097152               1       0       0
+/dev/mapper/local-scratch /local_scratch       0  83886080 104857600               5       0       0"
+}
+export -f quota
+```
+
+What is that `export` command doing and why it is there?
 
 
 ## Iteration 1, cleaning and adding "tricks"
@@ -81,7 +95,20 @@ Not really thinking what the function does, just cleaning it.
   possible errors
 - using `set` command and *positional* parameters "trick" to use short array
   element references instead of the long ones
+- adding option `-s` to `quota` for human readable numbers, which saves the use
+  of `numfmt` (really hand tool by itself, from GNU core-utils)
 
+The human readable `quota` command's output:
+
+```console
+$ quota -ws --show-mntpoint
+Disk quotas for user jlento (uid 8520): 
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+/dev/mapper/local-scratch /local_scratch      0K  81920M    100G               1       0       0
+/dev/mapper/rhel-tmp /tmp      0K   1024M   2048M               1       0       0
+```
+
+The first iteration of the function:
 
 ```bash
 long_format="%-25s %8s %5s %7s %5s %8s %9s %9s %5s"
@@ -118,7 +145,7 @@ In addition to the language construct in the zeroth version, you should spot the
 use of `for` loop and `case` *compound commands*, standard input, output and error
 *redirections*, command *list* `||`, *positional parameter* "trick" using `set`,
 variable *indirection* with `${!..}`, and *special parameter* `"$@"` (and the
-precise meaning of *quoting* here).
+precise meaning of *quoting* with `$@`).
 
 All in all, slightly cleaner, although works incorrectly :)
 
@@ -160,7 +187,12 @@ substitution and simple piping of the output of the `quota` command to the
 
 # Iteration 3, thinking again what the function should do...
 
+Duh, much better, right?
+
 ```bash
+desc_format="%.0s%-27s %8s/%-6s %.0s%.0s%8sk/%sk"
+long_format="%.0s%-25s %8s %5s       - %5s %8s %9s %9s     -"
+
 # Takes the format string directly as an argument, note the use of
 # non-printing argument format "%.0s", for example call with:
 #
@@ -174,6 +206,10 @@ function temp_quotaquery() {
 }
 ```
 
+The "trick" here is to notice that `printf` has a zero width format directive
+`%.0s`. We can give `printf` all the fields from the `quota`command without
+pre-filtering them, and show only the ones that we wish. Notice also, how
+`printf` considers the fields of un-quoted `$line` as separate arguments.
 
 
 
