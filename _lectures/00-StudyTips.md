@@ -1,5 +1,5 @@
 ---
-title: Stydy tips
+title: Study tips
 titleslide: true
 ---
 
