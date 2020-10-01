@@ -1,7 +1,7 @@
 ---
 title:	Using CSC Environment Efficiently
 author:	CSC Training
-date:	2020-XX-YY
+date:	2020-10-01
 lang:	en
 ---
 
