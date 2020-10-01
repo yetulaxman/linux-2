@@ -1,7 +1,9 @@
 ---
-title: Using CSC Environment Efficiently
+title: WIP - Using CSC Environment Efficiently
 author: CSC Training
 ---
+
+# This is not really a course material, but a test
 
 CSC training course for ...
 
