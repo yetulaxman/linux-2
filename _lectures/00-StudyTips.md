@@ -34,11 +34,13 @@ to Allas and makes it available directly from the internet?
 - When you've successfully solved an issue, make it easy to rediscover it
 - Set up a file in your `$HOME` and add your commands there with keywords for yourself
    - e.g. it's quick to copy/paste your command from the screen to the end of the file
-   ```bash
-   cat >> $HOME/vault
-   <copy/paste>
-   Ctlr-C
-   ```
+
+```bash
+cat >> $HOME/vault
+<copy/paste>
+Ctlr-C
+```
+
 - and `grep`'ing it later is quick
 - Store scripts in `$HOME/bin` and take backups
 
