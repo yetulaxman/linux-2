@@ -6,44 +6,41 @@ titleslide: true
 
 # Problem solving
 
-1. Google "Bash how to ..." and what you want to achieve, to get
-   ideas. Do this even when you already know some way to solve the task.
-2. Check the command details from the man pages
-3. Try it out on the command line!
-4. Develop longer command chains gradually, checking that each step
-   produces intended output.
+1. Try in [docs.csc.fi](https://docs.csc.fi) in the right section in the *hierarchy*
+2. Try in the [FAQ](https://docs.csc.fi/support/FAQ/)
+3. Try the search if docs or in google for it
+4. Send an email to [servicedesk@csc.fi](mailto:servicedesk@csc.fi) containing:
+   - A descripte title
+   - What you wanted to achieve, and which on which computer
+   - Which commands you had given
+   - What error messages resulted
+   - [More tips to help us quickly solve your issue](https://docs.csc.fi/support/support-howto/))
 
 {:.Q}
 
-Googling challenge: If you have a bash programming question that you
-cannot find a decent answer, throw the Googling challenge to your
-fellows in the discussion forum!
+Docs challenge: What is the name of the command that copies the file
+to Allas and makes it available directly from the internet?
 
+# Learning a new method or application
 
-# Man pages
+- If it comes with tutorials, do at least one
+   - This will likely be the fastest way forward
+- Check if there's a page for it in [docs.csc.fi/apps/](https://docs.csc.fi/apps/)
+   - If there is, use the batch script example from _there_
+- First try a small / quick job and when you're sure it works, scale up   
 
-- Learn how to search (`/`) and jump (`p`, `G`) in man pages
-- Learn the conventions (structure) of man pages, see `man man-pages`
-- At least half of the content of this course can be found from `man bash`
-- Different machines have different versions of the programs. Man pages
-  document exactly the version in your machine.
+# Document your discoveries
 
-{:.Q}
-
-Pager: What is pager and what does it do? Name few pagers? What pager
-is your man command using?
-
-
-# Debugging shell scripts
-
-You can turn on command echoing with `set -x`, to see how the variables
-are expanded and how the program flows.
-
-{:.Q}
-
-Command echoing: How do you turn off command echoing? What other means of
-shell script debugging can you find?
-
+- When you've successfully solved an issue, make it easy to rediscover it
+- Set up a file in your `$HOME` and add your commands there with keywords for yourself
+   - e.g. it's quick to copy/paste your command from the screen to the end of the file
+   ```bash
+   cat >> $HOME/vault
+   <copy/paste>
+   Ctlr-C
+   ```
+- and `grep`'ing it later is quick
+- Store scripts in `$HOME/bin` and take backups
 
 # Keep notes
 
@@ -51,14 +48,3 @@ Save useful commands and short scripts to a file for later reference, and push
 your notes to GitHub every now and then. Bash history keeps all the commands
 that you typed, but it also keeps the ones that did not work...
 
-
-# Bash-fu attitude!
-
-Do not settle with the first solution. Your next solution can be more
-obvious and succint.
-
-In practice, if you receive a shell script from a colleague, do not
-expect it to work for you out of the box. As is, it will not work for
-your colleague either, most likely. Instead, take it as very valuable
-documentation, and while fixing the details, develop it to make it
-just a little bit more concise, obvious and beautiful.

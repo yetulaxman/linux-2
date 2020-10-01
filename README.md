@@ -1,8 +1,6 @@
-# Linux 2 — Advanced Linux
+# Testing creating slides from markdown
 
-Training material — slides, exercises, cheatsheets — for the Advanced
-Linux course.
-
+Training material — slides, exercises, cheatsheets
 
 ## Online and class room versions
 
