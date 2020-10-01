@@ -1,7 +1,12 @@
 ---
 title: Online course practicalities
-presentation-date: 2020-12-14
+presentation-date: 2025-12-31
 ---
+
+# Multiple formats
+
+This material is intended to be useful in multiple contexts.
+Below are some examples.
 
 # Online Study group format
 
@@ -24,7 +29,7 @@ less, some more. The important thing is to devote some time for the
 study each day during the course.
 
 
-# Timetable
+# Timetable for another course
 
 - Enroll to the course in eLena
 

@@ -1,16 +1,17 @@
 ---
-title: Linux-2
+title: Using CSC Environment Efficiently
 author: CSC Training
 ---
 
-CSC training course for advanced command line use, common GNU/Unix
-tools, and Bash programming.
+CSC training course for ...
 
-To whom: You are already using Linux command line and writing Bash
-scripts, but would like to know better how do these actually
-work. After this course you should be able to use command line more
-efficiently, and write more elegant shell scripts, and fix the
-misbehaving ones.
+To whom: You want to scale up from local workstations
+or laptops to the CSC environment Puhti and Allas and
+to use preinstalled software interactively or as batch
+jobs.
+After this course you should be able to choose the correct
+resources for your jobs, location for files, and know where
+to look for more information.
 
 Practicalities for the [online course]({{ site.baseurl }}{% link
 StudyGroupDec2020.md %}) and the regular [class room course at CSC's
@@ -19,14 +20,14 @@ premises]({{ site.baseurl }}{% link WhereAboutsCSCPremises.md %}).
 
 # Course pre-requirements
 
-Before Linux-2, you should have completed Linux-1, or
-equivalently,
+Before this coursy, you should know the basics of linux command line
+usage, e.g. having completed Linux-1, or equivalently,
 
 - be familiar with basic Linux command line use and shell programming
 - be familiar with some text editor such as Emacs, Vi or Nano
 - have access to a Linux (virtual) machine, preferably with rights to
   install additional utility software
-
+- have an account at CSC and access to a computing project
 
 # Lectures
 
