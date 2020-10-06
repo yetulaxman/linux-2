@@ -6,6 +6,8 @@ plugins:
 collections:
     lectures:
         output: true
+    tutorials:
+        output: true
     exercises:
         output: true
     extras:
@@ -17,6 +19,11 @@ defaults:
       path: "_lectures"
     values:
       layout: "slides-csc"
+  -
+    scope:
+      path: "_tutorials"
+    values:
+      layout: "default"
   -
     scope:
       path: "_exercises"

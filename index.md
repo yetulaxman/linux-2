@@ -42,6 +42,12 @@ just tweak the print settings a bit.
 {% endfor %}
 
 
+# Tutorials
+
+{% for tutorial in site.tutorials %}
+- [{{ tutorial.title }}]({{ tutorial.url | relative_url }})
+{% endfor %}
+
 # Excercises
 
 {% for exercise in site.exercises %}
