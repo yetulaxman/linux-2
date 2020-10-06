@@ -82,23 +82,20 @@ After having fresh ruby and bundler installed (in Linux just `sudo apt
 install bundler`), it's basically
 
 ```
-git clone https://github.com/jlento/presentations.git
-cd presentations/
 bundle install
 bundle exec jekyll serve &
 ```
 
 and open http://localhost:4000
 
-or if running the whole thing in a virtual machine (VirtualBox), do
-the port forwarding (for example 4040 -> 4040) in VirtualBox UI,
-start the server with
+or if running the whole thing in a virtual machine in cpouta, open the firewall
+for 4040, and start the server with
 
 ```
-bundle exec jekyll serve --host 10.0.2.15 --port 4040
+bundle exec jekyll serve --host 0.0.0.0 --port 4040
 ```
 
-and open http://localhost:4040 in your host machine's browser.
+and open `http://<ip-for-cpouta-vm>:4040` in your browser.
 
 
 
