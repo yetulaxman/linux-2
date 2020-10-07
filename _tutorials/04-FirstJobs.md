@@ -296,7 +296,7 @@ different data or modified parameters.
 
 ### Array jobs
 
-<To be added>
+```<To be added>```
 
 ## Managing jobs
 
@@ -311,7 +311,7 @@ scancel <jobid>
 
 ## Monitoring resource usage
 
-<To be added>
+```<To be added>```
 
 ## Troubleshooting
 
