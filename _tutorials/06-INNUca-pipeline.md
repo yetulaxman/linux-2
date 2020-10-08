@@ -1,3 +1,6 @@
+---
+title: Running containerised pipeline - INNUca pipeline
+---
 # Running a pipeline
 
 We have gained some skills in handling the docker and container.  Let's run a bioinformatics pipeline which has real world application.
