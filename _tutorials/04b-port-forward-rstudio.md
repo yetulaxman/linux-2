@@ -38,7 +38,7 @@ If you see a webpage saying "Welcome to rstudio!" then you're done!
 If you look at the console output from docker, you see nginx producing a line of text for each time a browser hits the webpage:
 
 ```bash
-sofus@Praq-Sof:~/git/docker-exercises$ docker container run -p 8080:80 nginx
+$ docker container run -p 8080:80 nginx
 172.17.0.1 - - [31/May/2017:11:52:48 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:53.0) Gecko/20100101 Firefox/53.0" "-
 ```
 
@@ -52,7 +52,7 @@ Docker enables this with the `-d` parameter for run.
 `docker container run -p 8080:80 -d nginx`
 
 ```bash
-sofus@Praq-Sof:~/git/docker-exercises$ docker container run -p 8080:80 -d nginx
+$ docker container run -p 8080:80 -d nginx
 78c943461b49584ebdf841f36d113567540ae460387bbd7b2f885343e7ad7554
 ```
 
