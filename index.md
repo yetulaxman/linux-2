@@ -1,5 +1,5 @@
 ---
-title: WIP - Using CSC Environment Efficiently
+title: WIP - Biocontainers(101) - Containerised Bioinformatics
 author: CSC Training
 ---
 
