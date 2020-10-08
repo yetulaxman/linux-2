@@ -1,4 +1,8 @@
-#  Cleaning your workspace
+---
+title: Cleaning docker workspace
+---
+
+# Cleaning your workspace
  As you work with containers, many containers are created, tested, and abandoned during their lifecycle. In due course of time, you may be piling up containers and images in your work space in host system. Therefore it is important identify unnecessary containers and images to clean them up every now and then from your work environment. Otherwise docker can gradually eat up the disk space of host machine.
 
 ## Learning objectives
