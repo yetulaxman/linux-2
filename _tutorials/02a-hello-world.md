@@ -1,7 +1,8 @@
-
 ---
 title: Hello-world tutorial
 ---
+
+
 ## Learning objectives
 Now that docker client is installed on your Virtual Machine, let's have some fun running docker containers. In this session, you will learn
 - how to run a docker image
