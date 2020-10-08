@@ -3,33 +3,60 @@ title: WIP - Biocontainers(101) - Containerised Bioinformatics
 author: CSC Training
 ---
 
-# This is not really a course material, but a test
+Biocontainers 101 course is a basic level course to learn skills required for running bioinformatics application in a containerised environment. This is a remote course and include  both lectures and  hands-on exercises.
 
-CSC training course for ...
+## Why this Bio course on containers
 
-To whom: You want to scale up from local workstations
-or laptops to the CSC environment Puhti and Allas and
-to use preinstalled software interactively or as batch
-jobs.
-After this course you should be able to choose the correct
-resources for your jobs, location for files, and know where
-to look for more information.
-
-Practicalities for the [online course]({{ site.baseurl }}{% link
-StudyGroupDec2020.md %}) and the regular [class room course at CSC's
-premises]({{ site.baseurl }}{% link WhereAboutsCSCPremises.md %}).
+Bioinformatics tools often require installing different dependencies in a controlled environment. Containers allow you to logically package your application (e.g., a bioinformatics tool) together with libraries and other dependencies, providing isolated environments for running your software services. Containerised applications can be run in an isolated runtime environment independent of actual environment (e.g., private data center, the public cloud, or even a developer’s personal laptop) in which the applications are running in. These are recently gaining popularity as a standard way to distribute, deploy, and run services by developers and system administrators. They provide the means to start a light-weight virtualization environment, i.e., a container, based on Linux kernel namespaces and control groups (cgroups). Such virtualization environment is cheap to create, manage, and destroy, requires a negligible amount of time to set-up, and provides performance equatable with the one of the host. Docker offers an intuitive way to manage containers by abstracting and automating the low-level configuration of namespaces and cgroups, ultimately enabling the development of an entire ecosystem of tools and products around containers.
 
 
-# Course pre-requirements
+## Expected learning in this Course
 
-Before this coursy, you should know the basics of linux command line
-usage, e.g. having completed Linux-1, or equivalently,
+In this basic course you will be introduced to the fundamentals of container technology (mainly, docker) in addition to the selected examples of containerised bioinformatics applications. This basic understanding of containers are necessary to be able to work with bio applications in a containerised environment with different options and requirements.
 
-- be familiar with basic Linux command line use and shell programming
-- be familiar with some text editor such as Emacs, Vi or Nano
-- have access to a Linux (virtual) machine, preferably with rights to
-  install additional utility software
-- have an account at CSC and access to a computing project
+More specifically, you will learn how to:
+
+
+- work with docker containers
+
+- Essential docker components
+
+- Containerised applications in Bioinformatics
+
+- Use Docker volumes to manage persistent data
+
+- Very basics of docker networks
+
+- Different bio-applications
+
+- Singularity concepts
+
+
+## Course targets
+
+One will be able to launch and work with pre-existing containerised applications in their work life  as bioinformaticians.
+
+## Pre-requisites
+
+While we don't discourage anybody from joining this course, one should  be comfortable working with commandline environment e.g., in Linux terminal, editing files with common editors (e.g., vi, nano, emacs, etc.) in order to get maximum benefit from this course.
+
+## Targeted audience for this course
+
+Bioinformatician
+Biologist with linux skills
+Biologists who are willing to get some feel of containers may join the course
+
+
+## How to get most advantage from this course
+
+Practice practice practice !!!
+
+## Expected way of learning
+
+Lectures
+Tutorial
+hands-on exercises
+
 
 # Lectures
 
