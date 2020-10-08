@@ -1,5 +1,5 @@
 
-## Accessing biocontainer course material
+## Accessing biocontainer course material (WIP -  work is pretty much in progress)
 
 https://yetulaxman.github.io/Biocontainer/
 
