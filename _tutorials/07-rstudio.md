@@ -1,4 +1,6 @@
-
+---
+title: Serving containerised web application - Rstudio demonstration
+---
 R and RStudio are heavily used in data analysis. RStudio is a useful graphical interface to the software R. This exercise demonstrates using R wihtin RStudio via a web interface running in a docker container.
 
 While it is possible to install R and RStudio natively on your own comptuter it may be useful to run an older version, or, as we’ll see in a future tutorial, create your own docker image with specific R options.
