@@ -1,5 +1,6 @@
-# Course logistics
-
+---
+title: Course logistics
+---
 Biocontainers 101 course is a basic level course to learn skills required for running bioinformatics application in a containerised environment. This is a remote course and include  both lectures and  hands-on exercises.
 
 ## Why this Bio course on containers
