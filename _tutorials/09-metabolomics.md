@@ -1,3 +1,6 @@
+---
+title: Containerised metabolomics application
+---
 ## Learning objectives
 - Learn how to use docker environment for processing Metabolomics dockers
 - how to check tool help
