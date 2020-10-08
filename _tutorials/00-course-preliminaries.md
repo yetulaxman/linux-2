@@ -1,6 +1,8 @@
 
-
-## Getting Started with VirtualBox for Course
+---
+title: Getting Started with VirtualBox for Course
+author: CSC Training
+---
 
 In order to proceed with hands-on exercises in this course, you should have VirtualBox environment ready in your personal computer. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is a in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox.
 
