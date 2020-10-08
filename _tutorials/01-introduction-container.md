@@ -1,10 +1,10 @@
 ---
-title: Basic survival docker jargon
+title: Essential Docker Termonology
 ---
 
 
 ### Learning Objective
-In this session, you will understand the basic terminology to survive in this course. More docker jargon will be introduced as we go along with course.
+In this session, you will understand the basic terminology to survive in this course. More docker jargon will be introduced as we go with course.
 
 
 ### 1. Understand the following basic terminology in Docker world.
@@ -26,5 +26,3 @@ In this course, you will come across a lot of Docker-specific jargon which might
 - *Docker Hub* - A [registry](https://hub.docker.com/explore/) of Docker images. You can think of the registry as a directory of all available Docker images. You'll be using this later in this tutorial.
 
 - *Docker Registry* - A remote repository where Docker Images can be stored and made public. Constitutes the point of contact between application developers and their users and allows the distribution of Docker containers.
-
-## 2. Search and explore "hello-world" docker image in DockerHub
