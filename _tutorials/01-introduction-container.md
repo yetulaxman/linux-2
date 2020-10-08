@@ -1,5 +1,5 @@
 ---
-title: Introduction to containers: basic survival docker jargon
+title: Basic survival docker jargon
 ---
 
 
