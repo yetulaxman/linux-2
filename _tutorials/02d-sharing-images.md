@@ -1,6 +1,7 @@
-# Sharing docker images
-
-##Learning objectives
+---
+title: Sharing docker images
+---
+## Learning objectives
  You will learn how to share your Docker image with the world!
 
 We often times need to share  our dockerized image to another person. In order to share a image,  one has to push an image  to a docker registry like DockerHub  (i.e, it is a kind of home for Docker images in the cloud) so that anyone can pull it from there to another machine.
