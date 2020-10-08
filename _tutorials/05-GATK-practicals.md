@@ -1,3 +1,7 @@
+---
+title: GATK tutorials
+---
+
 ### Description
 *GATK*: GATK4 toolkit offers a wide variety of tools with a primary focus on variant discovery and genotyping. The content on this page is borrowed from GATK webpages/courses. To get familiar with GATK tools, you can read the following:
 
