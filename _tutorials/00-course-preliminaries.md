@@ -19,8 +19,11 @@ Docker --Version
 ```
 singularity --version
 ````
+
+> **_NOTE:_** 
 > Some useful commands inside the VirtualBox
 ```bash
 Copying text inside linux terminal: shift+control+c
 Pasting text inside linux terminal: shift+control+v
 ```
+!!! Note
