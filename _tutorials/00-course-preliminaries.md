@@ -21,6 +21,6 @@ singularity --version
 ````
 4. Some useful commands inside the VirtualBox
 ```bash
-Copying text in linux terminal: shift+control+c
-Pasting text in linux terminal: shift+control+v
+Copying text inside linux terminal: shift+control+c
+Pasting text inside linux terminal: shift+control+v
 ```
