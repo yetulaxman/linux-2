@@ -1,4 +1,6 @@
-
+---
+title: Making modifications to running containers
+---
 ## Learning objectives
 In this example you will learn:
 - how to connect to a running container
