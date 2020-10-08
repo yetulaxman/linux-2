@@ -1,13 +1,13 @@
 ---
-title: Running containerised pipeline - INNUca pipeline
+title: Running a Containerised Pipeline - INNUca Pipeline
 ---
-# Running a pipeline
+# Running a Containerised Pipeline
 
-We have gained some skills in handling the docker and container.  Let's run a bioinformatics pipeline which has real world application.
+We have gained some skills so far in handling the docker and container.  Let's run a bioinformatics pipeline which hassome  real world application.
 
-Innuca is a standardized, fully automated, flexible, portable and pathogen-independent pipeline for bacterial genome assembly and quality control starting from short reads. The new version of INNUca is available at [here](https://github.com/INNUENDOCON/INNUca)
+INNUca is a standardized, fully automated, flexible, portable and pathogen-independent pipeline for bacterial genome assembly and quality control starting from short reads. The new version of INNUca is available at [here](https://github.com/INNUENDOCON/INNUca)
 
-##Learning Objectives
+## Learning Objectives
 
 You will learn how to launch a real-world container and explore several subtasks that are involved as part of INNuca pipeline. This is also a good place to use most of the skills you have used in this course.
 
