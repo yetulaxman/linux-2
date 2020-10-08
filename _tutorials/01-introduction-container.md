@@ -13,8 +13,6 @@ In this course, you will come across a lot of Docker-specific jargon which might
 
 - **Images** :A Docker image is a read-only file system, comprised of multiple layers, that is used to execute code in a Docker container. A image is created usually from a Dockerfile, which comprises a set of instructions for a complete and executable version of an application. It is a Docker container at rest, i.e., not running.
 
- <span style="color:green">TIP: It is analogous to class object in programming language text</span>
-
 - **Containers** - Running instances of Docker images &mdash; containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using `docker container run` based on an image that was downloaded. A list of running containers can be seen using the `docker container ls` command.
 
    It is analogous to an instance of docker image; The Docker Image in running state.
