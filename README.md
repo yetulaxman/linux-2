@@ -1,3 +1,8 @@
+
+## Accessing biocontainer course material
+
+https://yetulaxman.github.io/Biocontainer/
+
 # Testing creating slides from markdown
 
 Training material — slides, exercises, cheatsheets
