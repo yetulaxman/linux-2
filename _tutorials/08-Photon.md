@@ -1,4 +1,6 @@
-
+---
+title: Proteomics web application
+---
 
 First open the Docker Quickstart Terminal. After initialization (can take some time), denote the IP address of docker (under the whale image). Now you can run PHOTON by entering:
 
