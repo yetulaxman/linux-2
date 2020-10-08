@@ -4,7 +4,7 @@ title: Hello-world Docker Tutorial
 
 
 ## Learning objectives
-Now that docker client is installed on your Virtual Machine, let's have some fun running docker containers. In this session, you will learn
+Once you are done installing Docker on your Virtual Machine, let's have some fun running docker containers. In this session, you will learn
 - how to run a docker image
 - where to get images from?
 - the mechanism behind running a docker container
@@ -40,6 +40,8 @@ Docker image has already been downloaded locally and therefore docker can execut
 4. What is the tag used in the hello-world example?
 
 By default, image is pulled with latest tag. It is possible to pull an image with specified tag and is a good practice to use specific tag name for reproducible registry. Tag is more like as version control mechanism for docker images.
+
+Congratulations, you have run a “Hello World” in Docker!
 
 ## Bonus exercise
 
