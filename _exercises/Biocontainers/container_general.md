@@ -1,0 +1,329 @@
+## 2. Introducing Docker, repos, containers
+
+ [\<\< Episode 1](1.blast.md)
+ | [TOC](README.md) |
+ [Episode 3 \>\>](3.fastqc.md)
+______
+
+
+### Objectives
+
+This episode will introduce a little bit of containers jargon, and discuss the most common options needed to run docker.
+As an example we will use a Ubuntu container.
+
+
+---
+### Why containers?
+
+Containers are a light-weight software technology that allows to easily create, deploy, and run applications on any architecture.
+They achieve this by packaging up an application and all of its dependecies into a single object that’s easy to track, manage, and share.
+
+Here are some benefits of using containers in daily work:
+- Data reproducibility/provenance
+- Cross-platform compatibility
+- Simplified software dependencies and management
+- Consistent testing environment
+- Scalability
+
+In principle, almost any package can be containerised, including C programs, R and Python packages, Rstudio and Jupyter servers.
+
+
+---
+### Terminology
+
+An **image** is a set of files that contains the application and all its dependencies, run-time systems, libraries that are required to run, as well as fileystem. You can move images around, upload them, download them etc.
+
+A **container** is an instantiation of an image. That is, it's a process started from an image. You can run multiple containers from the same image, much like you might run the same application with different options or arguments.
+
+An image is read-only; when we use `docker run`, it makes a copy of the image and starts a container from it (and in read-write mode).
+
+[Docker](https://www.docker.com) is a popular **container engine**, i.e. the piece of software you need in order to make use of containers.
+It is the tool we are using through most of this workshop.
+
+
+---
+### Pulling an image
+
+Scripts covering some of the examples in this Episode are in a subdirectory:
+
+    cd bio-workshop-18/episode2_ubuntu_container/
+
+Now type:
+
+    docker pull ubuntu
+
+The command will require a couple of minutes to complete, the final output being similar to:
+
+    Using default tag: latest
+   	latest: Pulling from library/ubuntu
+   	124c757242f8: Pull complete
+   	2ebc019eb4e2: Pull complete
+   	dac0825f7ffb: Pull complete
+   	82b0bb65d1bf: Pull complete
+   	ef3b655c7f88: Pull complete
+   	Digest: sha256:72f832c6184b55569be1cd9043e4a80055d55873417ea792d989441f207dd2c7
+   	Status: Downloaded newer image for ubuntu:latest
+
+What happpened?
+`pull` is the Docker command to download a container image from a Web *repository* to the local machine.
+This command is downloading the container image for Ubuntu Linux.
+The adopted syntax is abbreviated, as the full one would be:
+
+    docker pull docker.io/library/ubuntu:latest
+
+See [Episode 3](3.fastqc.md) for an example of using the complete syntax.
+
+By default, images are searched in the Docker *registry*, `hub.docker.com`, so that `docker.io/` can be omitted.
+There are several Web registries for container images; the ones relevant to this workshop are:
+- `docker.io` for [Docker Hub](https://hub.docker.com) : default one, has a lot of images;
+- `quay.io` for [QUAY Hub](https://quay.io) : contains a large number of bioinformatic repositories, mostly from the [Biocontainers](https://github.com/BioContainers/containers) project.
+
+`library` is where all official Linux distros can be found in Docker Hub; it can be omitted.
+However, in general, this is where the maintainer's account would be specified. For instance:
+- `continuumio` contains **Conda** repositories;
+- `rocker` has very good **R** distributions;
+- `biocontainers` has thousands of bioinformatics packages.
+
+Very often several versions or variants of the same package are available in the same repository in a registry. They can be selected using a *tag*; if no tag is specified, the default is `latest`.
+
+In the output above there are multiple `Pull complete` messages; this is because a single image is made up of multiple *layers*. This relates to how container images are built, which will be discussed in [Episode 6](6.cellranger.md).
+
+Note that once you have pulled an image in your local machine, you will be able to run it as many times as desired.
+
+
+---
+### Running a container
+
+Type:
+
+    docker run ubuntu
+
+`run` starts an image by creating a container, i.e. an individual instance of an image.
+
+No output was produced! What happened?
+Docker has run the container as a Unix command. Because no argument was specified, the container exited without doing anything.
+
+Let us try and execute some Unix commands:
+
+    docker run ubuntu echo "Hello woRun a containerHello, and create a small text file world
+
+Now we can see the results of a command run from inside the container.
+
+You can try and run the Ubuntu container specifying other typical Unix commands as an argument, e.g.:
+- `date` : prints the date (is it the same than in your computer?)
+- `whoami` : prints the user name (who are you in the container?)
+- `uname -a` : prints the Operating System information. If you have a Mac or Windows, does this match your computer's OS?
+- `vi` : a popular Unix text editor, except that .. there is no `vi` installed by default in the Ubuntu container image, so this command will return an error.
+
+For instance, try the following.
+In your regular (host) shell, ensure that the Time Zone is set appropriately:
+
+    sudo timedatectl set-timezone Australia/Perth
+
+Then print the date and time:
+
+	date
+
+Now, repeat the `date` command from within the container:
+
+    docker run ubuntu date
+
+Do the dates match?
+
+
+---
+### Running a container interactively
+
+Let us type:
+
+    docker run -it ubuntu bash
+
+You will get something similar to:
+
+    root@eb100c3140a2:/#
+
+We have just got an interactive shell session inside the Ubuntu container!
+You can try and run any Unix command from there. When you are done, run `exit` to get back to the host shell:
+
+    exit
+
+Here we have used a combination of two flags to get an interacive session:
+- `-i` keeps the container standard input open;
+- `-t` attaches a terminal to the container.
+
+
+---
+### Managing containers and images
+
+As stated before, `docker run` creates a copy of a Docker image. This copy is actually still present even after the command we run in the container is finished. This means we have a cache of stopped containers, which we can see with the command `docker ps -a`:
+
+```
+docker ps --all
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                        PORTS               NAMES
+48a2dca14407        nginx               "nginx -g 'daemon off"   10 minutes ago      Exited (0) 4 minutes ago                          pensive_booth
+1bf15ca4ba89        nginx               "nginx -g 'daemon off"   20 minutes ago      Exited (0) 16 minutes ago                         amazing_hugle
+97b1e86df1f1        ubuntu              "/bin/bash"              37 minutes ago      Exited (0) 37 minutes ago                         backstabbing_brown
+1688f55c3418        ubuntu              "/bin/bash"              37 minutes ago      Exited (127) 20 minutes ago                       ecstatic_hugle
+c69d6f8d89bd        ubuntu              "/bin/bash"              41 minutes ago      Exited (0) 41 minutes ago                         sad_keller
+960588723c36        ubuntu              "/bin/echo 'hello wor"   45 minutes ago      Exited (0) 45 minutes ago                         suspicious_mestorf
+ffbb0f60bda6        ubuntu              "/bin/echo 'hello wor"   51 minutes ago      Exited (0) 51 minutes ago                         mad_booth
+```
+
+We can clean these up with the `docker rm` command:
+
+```
+docker rm 48a2 1bf15
+```
+which deletes the containers with the unique IDs `48a2dca14407` `1bf15ca4ba89`.  Note that we only need to use a few characters of the ID.  We can also reference containers by their names:
+
+```
+docker rm mad_booth sad_keller
+```
+
+You can even use a one-line approach to remove all containers (don't worry, Docker won't let you delete currently running containers):
+
+```
+docker rm $(docker ps -aq)
+48a2dca14407
+1bf15ca4ba89
+97b1e86df1f1
+```
+
+Rather than constantly delete containers, it's handy to use an option, `--rm`, that prevents Docker from keeping a copy of the container around after it's finished:
+
+```
+docker run --rm ubuntu date
+```
+
+That container won't be present in our list from `docker ps -a`.
+
+Just like containers, Docker also provides tools for managing images:
+
+```
+docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              4ca3a192ff2a        22 hours ago        128.2 MB
+nginx               latest              abf312888d13        2 days ago          181.5 MB
+bskjerven/asreml    latest              98e78f921787        8 days ago          1.92GB
+rocker/tidyverse    3.5.0               4fd6ffc96dc6        5 weeks ago         1.88GB
+```
+
+And we can delete images with `docker rmi`:
+
+```
+docker rmi ubuntu nginx
+
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:3b64c309deae7ab0f7dbdd42b6b326261ccd6261da5d88396439353162703fb5
+Deleted: sha256:4ca3a192ff2a5b7e225e81dc006b6379c10776ed3619757a65608cb72de0a7f6
+Deleted: sha256:2c2e0ef08d4988122fddadfe7e84d7b0aae246e6fa805bb6380892a325bc5216
+Deleted: sha256:918fe8ae141d41d7430eb887e57a21d76fb0181317ec4a68f7abbd17caab034a
+Deleted: sha256:00f434fa2fa1a0558f8740af28aef3d6ee546a8758c0a37dddee3f65b5290e7a
+Deleted: sha256:f9545ee77b4b95c887dbebc6d08325be354274423112b0b66f7288a2cf7905cb
+Deleted: sha256:d29d52f94ad5aa750bd76d24effaf6aeec487d530e262597763e56065a06ee67
+Untagged: nginx:latest
+Untagged: nginx@sha256:3861a20a81e4ba699859fe0724dc6afb2ce82d21cd1ddc27fff6ec76e4c2824e
+Deleted: sha256:abf312888d132e461c61484457ee9fd0125d666672e22f972f3b8c9a0ed3f0a1
+Deleted: sha256:21976f5d6f037350c076d6974b2ac97777c962869d5511855170dc5c926d5aac
+Deleted: sha256:f9719c3716279b47727a51595d1482506be469c581383cb529f4005ba9bf2aeb
+Deleted: sha256:fe4c16cbf7a4c70a5462654cf2c8f9f69778db280f235229bd98cf8784e878e4
+```
+Just like with containers, Docker won't let you delete images that are currently being used by containers.
+
+
+---
+### Access to directories and files
+
+What directories does a Docker container have access to by default?
+
+    docker run --rm ubuntu pwd
+	docker run --rm ubuntu ls
+
+The first output tells us the container is in the root directory `/`, and the second lists its content.
+If you now try and `ls /` in the host shell, you will get a different content list.
+This suggests that by default the Docker container:
+1. is not running in the current directory of the host shell (in this case it is running in `/`);
+2. cannot see the contents of the host filesystem.
+
+So how can we work with files that are external to the container?
+
+Docker allows to *mount* host directories inside the container, by providing the host path and a mount name. Try the following syntax using the `-v` flag, to mount the host `/` folder:
+
+    docker run --rm -v /:/external_root ubuntu ls /external_root
+
+Here we are mounting the host `/` in the container directory `/external_root`.
+Output of the `ls` command demonstrates we are now able to see the host files.
+
+Exposing the entire host file-system to the container is usually unnecessary, as well as risky. A better idea is just to mount the directory where the files required for processing inside the container are located. For instance:
+
+    docker run --rm -v /path-to-data-files:/data ubuntu ls /data
+
+In many occasions it is handy to run the container with the current directory set to the path where the data files are; this can be done with the `-w` flag:
+
+    docker run --rm -v /path-to-data-files:/data -w /data ubuntu ls
+
+Along this workshop, we will always be working with the datafiles located in the host current directory. It is then convenient to use a slightly modified syntax, where `$(pwd)` is used to obtain the path of the host current directory, and then mount it to `/data` inside the container:
+
+    docker run --rm -v $(pwd):/data -w /data ubuntu ls
+
+Now try and play with the host current directory. Run a container with the current directory mounted in, and create a small text file named "`weather`":
+
+	docker run --rm -v $(pwd):/data -w /data ubuntu echo "Sunny day in Perth!" >weather
+
+Then, from the host shell check that the container has actually created a file in the host current directory:
+
+    cat weather
+
+You will indeed get its content:
+
+    Sunny day in Perth!
+
+**Note:** You can have multiple mounts in your `run` command line.  Also, if the directory you want to mount to in the container doesn't exist, then the volume mount option, `-v`, will create it:
+
+```
+docker run --rm ubuntu ls /data
+ls: cannot access '/data': No such file or directory
+
+docker run --rm -v $(pwd):/data ubuntu ls -d /data
+/data
+```
+
+
+---
+### Other common Docker commands
+
+- `docker help` : list of commands and options
+- `docker <COMMAND> --help` : command-specific help
+- `docker build <..>` : build image from Dockerfile; see [Episode 6](6.cellranger.md)
+- `docker push <..>` : push a local image to remote repository
+
+
+---
+### Conclusion
+
+- There are a lot of applications (not just bioinformatics) already wrapped up in container images.  Here's a small list of some of the repositories we use at Pawsey:
+    * [DockerHub](hub.docker.com)
+    * [Bioboxes](bioboxes.org)
+    * [Biocontainers](biocontainers.pro)
+    * [Bioconda](bioconda.github.io)
+    * [Nvidia GPU Cloud (NGC)](ngc.nvidia.com)\*
+    * [QUAY Hub](quay.io)\*
+    The last two require you to create an account and login to access containers
+- Container images can be downloaded from Web registries using `docker pull`;
+- Containers are instantiated and run using `docker run`; non-interactive and interactive (`-it` flag) modes are available;
+- Host directories can be mounted using the option `-v <host-directory>:<container-directory>`.
+
+
+---
+### Best practices
+
+* Use `--rm` unless you need a long-running container (e.g. a webserver)
+* Standarise how you mount data into a container.  For example, if you always use the `-w` option and mount to `/data` in your container, it's easy to swap out external directories (e.g. `/scratch` or `/group`) and it helps make your container (and workflow) more portable
+* More introductory materials can be found at: [Get started with Docker](https://docs.docker.com/get-started/).
+
+
+______
+ [\<\< Episode 1](1.blast.md)
+ | [TOC](README.md) |
+ [Episode 3 \>\>](3.fastqc.md)
