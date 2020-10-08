@@ -9,7 +9,7 @@ In order to proceed with hands-on exercises in this course, you should have Virt
 
 1. Start your VirtualBox set-up for your course if you have not done so.
 
- Download VirtualBox image for course from CSC's [Allas objects storage](https://a3s.fi/Biocontainer/BioContainer.ova) and set-up VirtualBox
+   Download VirtualBox image for course from CSC's [Allas objects storage](https://a3s.fi/Biocontainer/BioContainer.ova) and set-up VirtualBox
 
 2. What is the version of Docker installed in this VirtualBox environment?
 ```
