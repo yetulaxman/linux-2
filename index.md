@@ -3,7 +3,7 @@ title: WIP - Biocontainers(101) - Containerised Bioinformatics
 author: CSC Training
 ---
 
-Biocontainers 101 course is a basic level course to learn skills required for running bioinformatics application in a containerised environment. This is a remote course and include  both lectures and  hands-on exercises.
+Biocontainers (101) is a basic level course to learn skills required for running bioinformatics applications in a containerised environment. This is a remote course and includes both lectures and hands-on exercises.
 
 ## Why this Bio course on containers
 
