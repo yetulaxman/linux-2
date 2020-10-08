@@ -53,10 +53,8 @@ Practice practice practice !!!
 
 ## Expected way of learning
 
-Lectures
-Tutorial
-hands-on exercises
-
+- Lectures
+- hands-on tutorial
 
 # Lectures
 
