@@ -82,6 +82,10 @@ After having fresh ruby and bundler installed (in Linux just `sudo apt
 install bundler`), it's basically
 
 ```
+sudo apt-get install bundler
+sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+sudo gem install nokogiri
+
 bundle install
 bundle exec jekyll serve &
 ```
