@@ -1,5 +1,5 @@
 ---
-title: Essential Docker Termonology
+title: Essential Docker Terminology
 ---
 
 
