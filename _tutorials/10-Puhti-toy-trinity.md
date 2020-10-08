@@ -1,12 +1,15 @@
+---
+title: Running singularity container using TRINITY 
+---
+
 ## Accessing and running singularity containers ##
 
-## https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-without-a-genome.html#gsc.tab=0
 ```
 #!/bin/bash
 #SBATCH --time=00:10:00
 #SBATCH --partition=test
-#SBATCH --account=project_2001659
-export TMPDIR=/scratch/project_2001659/$USER
+#SBATCH --account=project_XXXX
+export TMPDIR=/scratch/project_XXXXX/$USER
 #export SINGULARITY_CACHEDIR=/scratch/project_2001659/$USER  # store all cache in this directory including image file; by default singularity stores at $HOME/.singularity//cache/shub or oci-tmp
 
 # singularity commands
