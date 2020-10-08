@@ -1,3 +1,7 @@
+---
+title: Running Singularity applications on Puhti
+---
+
 ### Deepvariant pipeline as developed by GoogleAI ###
 Run [deepvariant method](https://github.com/google/deepvariant)   to perform variant calling on WGS and WES data sets in Puhti supercomputing environment using deepvariant singularity container
 
