@@ -12,24 +12,17 @@ Bioinformatics tools often require installing different dependencies in a contro
 
 ## Expected learning in this Course
 
-In this basic course you will be introduced to the fundamentals of container technology (mainly, docker) in addition to the selected examples of containerised bioinformatics applications. This basic understanding of containers are necessary to be able to work with bio applications in a containerised environment with different options and requirements.
+In this basic course, you will be introduced to the fundamentals of container technology (mainly, docker) in addition to the selected examples of containerised bioinformatics applications. This basic understanding of containers is necessary to be able to work with bio applications in a containerised environment with different options and requirements.
 
-More specifically, you will learn how to:
+More specifically, you will learn:
 
+- The essential concepts of running docker containers
+- How to use docker volumes to manage persistent data
+- The basics of docker networks
+- The containerised applications in Bioinformatics
+- The basic Singularity concepts for running in HPC environment
 
-- work with docker containers
-
-- Essential docker components
-
-- Containerised applications in Bioinformatics
-
-- Use Docker volumes to manage persistent data
-
-- Very basics of docker networks
-
-- Different bio-applications
-
-- Singularity concepts
+After this course, one will be able to launch and work with pre-existing containerised applications in his or her work-life as a bioinformatician.
 
 
 ## Course targets
