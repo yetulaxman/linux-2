@@ -1,4 +1,7 @@
 ---
+title: Introduction to containers: Some basic survival terminology
+---
+
 ### Learning Objective
 In this session, you will understand the basic terminology to survive in this course. More docker jargon will be introduced as we go along with course.
 
