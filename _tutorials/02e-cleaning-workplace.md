@@ -1,5 +1,5 @@
 ---
-title: Cleaning docker workspace
+title: Cleaning Docker Workspace
 ---
 
 # Cleaning your workspace
