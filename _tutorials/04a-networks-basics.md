@@ -1,5 +1,5 @@
 ---
-title: Networks basics
+title: Networks Basics
 ---
 # Learning Objectives
 You will learn basic  docker networking commands in this exercises
