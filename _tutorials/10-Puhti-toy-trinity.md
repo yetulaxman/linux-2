@@ -1,5 +1,5 @@
 ---
-title: Running singularity container using TRINITY 
+title: Running Singularity Container using Trinity Example 
 ---
 
 ## Accessing and running singularity containers ##
