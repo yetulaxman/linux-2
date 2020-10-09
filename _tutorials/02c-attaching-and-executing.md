@@ -1,5 +1,5 @@
 ---
-title: Making modifications to running containers
+title: Adding Content to Running Containers
 ---
 ## Learning objectives
 In this example you will learn:
