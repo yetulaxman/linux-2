@@ -1,5 +1,5 @@
 ---
-title: Running Singularity applications on Puhti
+title: Running Singularity Applications on Puhti
 ---
 
 ### Deepvariant pipeline as developed by GoogleAI ###
