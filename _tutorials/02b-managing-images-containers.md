@@ -1,5 +1,5 @@
 ---
-title: Manage docker images and containers
+title: Manage Docker Images and Containers
 ---
 ## Learning objectives
 One of the most useful and often used docker commands  is "docker run ..." . We have briefly touched it in the "hello-world" example. Here, let's go beyond hello-world and explore more options in running containers.
