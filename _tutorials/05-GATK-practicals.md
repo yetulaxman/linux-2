@@ -1,5 +1,5 @@
 ---
-title: GATK tutorials
+title: GATK Tutorials
 ---
 
 ### Description
