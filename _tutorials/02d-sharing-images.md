@@ -1,5 +1,5 @@
 ---
-title: Sharing docker images
+title: Sharing Docker Images
 ---
 ## Learning objectives
  You will learn how to share your Docker image with the world!
