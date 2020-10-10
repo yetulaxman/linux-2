@@ -1,5 +1,5 @@
 ---
-title: Adding Content to Running Containers
+title:Restarting and attaching to containers
 ---
 ## Learning objectives
 In this example you will learn:
