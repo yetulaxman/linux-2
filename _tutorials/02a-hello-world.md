@@ -5,7 +5,7 @@ title: Hello-World Docker Tutorial
 
 ## Learning objectives
 Once you are done installing Docker on your Virtual Machine, let's have some fun running docker containers. In this session, you will learn
-- how to run a docker image
+- the docker in action
 - where to find pre-made docker images
 - the mechanism behind running a docker container
 
