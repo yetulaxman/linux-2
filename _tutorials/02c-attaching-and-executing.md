@@ -4,7 +4,7 @@ title: Adding Content to Running Containers
 ## Learning objectives
 In this example you will learn:
 - how to connect to a running container
-- how to add content to a running container
+- how to install a package inside container
 
 ## Attaching to your container
 
