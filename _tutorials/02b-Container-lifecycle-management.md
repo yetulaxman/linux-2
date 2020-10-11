@@ -1,10 +1,10 @@
 ---
-title: Manage Docker Images and Containers
+title: Management of Docker Container Lifecycle
 ---
 ## Learning objectives
-One of the most useful and often used docker commands  is "docker run ..." . We have briefly touched it in the "hello-world" example. Here, let's go beyond hello-world and explore more options in running containers.
-You will learn
-- Launching docker image with more options
+One of the most useful and often used docker commands is "docker run ..." . We have briefly touched it in the "hello-world" example. Here, let's go beyond hello-world and explore more options in running containers.
+In this episode, you will learn: 
+- Some of Docker CLI commands to manage images/containers
 - Running containers interactively
 - Running docker containers in the background
 - Listing images and containers
