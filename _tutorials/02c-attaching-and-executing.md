@@ -1,14 +1,14 @@
 ---
-title:Restarting and attaching to containers
+title: Restarting and attaching to containers
 ---
 ## Learning objectives
-In this example you will learn:
+In this session you will be able to learn:
 - how to connect to a running container
 - how to install a package inside container
 
 ## Attaching to your container
 
-If you want to go into a container to execute some command you can use the following docker option:
+If you want to go into a container to execute some ad-hoc commands you can use the following docker option:
 - ``exec`` Executing another process inside the container. This could be a shell, or a script of some sort.
 
 > NOTE:
@@ -31,7 +31,7 @@ docker exec -it nginx ps -aux # View Running Processes inside container
 ```
 You can now able to launch a website at `localhost:8000`. on your browser.
 
-## Adding content inside the container.
+## Installing content inside the container.
 
 As a good design principle, containers only have the bare minimum installed. Nginx container does not have vim edior, let's install vim editor here. Go inside the container and type the following command:
 
