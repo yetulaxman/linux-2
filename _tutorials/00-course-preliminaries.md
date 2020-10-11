@@ -3,7 +3,7 @@ title: Training Environment for Course
 ---
 
 
-This course provides a pre-configured VirtualBox image for your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is a in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox.
+This course provides a pre-installed VirtualBox image with docker and singularity clients to facilitate your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is a in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox.
 
 ## Getting Your Course Environment Ready
 
