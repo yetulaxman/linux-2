@@ -1,9 +1,9 @@
 ---
-title: Getting Started with VirtualBox for Course
+title: Training Environment for Course
 ---
 
 
-In this course, this course provides a pre-configured VirtualBox image for your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is a in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox.
+This course provides a pre-configured VirtualBox image for your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is a in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox.
 
 ## Getting Your Course Environment Ready
 
