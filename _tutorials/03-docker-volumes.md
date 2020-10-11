@@ -2,8 +2,10 @@
 title: Docker Volumes
 ---
 
-# Learning objectives
-Using volumes effectively is essential to an efficient Docker workflow, so it's worth playing around with the commands until you understand how they work.
+# Learning Objectives
+In scientific appplications, the usage of docker volumes is essential to run docker worlflows. In this session, you will be able to learn:
+- How docker enables data persistence
+- Different volumes types and how they are created
 
 ## Description
 
