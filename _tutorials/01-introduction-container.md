@@ -1,13 +1,16 @@
 ---
-title: Essential Docker Terminology
+title: Docker Terminology and Architecture
 ---
 
 
-### Learning Objective
-In this session, you will understand the basic terminology to survive in this course. More docker jargon will be introduced as we go with course.
+### Learning Objectives
+Understanding of docker fundamentals can be challenging to beginners. Part of the challenge comes from the terminology of docker eco-system. After this session, you will be able to understand:
+- the basic terminilogy of docker components
+- understand docker architecture
 
+More docker jargon will be introduced as we go with course.
 
-### 1. Understand the following basic terminology in Docker world.
+### 1. Understand the following basic terminology used in Docker world.
 
 In this course, you will come across a lot of Docker-specific jargon which might be confusing to the beginners. You can go through glossary of docker jargon [here](https://docs.docker.com/glossary/). Below is the essential terminology of docker ecosystem and we often use in this course:
 
@@ -24,3 +27,13 @@ In this course, you will come across a lot of Docker-specific jargon which might
 - **Docker Hub** - A [registry](https://hub.docker.com/explore/) of Docker images. You can think of the registry as a directory of all available Docker images. You'll be using this later in this tutorial.
 
 - **Docker Registry** - A remote repository where Docker Images can be stored and made public. Constitutes the point of contact between application developers and their users and allows the distribution of Docker containers.
+
+### 2. Name different components of docker architecture
+
+- Docker Daemon
+- Docker Clients
+- Docker Host 
+- Docker Registry 
+- Docker Images and containers
+
+
