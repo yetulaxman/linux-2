@@ -44,7 +44,7 @@ When running a webserver like rstudio, it's pretty useful that you do not have t
 We need to make it run in the background, freeing up our terminal for other things. Docker enables this with the `-d` parameter for run.
 
 > ```bash
-> docker run --rm -p 8787:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
+> docker run --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
 > ```
 
 **Exercise questions**:
