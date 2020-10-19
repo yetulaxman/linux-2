@@ -13,7 +13,6 @@ In this session you will learn how to:
 
 In Docker, the containers themselves can have applications running on ports. When you run a container, if you want to access the application in the container via a port number, you need to map the port number of the container to the port number of the Docker host.
 
-Running arbitrary Linux commands inside a Docker container is fun, but let's do something more useful.
 
 Pull down the ``rstudio`` Docker image from the Docker Hub.
 
