@@ -22,7 +22,7 @@ Start a new container from the ``rstudio`` image that exposes port 80 from the c
 > Here is the syntax you will use:
 >
 > ```bash
-> docker run --rm -p 8787:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
+> docker run --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
 > ```
 >
 > The trick is to remember that **the host port always goes to the left**,
@@ -31,7 +31,7 @@ Start a new container from the ``rstudio`` image that exposes port 80 from the c
 
 Open a web browser and go to port 8080 on your host. The exact address will depend on how you're running Docker today:
 
-* **Native Linux** - [http://localhost:8787]
+* **Native Linux** - [http://localhost:8080]
 * **Cloud server** - Make sure firewall rules are configured to allow traffic on port 8080. Open browser and use the hostname (or IP) for your server.
 
 
