@@ -4,19 +4,19 @@ title: Hello-World Docker Tutorial
 
 
 ## Learning Objectives
-As you have Docker client installed on your Oracle VirtualBox, let's have some fun, running docker containers. In this session, you will be able to: 
-- See Docker in action
+As you have Docker client installed on your Oracle VirtualBox, let's have some fun by running docker containers. In this session, you will be able to: 
+- See Docker image in action
 - Learn where to find pre-made docker images
 - Understand the mechanism behind running a docker container
 
-## Tutorial with hello-world container
+## Tutorial with Hello-world Container
 
-Let’s start a simple pre-made hello-world container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running the following command on your terminal:
+Let’s start a simple pre-made hello-world container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running following command on your linux terminal:
 
 ```bash
 docker run hello-world
 ```
-In the above command, docker is a command that one (docker client) types on command line interface (CLI). The Docker client contacts the Docker daemon to check if there is image name called, "hello-world". If the image is not found, the Docker daemon pulls the "hello-world" image from the Docker Hub (default for docker container and for other registries one has to explicitly mention the docker registry name) and  creates a new container from that image which runs the executable that produces the output you are currently reading. The Docker daemon streamed that output to the Docker client, which sent it to your terminal. hmm, lot of stuff happened behind the scenes !!!
+when docker is a command is run  on commandline interface (CLI), Docker client contacts Docker daemon to check if there is an image name named, "hello-world". If the image is not found locally, the daemon pulls "hello-world" image from DockerHub (default for docker container and for other registries one has to explicitly mention docker registry name) and  creates a new container from that image which runs the executable that produces the output you are currently reading. The Docker daemon streamed that output to the Docker client, which sent it to your terminal. hmm, lot of stuff happened behind the scenes !!!
 
 **Note:** Depending on how you've installed docker on your system, you might see a `permission denied` error after running the above command.
 
