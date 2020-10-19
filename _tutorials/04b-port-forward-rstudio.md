@@ -5,8 +5,8 @@ title: Port-forwarding in Docker Services
 ## Learning objectives
 
 In this session you will learn how to:
-- How to pull and launch Rstudio docker 
-- Perform port mapping or port forwarding
+- Launch a Rstudio docker 
+- Perform port mapping (or port forwarding) rstudio docker
 - Understand different environment variables associated with the docker
 
 ## Port forwarding using rstudio webserver
