@@ -7,7 +7,7 @@ This course provides a VirtualBox image with pre-installed docker and singularit
 
 ## Getting Started with Course Environment
 
-1. Start your VirtualBox set-up for your course if you have not done so.
+1. Start VirtualBox set-up for your course if you have not done so.
 
    Download VirtualBox image for course from CSC's [Allas objects storage](https://a3s.fi/Biocontainer/BioContainer.ova) and set-up VirtualBox
 
