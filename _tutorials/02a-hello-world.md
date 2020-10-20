@@ -16,7 +16,7 @@ Let’s start with a simple *hello-world* container from [Dockerhub](https://hub
 ```bash
 docker run hello-world
 ```
-When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. Docker daemon streams the default output of container to Docker client. Yes...lot of stuff has  happened behind the scenes !!!
+When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. Docker daemon streams the default output of container to Docker client (= something we see as a message on terminal). Yes...lot of stuff has happened behind the scenes !!!
 
 **Note:** Depending on how you've installed docker on your system, you might see a `permission denied` error after running the above command.
 
