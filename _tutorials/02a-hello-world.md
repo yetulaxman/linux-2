@@ -39,9 +39,9 @@ Docker image has already been downloaded locally and therefore docker can execut
 
 4. What is the default image tag used in `hello-world` example?
 
-By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is a good practice to use specific tag name for reproducible research. Tag is more like as version control mechanism for docker containers.
+By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control like mechanism for docker containers.
 
-Congratulations, you have run a “Hello-World” Docker successfully !
+Congratulations, you have run a “Hello-World” Docker successfully !!!
 
 ## Bonus Exercises
 
