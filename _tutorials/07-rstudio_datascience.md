@@ -36,7 +36,7 @@ docker run -d -e USERPASS=secretpassword  \
 ## How to access
 
 To access the app, point your web browser at
-    http://your.hostname.here:8787/
+    http://localhost:8080/
 
 Dockerfile for RStudio Server
 
