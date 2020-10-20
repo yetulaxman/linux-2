@@ -30,10 +30,10 @@ the users' work is not blown away. To do this, map a home directory like this:
 ```
 docker run -d -e USERPASS=secretpassword  \
         -v /external/directory/for/user:/home/guest \
-        -p 0.0.0.0:8787:8787 -i -t  rocker/rstudio
+        -p 0.0.0.0:8080:8787 -i -t  rocker/rstudio
 ```
 
-## How to access
+## How to access rstudio server
 
 To access the app, point your web browser at
     http://localhost:8080/
@@ -44,12 +44,13 @@ Dockerfile for RStudio Server
 
 Principal component analysis (PCA) is a method of extracting important variables (in form of components) from a large set of variables available in a data set. It extracts low dimensional set of features from a high dimensional data set with a motive to capture as much information as possible.
 
-# How to perform PCA
+## How to perform PCA
 
 we will use prcomp function from the stats package. 
 
 ```bash
 library(ggplot2)
+data(iris)
 log.ir <- log(iris[, 1:4])
 
 ir.pca <- prcomp(log.ir,
@@ -71,3 +72,4 @@ g <- g + theme(legend.direction = 'horizontal',
 print(g)
 
 ```
+
