@@ -21,7 +21,7 @@ singularity --version
 ````
 
 > **_NOTE:_** 
-> Some useful tips inside the VirtualBox:
+> Some useful commands inside VirtualBox:
 > ```bash
 > Copying text inside linux terminal: shift+control+c
 > Pasting text inside linux terminal: shift+control+v
