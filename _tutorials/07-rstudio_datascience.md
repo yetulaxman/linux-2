@@ -1,14 +1,10 @@
 ---
 title: Serving Containerised Web Application - Rstudio Demonstration
 ---
-R and RStudio are heavily used in data analysis. RStudio is a useful graphical interface to the software R. This exercise demonstrates using R wihtin RStudio via a web interface running in a docker container.
-
-Main advantages using Rstudio as docker container:
-  -  Do data science interactively within the RStudio IDE,
+R and RStudio are heavily used in data analysis. RStudio is a useful graphical interface to the software R. Main advantages of using Rstudio as docker container include:
   -  Reproduce your analyses,
-  -  Collaborate and share code with others, and
-  -  Communicate your results with others.
-
+  -  Collaborate and share code with others
+  
 Learning Objectives:
 - Launching RStudio inside of a Docker container
 - Performing some data science activties with R
