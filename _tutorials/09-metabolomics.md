@@ -10,10 +10,20 @@ On completion of this session, you will learn:
 
 # Tutorial with dimspy 
 
-In general when you look for related tools, you may find several relavent tools for your needs. It may take sometime to get used to the tools. Read the documentation of dimspy and get the overall idea of tools.
+In general when we look for a docker container for our needs, we may end-up finding several relavent tools for our needs. It may take sometime to  get used to new tools and often difficult to judge the quality of tools if it is not a popular one. Geeting an unfamiliar tool to work for our needs is good learning process. We will practice it using dimsy software.
+
+More information about the software can be found [here](https://github.com/computational-metabolomics/dimspy).
+
+### Pull dimpsy container from dockerhub
+
+```bash
+docker pull quay.io/biocontainers/dimspy:2.0.0--py_0
+```
+Make a note about the *tag* we used here. What are all other tags present in this software? 
+
+### Get documentation help from Dimpsy tool
 
 ```
-
 dimspy --help
 
 ```
@@ -38,6 +48,8 @@ dimspy unzip \
 Check how many files are there?
 
 Now you can  run the *process-scans* step using the following command:
+
+### Perform couple of metabolomics processing steps
 
 ```
 dimspy process-scans \
