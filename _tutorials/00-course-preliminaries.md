@@ -25,5 +25,6 @@ singularity --version
 > ```bash
 > Copying text inside linux terminal: shift+control+c
 > Pasting text inside linux terminal: shift+control+v
+> Copying/pasting text inside browser should work normally (i.e., control +c control +v)
 > ```
 
