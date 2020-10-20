@@ -44,5 +44,5 @@ To access the app, point your web browser at
 
 Dockerfile for RStudio Server
 
-## Perform some analysis
+## Perform PCA analysis
 
