@@ -24,6 +24,7 @@ Make a note about the *tag* we used here. What are all other tags present in thi
 ### Get documentation help from Dimpsy tool
 
 ```
+docker run -it quay.io/biocontainers/dimspy:2.0.0--py_0 bash
 dimspy --help
 
 ```
