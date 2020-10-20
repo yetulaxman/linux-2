@@ -1,17 +1,19 @@
 ---
-title: Management of Docker Container Lifecycle
+title: Management of Docker Container Life-cycle
 ---
-## Learning objectives
-One of the most useful and often used docker commands is "docker run ..." . We have briefly touched it in the "hello-world" example. Here, let's go beyond hello-world and explore more options in running containers.
+## Learning Objectives
+One of the most useful and often used docker commands is "docker run ..." . We have briefly seen it in "hello-world" example. Here, let's go beyond simple `hello-world` example and explore few more related docker commands.
+
 In this episode, you will learn: 
-- Some of Docker CLI commands to manage images/containers
-- Running containers interactively
+- Some of usefull Docker commands to manage images/containers
+- How to run containers interactively
 - Running docker containers in the background
-- Listing images and containers
+- How to list images and containers in host system
 
 ## Launching docker image with more options
 
-In the previous hello-world example, docker run command  not only implicitly fetched its image from DockerHub and but also launched the container on your host machine. Let's play here with a bioinformatics container called, [fastqc](https://hub.docker.com/r/biocontainers/fastqc) instead.
+In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a contaianer. No worries ! Yes, it's possible with `docker pull` command.
+But this time, let's explore with a well-known bioinformatics container called, [fastqc](https://hub.docker.com/r/biocontainers/fastqc) instead.
 
 To get started, let's pull *fastqc* image in the following way:
 
