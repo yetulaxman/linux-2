@@ -2,7 +2,7 @@
 title: Management of Docker Container Life-cycle
 ---
 ## Learning Objectives
-One of the most useful and often used docker commands is "docker run ..." . We have briefly seen it in "hello-world" example. Here, let's go beyond simple `hello-world` example and explore few more related docker commands.
+One of the most useful and often used docker commands is `docker run ...` . We have briefly seen it in `hello-world` example. Here, let's go beyond simple `hello-world` example and explore few more related docker commands.
 
 In this episode, you will learn: 
 - Some of usefull Docker commands to manage images/containers
