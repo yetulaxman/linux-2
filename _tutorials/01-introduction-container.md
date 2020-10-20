@@ -4,10 +4,10 @@ title: Docker Terminology and Architecture
 
 
 ### Learning Objectives
-Understanding of docker fundamentals can sometimes be challenging especially in the beginning stage of learning. Part of the challenge comes from terminology of docker eco-system. It is useful to get some essential jargon first to get going with course.
+Understanding of docker fundamentals can sometimes be challenging especially in the beginning stage of learning. Part of the challenge comes from terminology of docker eco-system. It is useful to understand some essential jargon first to get started with course.
 
-After this session, you will be able to understand:
-- The basic terminilogy of docker components
+After this session, you will get familiar with:
+- The basic terminology of docker system
 - Core components of docker architecture
 
 ### 1. Understand the following basic terminology used in Docker world
