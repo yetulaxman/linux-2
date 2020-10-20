@@ -4,7 +4,7 @@ title: Proteomics Web Application
 
 # Proteome Network analysis using containerised webapplication #
 
-## learning objectives
+## Learning Objectives
 - Start a web browser  application as container
 - Get a feel of tutorial
 - Appreciate the ease of use of web-container.
