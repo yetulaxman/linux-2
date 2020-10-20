@@ -14,7 +14,7 @@ Learning Objectives:
 
 Run using the default password from the Dockerfile build script:
 ```
-sudo docker run -d -p 0.0.0.0:8080:8787 -i -t rocker/rstudio
+docker run -d -p 0.0.0.0:8080:8787 -i -t rocker/rstudio
 ```
 
 PROTIP: You will probably want to  something more secure than an account named guest with the password guest, so you will probably want pass in the
@@ -42,3 +42,32 @@ Dockerfile for RStudio Server
 
 ## Perform PCA analysis
 
+Principal component analysis (PCA) is a method of extracting important variables (in form of components) from a large set of variables available in a data set. It extracts low dimensional set of features from a high dimensional data set with a motive to capture as much information as possible.
+
+# How to perform PCA
+
+we will use prcomp function from the stats package. 
+
+```bash
+library(ggplot2)
+log.ir <- log(iris[, 1:4])
+
+ir.pca <- prcomp(log.ir,
+                 center = TRUE,
+                 scale. = TRUE) 
+# plot method
+plot(ir.pca, type = "l")
+```
+## Visualising PCA
+
+```bash
+library(ggbiplot)
+g <- ggbiplot(ir.pca, obs.scale = 1, var.scale = 1, 
+              groups = ir.species, ellipse = TRUE, 
+              circle = TRUE)
+g <- g + scale_color_discrete(name = '')
+g <- g + theme(legend.direction = 'horizontal', 
+               legend.position = 'top')
+print(g)
+
+```
