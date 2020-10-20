@@ -9,18 +9,18 @@ As you have Docker client installed on your Oracle VirtualBox, let's have some f
 - Learn where to find pre-made docker images
 - Understand the mechanism behind running a docker container
 
-## Tutorial with Hello-world Container
+## Tutorial with Hello-World Container
 
-Let’s start a simple pre-made hello-world container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running following command on your linux terminal:
+Let’s start with a simple *hello-world* container from [Dockerhub](https://hub.docker.com) which is a docker registry for sharing images. Try running  the following command on your linux terminal:
 
 ```bash
 docker run hello-world
 ```
-when docker is a command is run  on commandline interface (CLI), Docker client contacts Docker daemon to check if there is an image name named, "hello-world". If the image is not found locally, the daemon pulls "hello-world" image from DockerHub (default for docker container and for other registries one has to explicitly mention docker registry name) and  creates a new container from that image which runs the executable that produces the output you are currently reading. The Docker daemon streamed that output to the Docker client, which sent it to your terminal. hmm, lot of stuff happened behind the scenes !!!
+When a docker run command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. The Docker daemon streams default output of container to the Docker client. Yes...lot of stuff has  happened behind the scenes !!!
 
 **Note:** Depending on how you've installed docker on your system, you might see a `permission denied` error after running the above command.
 
-1. What is the  terminal output from the above command?
+1. What is the terminal output from the above `docker run` command?
 
 ```bash
 Unable to find image 'hello-world:latest' locally
@@ -37,21 +37,21 @@ This message shows that your installation appears to be working correctly.
 
 Docker image has already been downloaded locally and therefore docker can execute the container straight away.
 
-4. What is the tag used in the hello-world example?
+4. What is the default image tag used in `hello-world` example?
 
-By default, image is pulled with latest tag. It is possible to pull an image with specified tag and is a good practice to use specific tag name for reproducible registry. Tag is more like as version control mechanism for docker images.
+By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is a good practice to use specific tag name for reproducible research. Tag is more like as version control mechanism for docker containers.
 
-Congratulations, you have run a “Hello World” in Docker!
+Congratulations, you have run a “Hello-World” Docker successfully !
 
-## Bonus exercise
+## Bonus Exercises
 
-1. Run a container from the image named "alpine" from DockerHub and execute a command inside the container so that the output from the container is "hello-world".
+1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "hello-world".
 
 2. Name few other docker registries besides DockerHub. How would you run the same *hello-world example* from a different docker registry?
-Many other docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
+ Many other docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
 - Google Container Registry  
 - REDHAT Quay Container Registry
 - Amazon Elastic Container Registry
 - Azure Container Registry
 
-Default registry for docker client is DockerHub. For other registries, one has to write full name of registry/repository specific to an image depending on the registry.
+Default registry for docker client is DockerHub. For other registries, one has to write full name docker images. It would look something like this: registry name/repository/imagename.
