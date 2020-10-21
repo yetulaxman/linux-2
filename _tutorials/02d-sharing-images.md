@@ -28,11 +28,11 @@ One can load the image from the tar file. Once your image is loaded, you can int
 docker load < busybox.tar
 ```
 
-### Sharing your image with dockerhub 
+### Sharing your image with DockerHub 
 
-Sharing an image *via* docker registry such as  DockerHub is the most effiecient way of sharing and managing your images. DockerHub is the most popular image registry, hosting hundreds of thousands of images. Once image is in docker registry, anyone can pull it from there. 
+Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of sharing and managing your images. Once image is in a docker registry, anyone can pull it from there. 
 
-However, this involves having an account in Docker registry. Here are few steps you can follow:
+However, this involves having an account set-up in Docker registry. Here are few steps you can follow:
 
 - One can create an account on the DockerHub [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
 - Click on Create Repository.
