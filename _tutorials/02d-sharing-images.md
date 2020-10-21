@@ -7,7 +7,7 @@ We’ve spent sometime in gaining a reasonable understanding of running docker c
 
 Upon completion of this session, you will learn: 
 
-- how to share your Docker image with others.
+- How to share your Docker image w/o DockerHub.
 
 ### Sharing Docker Images without DockerHub
 
