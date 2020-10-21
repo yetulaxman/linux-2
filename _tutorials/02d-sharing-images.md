@@ -63,4 +63,4 @@ Please note that a push does not happen automatically on rebuilds; docker push s
 Removing an image from the remote repository is not trivial
 
 **Useful link**:
-- More information about Docker Hub, and the cli integration can be found [here](https://docs.docker.com/docker-hub/)
+- More information about DockerHub, and CLI integration can be found [here](https://docs.docker.com/docker-hub/)
