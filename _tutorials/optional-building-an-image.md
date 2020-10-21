@@ -1,5 +1,5 @@
 ##Learning objectives
-# Constructing a docker image
+# Constructing a docker image (Work in progress)
 
 Running containers others made is useful, but if you want to use docker for production, chances are you want to construct a container on your own.
 
