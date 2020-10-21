@@ -10,9 +10,7 @@ Upon completion of this session, you will learn:
 - how to share your Docker image with others.
 
 ### Sharing Docker Images without DockerHub
-Sharing means taking the images we’ve built on your local machine and making them available for other people to use
-We often times need to share  our dockerized image to another person
-
+We often times need to share  our dockerized image to another person. Sharing means taking the images we’ve built on your local machine and making them available for other people to use
 
 docker has save command where you can save into tar file. We can list the directory after save.
 
