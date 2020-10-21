@@ -13,26 +13,26 @@ Upon completion of this session, you will learn:
 
 Sharing a docker image means taking the image you’ve built on your local machine and making them available for other people to use.
 
-Docker has *save* command option where you can save your image into a tar file as shown below:
+Docker has *save* command option where you can save your image into a tar file. Let's look at our fastqc container into which you have installed a vim editor. And now you wish to share the new image with your friend.
+
+Find the fastqc container id and use the following *docker save* command:
 
 ```bash
-docker save busybox > busybox.tar
-
+docker save <container id>  > fastqc.tar
 ```
-You can check tar file in your dierctory after save command is successful. You can send this tar file to your colllaborators.
-
+You can check tar file in your directory after *docker save* command has been executed successful. You can send this tar file to your colllaborators.
 
 One can load the image from the tar file. Once your image is loaded, you can interact with it and run the container as an official image.
 
 ```bash
-docker load < busybox.tar
+docker load < fastqc.tar
 ```
 
 ### Sharing your image with DockerHub 
 
 Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of sharing and managing your images. Once image is in a docker registry, anyone can pull it from there. 
 
-However, this involves having an account set-up in Docker registry. Here are few steps you can follow:
+However, this involves setting-up in account in Docker registry. Here are few steps you can do fto set-up your account:
 
 - One can create an account on the DockerHub [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
 - Click on Create Repository.
