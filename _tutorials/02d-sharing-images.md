@@ -11,7 +11,7 @@ Upon completion of this session, you will learn:
 
 ### Sharing Docker Images without DockerHub
 
-Sharing docker image means taking the images you’ve built on your local machine and making them available for other people to use.
+Sharing a docker image means taking the image you’ve built on your local machine and making them available for other people to use.
 
 Docker has save command where you can save into tar file. We can list the directory after save.
 
@@ -43,15 +43,15 @@ docker login --username=your-user-name --email=youremail@company.com
 ```
 We're almost ready to push our our docker image up to the DockerHub. We just need to rename it to our namespace first.
 
-Using the ``docker tag`` command, tag the image you created in the previous section to your namespace. For example, I would run:
+Using the `docker tag` command, tag the image you created in the previous section to your namespace. For example, I would run:
 
 ```bash
 docker tag <CID> your-user-name/image-name[:tag]
 ```
 
-``tag`` is the tag I used in my `docker build` commands in the previous section, and `your-user-name/image-name` is the full name of the new Docker image I want to push to the Hub. `your-user-name` is my username at dockerhub, and also my namespace for all my images. The `:latest` is a versioning scheme you can append to. all images should be tagged with an appropriate prefix before being pushed.
+`tag` is the tag used in `docker build` commands and `your-user-name/image-name` is the full name of the new Docker image we want to push to the Hub. `your-user-name` is your username at dockerhub, and also my namespace for all my images. All images should be tagged with an appropriate prefix before being pushed.
 
-A push does not happen automatically on rebuilds; docker push should always be executed explicitly. Let's push you image as below:
+A push does not happen automatically on rebuilds; docker push should always be executed explicitly. Let's push your image as below:
 
 ```bash
  docker push your-user-name/image-name
