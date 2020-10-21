@@ -13,7 +13,7 @@ Upon completion of this session, you will learn:
 
 Sharing a docker image means taking the image you’ve built on your local machine and making them available for other people to use.
 
-Docker has *save* command option where you can save into tar file.
+Docker has *save* command option where you can save your image into a tar file as shown below:
 
 ```bash
 docker save busybox > busybox.tar
