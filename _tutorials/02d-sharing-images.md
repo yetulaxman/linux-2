@@ -45,21 +45,21 @@ docker login --username=your-user-name --email=youremail@company.com
 ```
 We're almost ready to push our our docker image up to the DockerHub. We just need to rename it to our namespace first.
 
-Using the `docker tag` command, tag the image you created in the previous section to your namespace. For example, I would run:
+Using the `docker tag` command, tag the image you created in the previous section to your namespace. For example, you can run:
 
 ```bash
 docker tag <CID> your-user-name/image-name[:tag]
 ```
 
-`tag` is the tag used in `docker build` commands and `your-user-name/image-name` is the full name of the new Docker image we want to push to the Hub. `your-user-name` is your username at dockerhub, and also my namespace for all my images. All images should be tagged with an appropriate prefix before being pushed.
+`tag` is the tag used in `docker build` commands and `your-user-name/image-name` is the full name of the new Docker image we want to push to the Hub. `your-user-name` is your username at dockerhub, and also my namespace for all my images. All images should be tagged with an appropriate prefix before pushing an image.
 
-A push does not happen automatically on rebuilds; docker push should always be executed explicitly. Let's push your image as below:
+ Let's push your image as below:
 
 ```bash
  docker push your-user-name/image-name
 ```
 
-Once the Push  to the repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
+Please note that a push does not happen automatically on rebuilds; docker push should always be executed explicitly. Once the Push  to the repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
 Removing an image from the remote repository is not trivial
 
 **Useful link**:
