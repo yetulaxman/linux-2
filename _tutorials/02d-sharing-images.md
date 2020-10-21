@@ -60,7 +60,5 @@ A push does not happen automatically on rebuilds; docker push should always be e
 Once the Push  to the repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
 Removing an image from the remote repository is not trivial
 
-**References**:
-- For more info on the Docker Hub, and the cli integration,
-head over to [https://docs.docker.com/docker-hub/](https://docs.docker.com/docker-hub/) and read the guides there.
--  https://runnable.com/docker/rails/manage-share-docker-images
+**Useful link**:
+- More information about Docker Hub, and the cli integration can be found [here](https://docs.docker.com/docker-hub/)
