@@ -1,7 +1,7 @@
 ---
 title: Sharing Docker Images
 ---
-## Learning Objectives
+## Learning Objectives (Work in progress)
 
 We’ve spent sometime in getting a reasonable understanding in running handful of docker containers. We often have to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use the same image after sometime or even share it with other collaborators. This brings us to the point of sharing your image with others!
 
