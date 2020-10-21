@@ -14,26 +14,25 @@ If you want to go into a container to execute some ad-hoc commands you can use t
 > NOTE:
 > When you attach to an already started container, you can stop it by `Ctrl+d` or detach yourself by `Ctrl+p Ctrl+q`
 
-First, start up an Nginx container:
+First, start up our fastqc container and let it be running in the background:
 
 ```bash
-docker container run -d -p 8000:80 nginx
+docker run -d  biocontainers/fastqc:v0.11.9_cv6 sleep inf
 661c6dd59d78b97f8142d67eff6b1d58fbbd42247900241e08f46abdbad19f06
 ```
 
-Try to attach to the container. Exit it, and browse the webpage again to acknowledge it is gone.
+You can now check list of containers running in your machine and identify the container ID corresonding to fastqc container
 
 Step into a new container by executing a bash inside the container:
 
 ```bash
-docker container run -d -p 8000:80 nginx
-docker exec -it nginx ps -aux # View Running Processes inside container
+docker exec -it <container id> bash  
 ```
-You can now able to launch a website at `localhost:8000`. on your browser.
+You are now inside of a running container. 
 
 ## Installing content inside the container.
 
-As a good design principle, containers only have the bare minimum installed. Nginx container does not have vim edior, let's install vim editor here. Go inside the container and type the following command:
+As a good design principle, containers only have the bare minimum installed. dastqc container does not have vim edior, let's install vim editor here. Go inside the container and type the following command:
 
 ```bash
 apt-get update && apt-get install vim
