@@ -1,46 +1,52 @@
 ---
 title: Sharing Docker Images
 ---
-## Learning objectives
- You will learn how to share your Docker image with the world!
+## Learning Objectives
 
-We often times need to share  our dockerized image to another person. In order to share a image,  one has to push an image  to a docker registry like DockerHub  (i.e, it is a kind of home for Docker images in the cloud) so that anyone can pull it from there to another machine.
+We’ve spent sometime in getting a reasonable understanding of running docker containers.We have to customise docker images somethimes by adding missing software tools or packages we need for our analysis. How can you re-use the same image after sometime or even share it with others. This brings to the point of sharing your image with others!
 
-- One can create an account on the Docker Hub [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
+Upon completion of this session, you will learn: 
+
+- how to share your Docker image with others.
+
+### Sharing Docker Images without docker hub
+Sharing means taking the images we’ve built on your local machine and making them available for other people to use
+We often times need to share  our dockerized image to another person
+
+
+
+### Sharing your image with dockerhub 
+
+Sharing an image via docker registries such as  DockerHub  (i.e, it is a kind of home for Docker images in the cloud) is most effiecient way to share and manage your images. Once image is in docker registry, anyone can pull it from there.
+
+However this involves having an account in Docker registry. Here are few steps you can follow:
+
+- One can create an account on the DockerHub [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
 - Click on Create Repository.
 - Choose a name  and a description for your repository and click Create.
 
-Then, login to that account by running the ``docker login`` command on your laptop.
+Then, login to that account by running the ``docker login`` command on your virtual machine
 
 ```
-docker login --username=yourhubusername --email=youremail@company.com
+docker login --username=your-user-name --email=youremail@company.com
 ```
-We're almost ready to push our Flask image up to the Docker Hub. We just need to rename it to our namespace first.
+We're almost ready to push our our docker image up to the DockerHub. We just need to rename it to our namespace first.
 
 Using the ``docker tag`` command, tag the image you created in the previous section to your namespace. For example, I would run:
 
 ```bash
-docker tag bb38976d03cf yourhubusername/verse_gapminder:firsttry
+docker tag <CID> your-user-name/image-name:tag
 ```
 
-``firsttry`` is the tag I used in my ``docker build`` commands in the previous section, and ``ourhubusername/verse_gapminder:`` is the full name of the new Docker image I want to push to the Hub.
-`yourhubusername` is my username at dockerhub, and also my namespace for all my images.
-The `:latest` is a versioning scheme you can append to.
+``tag`` is the tag I used in my `docker build` commands in the previous section, and `your-user-name/image-name` is the full name of the new Docker image I want to push to the Hub. `your-user-name` is my username at dockerhub, and also my namespace for all my images. The `:latest` is a versioning scheme you can append to.
 
 All that's left to do is push up your image:
 
 ```
- docker push yourhubusername/verse_gapminder
+ docker push your-user-name/image-name
 ```
 
-Push your image to the repository you created
-
-docker push yourhubusername/verse_gapminder
-Your image is now available for everyone to use.
-
-
-Go to your profile page on the Docker Hub and you should see your new repository listed:
-[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
+Push your image to the repository you created. Your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
 
 
 **References**:
