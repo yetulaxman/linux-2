@@ -3,16 +3,17 @@ title: Sharing Docker Images
 ---
 ## Learning Objectives (Work in progress)
 
-We’ve spent sometime in getting a reasonable understanding in running handful of docker containers. We often have to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use the same image after sometime or even share it with other collaborators. This brings us to the point of sharing your image with others!
+We’ve spent sometime in gaining a reasonable understanding of running docker containers. Sometimes, we have to also customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use the same image after sometime or even share it with other collaborators. This brings us to the point of sharing your image with others!
 
 Upon completion of this session, you will learn: 
 
 - how to share your Docker image with others.
 
 ### Sharing Docker Images without DockerHub
-We often times need to share  our dockerized image to another person. Sharing means taking the images we’ve built on your local machine and making them available for other people to use
 
-docker has save command where you can save into tar file. We can list the directory after save.
+Sharing docker image means taking the images you’ve built on your local machine and making them available for other people to use.
+
+Docker has save command where you can save into tar file. We can list the directory after save.
 
 ```bash
 docker save busybox > busybox.tar
@@ -50,13 +51,13 @@ docker tag <CID> your-user-name/image-name[:tag]
 
 ``tag`` is the tag I used in my `docker build` commands in the previous section, and `your-user-name/image-name` is the full name of the new Docker image I want to push to the Hub. `your-user-name` is my username at dockerhub, and also my namespace for all my images. The `:latest` is a versioning scheme you can append to. all images should be tagged with an appropriate prefix before being pushed.
 
-All that's left to do is push up your image:
+A push does not happen automatically on rebuilds; docker push should always be executed explicitly. Let's push you image as below:
 
-```
+```bash
  docker push your-user-name/image-name
 ```
-A push does not happen automatically on rebuilds; docker push should always be executed explicitly.
-Push your image to the repository you created. Your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
+
+Once the Push  to the repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>)
 Removing an image from the remote repository is not trivial
 
 **References**:
