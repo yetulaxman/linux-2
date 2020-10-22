@@ -27,5 +27,6 @@ docker run -d -p 5000:5000 jdrudolph/photon:dev
 
 Now you can access PHOTON from your [browser](http://localhost:5000).
 
-1. Explain your experience of using a containerised web-application like Photon. How easy or hard it would be if you were to install all dependencies of photon to get it work?
+1. Construct a phosphoproteomics signaling networks and identify the positively regulated neighbours of EGFR  protein?
+2. Explain your experience of using a containerised web-application like Photon. How easy or hard it would be if you were to install all dependencies of photon to get it work?
 
