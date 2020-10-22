@@ -4,32 +4,28 @@ title: Proteomics Web Application
 
 # Proteome Network analysis using containerised webapplication #
 
+Phosphoproteomic experiments typically identify sites within a protein that are differentially phosphorylated between two or more cell states. However, the interpretation of these data is hampered by the lack of methods that can translate site-specific information into global maps of active proteins and signaling networks, especially as the phosphoproteome is often undersampled. Here, we describe PHOTON, a method for interpreting phosphorylation data within their signaling context, as captured by protein-protein interaction networks, to identify active proteins and pathways and pinpoint functional phosphosites. We apply PHOTON to interpret existing and novel phosphoproteomic datasets related to epidermal growth factor and insulin responses. PHOTON substantially outperforms the widely used cutoff approach, providing highly reproducible predictions that are more in line with current biological knowledge. Altogether, PHOTON overcomes the fundamental challenge of delineating signaling pathways from large-scale phosphoproteomic data, thereby enabling translation of environmental cues to downstream cellular responses.
+
 ## Learning Objectives
-- Start a web browser  application as container
-- Get a feel of tutorial
+- Start a containerised webb app for analysing phosphoproteomics dataset
+- Perform analysis using a test dataset
 - Appreciate the ease of use of web-container.
 
 
 ## Basic usage of docker
-- [Check dockerhub](https://hub.docker.com/r/jdrudolph/photon)
-- Pull from dockerhub
-- docker pull jdrudolph/photon
-- Launch application
+- [Explore more about photon here](https://hub.docker.com/r/jdrudolph/photon)
+- Pull docker image from dockerhub
 
+```
+docker run -d -p 5000:5000 jdrudolph/photon:dev
+```
+- Launch web-application as below:
 
-First open the Docker Quickstart Terminal. After initialization (can take some time), denote the IP address of docker (under the whale image). Now you can run PHOTON by entering:
-
-`bash docker run -d -p 5000:5000 jdrudolph/photon `
-
-Now you can access PHOTON from your browser under the IP address of docker followed by colon and 5000. For example 192.168.0.100:5000. Alternatively you can lookup the IP address using docker-machine ip default.
-
-## Docker for Windows / Linux
-
-Open a Powershell (terminal in linux) and run:
-
-`bash docker run -d -p 5000:5000 jdrudolph/photon `
+```bash
+docker run -d -p 5000:5000 jdrudolph/photon:dev 
+```
 
 Now you can access PHOTON from your [browser](http://localhost:5000).
 
-
+1. Explain your experience of using a containerised web-application like Photon. How easy or hard it would be if you were to install all dependencies of photon to get it work?
 
