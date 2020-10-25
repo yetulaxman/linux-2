@@ -43,11 +43,11 @@ By default, image is pulled with `latest` tag. It is possible to pull an image w
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
-## Bonus Exercises
+## Exercises
 
 1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "hello-world".
 
-2. Name few other docker registries besides DockerHub. How would you run the same *hello-world example* from a different docker registry?
+2. Name few third-party docker registries besides DockerHub. How would you run the same *hello-world example* from a different docker registry?
  Many other docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
 - Google Container Registry  
 - REDHAT Quay Container Registry
