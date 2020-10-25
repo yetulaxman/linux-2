@@ -54,4 +54,4 @@ Congratulations, you have run a “Hello-World” Docker successfully !!!
 - Amazon Elastic Container Registry
 - Azure Container Registry
 
-Default registry for docker client is DockerHub. For other registries, one has to write full name docker images. It would look something like this: registry name/repository/imagename.
+Default registry for docker client is DockerHub. For other registries, one has to write full name docker images. It would look something like this: host name/repository/imagename:tag.
