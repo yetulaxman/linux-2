@@ -4,7 +4,7 @@ title: Hello-World Docker Tutorial
 
 
 ## Learning Objectives
-As you have Docker client installed on your Oracle VirtualBox, let's have some fun by running docker containers. In this session, you will be able to: 
+As you have Docker client installed on your Oracle VirtualBox VM, let's have some fun by running docker containers. In this session, you will be able to: 
 - See Docker image in action
 - Learn where to find pre-made docker images
 - Understand the mechanism behind running a docker container
