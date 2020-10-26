@@ -19,7 +19,7 @@ To get started, let's pull *fastqc* image in the following way:
 ```bash
 docker pull biocontainers/fastqc:v0.11.9_cv6
 ```
-*Note*: if you don't provide tag (i.e., v0.11.9_cv6), docker deamon looks for `fastqc` image with tag "latest" which may or may not present in DockerHub. While image is being downloaded, look for all available tags for *fastqc* image of *biocontainers* repository.
+*Note*: if you don't provide tag (i.e., v0.11.9_cv6), docker deamon looks for `fastqc` image with tag "latest" which may or may not present in DockerHub. While image is being downloaded, look for all available tags for *fastqc* image of *biocontainers* repository in [DockerHub](https://hub.docker.com/).
 
 Here, the `docker pull ...` command fetches the *fastqc* image from the **Docker registry** and saves it locally in your system. It will not run (=create any container from image) image yet.
 
@@ -57,7 +57,7 @@ docker container run -it biocontainers/fastqc:v0.11.9_cv6 fastqc --help
 
 ## Run docker containers in the background
 
-The main disadvantage of running a container in the foreground (the default mode for dockers) is that you can not access the command prompt anymore. That means you can't run any other commands while the `fastqc` container is running. In ordder to run a `fastqc` container in the background mode, you can use flag `-d` (--detach).
+The main disadvantage of running a container in the foreground (the default mode for dockers) is that you can not access the command prompt anymore. That means you can't run any other commands while the `fastqc` container is running. In order to run a `fastqc` container in the background mode, you can use flag `-d` (--detach).
 
 Let's launch `fastqc`in the bacground (=detached) mode as below:
 
