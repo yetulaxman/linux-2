@@ -18,8 +18,6 @@ docker run hello-world
 ```
 When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. Docker daemon then streams the default output of container to Docker client (= something we see as an output on terminal). Yes...lot of stuff has happened behind the scenes !!!
 
-> **Note:** Depending on how you've installed docker on your system, you might see a `permission denied` error after running the above command.
-
 1. What is the terminal output from the above `docker run` command?
 
 ```bash
@@ -39,7 +37,7 @@ Docker image has already been downloaded locally and therefore docker can execut
 
 4. What is the default image tag used in `hello-world` example?
 
-By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control like mechanism for docker containers.
+By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control like mechanism for docker images.
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
