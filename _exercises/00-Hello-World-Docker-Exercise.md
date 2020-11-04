@@ -15,7 +15,7 @@ docker run alpine echo "welcome to CSC"
 
 Default registry for docker client is DockerHub. For other registries, one has to write fully qualified name of docker images and it would look something like this: *host name/repository/imagename:tag*.
 
-A fully qualified name for referencing *hello-world* image is as below:
+A fully qualified generic name for referencing *hello-world* image from DockerHub is as below:
 
 ```bash
 docker run docker.io/library/hello-world  # from dockerHub
