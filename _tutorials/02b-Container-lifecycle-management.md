@@ -10,9 +10,9 @@ In this episode, you will learn:
 - How to run docker containers in the background
 - How to list images and containers in host system
 
-## Launching a docker container with different options
+## Launching a docker container in a different way
 
-In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a contaianer. No worries ! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container, [fastqc](https://hub.docker.com/r/biocontainers/fastqc).
+In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a contaianer. No worries ! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container called, [fastqc](https://hub.docker.com/r/biocontainers/fastqc).
 
 To get started, let's pull *fastqc* image in the following way:
 
