@@ -10,7 +10,7 @@ title: Hello-World Docker Tutorial
 docker run alpine echo "hello-world"
 ```
 
-**2. How would you run the same *hello-world example* from a different docker registry? Name few third-party docker registries besides DockerHub.
+**2. How would you run the same *hello-world example* from a different docker registry? Name few third-party docker registries besides DockerHub**
 
 
 Default registry for docker client is DockerHub. For other registries, one has to write fully qualified name of docker images and it would look something like this: *host name/repository/imagename:tag*.
