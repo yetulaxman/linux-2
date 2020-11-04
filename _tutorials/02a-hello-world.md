@@ -43,7 +43,7 @@ Congratulations, you have run a “Hello-World” Docker successfully !!!
 
 ## Exercises
 
-1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "hello-world".
+1. Run a container from a image named "Welcome to CSC !" from DockerHub and execute a command inside that container so that output from the container is "hello-world".
 
 2. How would you run the same *hello-world example* from docker registry with fully qualified reference path for image? Name few third-party docker registries besides DockerHub.
 
