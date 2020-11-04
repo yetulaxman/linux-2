@@ -29,8 +29,3 @@ defaults:
       path: "_exercises"
     values:
       layout: "default"
-  -
-    scope:
-      path: "_extras"
-    values:
-      layout: "default"
