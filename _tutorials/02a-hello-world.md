@@ -18,7 +18,7 @@ docker run hello-world
 ```
 When a `docker run` command is issued *via* commandline interface (CLI), docker client contacts Docker daemon to check whether an image named, "hello-world" exists locally. If the image is not found locally, docker daemon pulls "hello-world" official image from DockerHub (*Note*: default registry for docker is DockerHub and for other docker registries one has to explicitly mention registry name as well). Once docker image is available locally, `docker run` command creates a new container from that image. Docker daemon then streams the default output of container to Docker client (= something we see as an output on terminal). Yes...lot of stuff has happened behind the scenes !!!
 
-1. What is the terminal output from the above `docker run` command?
+#### What is the terminal output from the above `docker run` command? #####
 
   ```bash
   Unable to find image 'hello-world:latest' locally
@@ -31,11 +31,11 @@ When a `docker run` command is issued *via* commandline interface (CLI), docker 
   This message shows that your installation appears to be working correctly.
  ```
 
-2. What will happen if you run above command again? Did you observe any change in terminal output now?
+#### What will happen if you run above command again? Did you observe any change in terminal output now?
 
 Docker image has already been downloaded locally and therefore docker can execute the container straight away.
 
-4. What is the default image tag used in `hello-world` example?
+#### What is the default image tag used in `hello-world` example?
 
 By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control like mechanism for docker images.
 
