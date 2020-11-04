@@ -20,16 +20,16 @@ When a `docker run` command is issued *via* commandline interface (CLI), docker 
 
 1. What is the terminal output from the above `docker run` command?
 
-```bash
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-78445dd45222: Pull complete
-Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
-Status: Downloaded newer image for hello-world:latest
+  ```bash
+  Unable to find image 'hello-world:latest' locally
+  latest: Pulling from library/hello-world
+  78445dd45222: Pull complete
+  Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
+  Status: Downloaded newer image for hello-world:latest
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-```
+ Hello from Docker!
+  This message shows that your installation appears to be working correctly.
+ ```
 
 2. What will happen if you run above command again? Did you observe any change in terminal output now?
 
