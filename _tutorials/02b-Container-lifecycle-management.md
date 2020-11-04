@@ -12,7 +12,7 @@ In this episode, you will learn:
 
 ## Launching a docker container in a different way
 
-In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a contaianer. No worries ! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container called, [fastqc](https://hub.docker.com/r/biocontainers/fastqc).
+In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a container. No worries ! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container called, [fastqc](https://hub.docker.com/r/biocontainers/fastqc).
 
 To get started, let's pull *fastqc* image in the following way:
 
@@ -23,18 +23,22 @@ docker pull biocontainers/fastqc:v0.11.9_cv6
 
 Here, the `docker pull ...` command fetches the *fastqc* image from the **Docker registry** and saves it locally in your system. It will not run (=create any container from image) image yet.
 
+```bash
+docker create biocontainers/fastqc:v0.11.9_cv6 echo sleep 300
+docker start 410bcd45613a 
+```
 
 Great! Now let's run a Docker **container** based on this image. To do that we are going to use the `docker run ...` command.
 
 ```bash
 
-docker run biocontainers/fastqc:v0.11.9_cv6 echo "hello from fastqc"
-
-docker run biocontainers/fastqc:v0.11.9_cv6  ls -l /
+docker run biocontainers/fastqc:v0.11.9_cv6 echo sleep 300
 
 ```
-When you run `docker container run ...`, with a command (`echo`), please note that command was actually run inside the container and the container is exited after running `echo` command.
+When you run `docker container run ...`, with a command (`sleep`), please note that command was actually run inside the container and the container is exited after running `sleep` command.
 
+
+So pleas note that **docker create** adds a writeable container on top of your image and sets it up for running whatever command you specified in your CMD. The container ID is reported back but it’s not started. **Start** will start any stopped containers. This includes freshly created containers. **Run** is a combination of create and start. It creates the container and starts it.
 
 ## Docker run interactively
 
