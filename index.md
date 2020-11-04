@@ -49,15 +49,6 @@ Practice practice practice !!!
 - Lectures
 - hands-on tutorial
 
-# Lectures
-
-Lectures as HTML slides. Use cursor keys or click left/right side of
-the slide to change it. You can print the slides to PDF with Chrome,
-just tweak the print settings a bit.
-
-{% for slide in site.lectures %}
-- [{{ slide.title }}]({{ slide.url | relative_url }})
-{% endfor %}
 
 
 # Tutorials
@@ -73,8 +64,12 @@ just tweak the print settings a bit.
 {% endfor %}
 
 
-# Extras
+# Tutorial Lectures
 
-{% for extra in site.extras %}
-- [{{ extra.title }}]({{ extra.url | relative_url }})
+Lectures as HTML slides. Use cursor keys or click left/right side of
+the slide to change it. You can print the slides to PDF with Chrome,
+just tweak the print settings a bit.
+
+{% for slide in site.lectures %}
+- [{{ slide.title }}]({{ slide.url | relative_url }})
 {% endfor %}
