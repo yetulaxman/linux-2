@@ -22,7 +22,7 @@ docker run -d -p 5000:5000 jdrudolph/photon:dev
 - Launch web-application as below:
 
 ```bash
-docker run -d -p 5000:5000 jdrudolph/photon:dev 
+docker pull jdrudolph/photon:dev 
 ```
 
 Now you can access PHOTON from your browser at: http://localhost:5000
