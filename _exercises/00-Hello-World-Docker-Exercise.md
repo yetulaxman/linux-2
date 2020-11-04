@@ -5,6 +5,10 @@ title: Hello-World Docker Tutorial
 ## Exercises
 
 1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "hello-world"
+
+```bash
+docker run alpine echo "hello-world"
+```
 2. hello
 
 ```bash
