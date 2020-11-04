@@ -10,8 +10,6 @@ collections:
         output: true
     exercises:
         output: true
-    extras:
-        output: true
 
 defaults:
   -
