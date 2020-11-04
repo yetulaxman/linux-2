@@ -21,7 +21,7 @@ A fully qualified name for referencing *hello-world* image is as below:
 docker run docker.io/library/hello-world  # from dockerHub
 ```
 
-Many other docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
+Many other third party docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
 - Google Container Registry  
 - REDHAT Quay Container Registry
 - Amazon Elastic Container Registry
