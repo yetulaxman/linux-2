@@ -24,5 +24,5 @@ docker run docker.io/library/hello-world  # from dockerHub
 Many other third party docker registries (=storage and distribution system for named Docker images) do exist besides DockerHub. Few examples include:
 - Google Container Registry (hostname = gcr.io)
 - REDHAT Quay Container Registry (hostname = quay.io)
-- Amazon Elastic Container Registry (histname = account-id.dkr.ecr.region.amazon.aws.com
+- Amazon Elastic Container Registry (histname = account-id.dkr.ecr.region.amazon.aws.com)
 
