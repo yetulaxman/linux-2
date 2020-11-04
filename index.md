@@ -42,7 +42,7 @@ Biologists who are willing to get some feel of containers may join the course
 
 ## How to get most advantage from this course
 
-Practice practice practice !!!
+Practice ! practice ! and  practice !!!
 
 ## Expected way of learning
 
