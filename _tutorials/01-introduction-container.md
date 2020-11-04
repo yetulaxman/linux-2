@@ -22,9 +22,10 @@ Although bit extensive list of [Docker-specific jargon](https://docs.docker.com/
 
 - **Docker client**: The command line tool that allows the user to interact with the Docker daemon.
 
-- **Docker Hub**: A [registry](https://hub.docker.com/explore/) of Docker images. You can think of the registry as a directory of all available Docker images. You'll be using this later in this tutorial.
-
 - **Docker Registry**: A remote repository where Docker Images can be stored and made public. Constitutes the point of contact between application developers and their users and allows the distribution of Docker containers.
+
+- **DockerHub**: A [registry](https://hub.docker.com/explore/) of Docker images. You can think of the registry as a directory of all available Docker images. You'll be using this later in this tutorial.
+
 
 ### 2. Name different components of docker architecture
 
