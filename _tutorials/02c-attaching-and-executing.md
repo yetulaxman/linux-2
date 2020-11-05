@@ -6,10 +6,14 @@ In this session you will be able to learn:
 - How to connect to a running container
 - How to install a package inside container
 
-## Attaching to your container
+## Executing commands on running containers
 
-If you want to go into a container to execute some ad-hoc commands you can use the following docker option:
-- ``exec`` Executing another process inside the container. This could be a shell, or a script of some sort.
+If you want to go into a container to execute some ad-hoc commands inside a running container you can use the following docker command:
+
+```bash 
+docker exec <options> <container> <command>
+```
+`exec`  command starts another process inside the container. This could be a shell, or a script of some sort.
 
 > NOTE:
 > When you attach to an already started container, you can stop it by `Ctrl+d` or detach yourself by `Ctrl+p Ctrl+q`
