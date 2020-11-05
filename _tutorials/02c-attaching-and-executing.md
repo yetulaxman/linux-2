@@ -30,7 +30,10 @@ You can now check list of containers running in your machine and identify the co
 Step into a new container by executing a bash inside the container:
 
 ```bash
-docker exec -it <container id> bash  
+docker exec -it <container id> bash 
+
+# In this case container id is starting with "661c6dd59...." 
+docker exec -it <661c6dd59> bash
 ```
 You are now inside of a running container. 
 
