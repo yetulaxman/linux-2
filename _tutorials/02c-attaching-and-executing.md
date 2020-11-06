@@ -4,7 +4,7 @@ title: Restarting and attaching to containers
 ## Learning Objectives
 In this session you will be able to learn:
 - How to connect to a running container
-- How to install a package inside container
+- How to modify content inside container
 
 ## Executing commands on running containers
 
