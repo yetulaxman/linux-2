@@ -71,6 +71,16 @@ Let's launch `fastqc`in the bacground (=detached) mode as below:
 docker container run -it -d biocontainers/fastqc:v0.11.9_cv6 /bin/sh
 docker ps -a
 ````
+## Stopping a running container
+
+`Docker stop` can be used to gracefully stop a running container process i.e., It may take a while to shutdown the container completely. 
+
+```bash 
+docker stop 410bcd45613a  # container id of a running container which you can check by issuing `docker ps` command 
+```
+
+In case you want to kill a container without taking some time, you can  use `docker kill` command instead. 
+
 ## Listing images and containers
 
 if you start working multiple containers, it is possible that multiple images and containers are hanging around in the host system. It is time to manage them now.
@@ -124,4 +134,4 @@ How many images are stored locally on your workstation?
 
 ##  Summary
 
-We explored few docker commands in this short tour of docker commands. The `docker  run ...` command is the more often used command in our daily life. It makes sense to spend some time getting comfortable with it. To find out more about `docker run ...`, use `docker container run --help` to see a list of all flags it supports.
+We explored part of container lifecycle in this short tour of docker commands. Among all the commands, the `docker  run ...` command is more often used command in our daily life. It makes sense to spend some time getting comfortable with it. To find out more options about `docker run ...`, use `docker container run --help` to see a list of all flags it supports.
