@@ -8,7 +8,7 @@ In this session you will be able to learn:
 
 ## Executing commands on running containers
 
-If you want to go into a container to execute some ad-hoc commands inside a running container you can use the following docker command:
+This is primarily used for debugging purposes and perhaps updating some programs inisde a running container. If you want to go into a container to execute some ad-hoc commands inside a running container you can use the following docker command:
 
 ```bash 
 docker exec <options> <container> <command>
@@ -36,6 +36,14 @@ docker exec -it <container id> bash
 docker exec -it <661c6dd59> bash
 ```
 You are now inside of a running container. 
+
+Other way is to attach to a running  container as bewlow:
+
+```bash
+docker attach <container>
+docker attach 661c6dd59
+
+```
 
 ## Installing content inside the container.
 
