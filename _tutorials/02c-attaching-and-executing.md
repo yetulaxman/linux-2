@@ -37,12 +37,10 @@ docker exec -it <661c6dd59> bash
 ```
 You are now inside of a running container. 
 
-Other way is to attach to a running  container as bewlow:
+Other way is to attach to a running  container as below:
 
 ```bash
-docker attach <container>
 docker attach 661c6dd59
-
 ```
 
 ## Installing content inside the container.
