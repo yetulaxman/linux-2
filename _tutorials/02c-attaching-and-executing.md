@@ -1,5 +1,5 @@
 ---
-title: Restarting and attaching to containers
+title: Attaching and updating a running containers
 ---
 ## Learning Objectives
 In this session you will be able to learn:
