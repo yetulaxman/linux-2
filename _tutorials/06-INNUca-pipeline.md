@@ -3,7 +3,7 @@ title: Running a Containerised Pipeline - INNUca Pipeline
 ---
 # Running a Containerised Pipeline
 
-We have gained some skills so far in handling the docker and container.  Let's run a bioinformatics pipeline which hassome  real world application.
+We have gained some skills so far in handling the docker and container.  Let's run a bioinformatics pipeline which has some  real world application.
 
 INNUca is a standardized, fully automated, flexible, portable and pathogen-independent pipeline for bacterial genome assembly and quality control starting from short reads. The new version of INNUca is available at [here](https://github.com/INNUENDOCON/INNUca)
 
@@ -19,7 +19,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
 2. Start pulling INNuca docker image from DockerHub
 
-   Navigate to INNUca repository on [Dockerhub](https://hub.docker.com/r/ummidock/innuca). Explore some information such author, docker image and Tags, among others.
+   Navigate to INNUca repository on [Dockerhub](https://hub.docker.com/r/ummidock/innuca). Explore some information such as author information, docker image and its tags, among others.
 
    start pulling the image as below:
    ```bash
