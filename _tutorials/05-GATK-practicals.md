@@ -33,12 +33,15 @@ gatk ToolName [tool args]
 ```ctrl+p then ctrl+q```
 
 ### Download example data
+You can download toy example dataset from CSC's allas objects storage:
 
-wget https://object.pouta.csc.fi/Softwares/data.zip
+```bash
+wget https://a3s.fi/Softwares/data.zip
+```
 
 ### Start running gatk container and mount the location of the data bundle inside the docker
 
-``` docker run -v /path/gatk_data:/gatk/data -it broadinstitute/gatk:latest ```
+``` docker run -v /path/data:/gatk/data -it broadinstitute/gatk:latest ```
 
 
 ### Get usage information of a tool from GATK
@@ -47,52 +50,45 @@ wget https://object.pouta.csc.fi/Softwares/data.zip
 
 ### Run HaplotypeCaller
 
-``` gatk HaplotypeCaller -R data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
-``` -O data/sandbox/variants.vcf ```
+``` gatk HaplotypeCaller -R /gatk/data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
+``` -O /gatk/data/sandbox/variants.vcf ```
 
 ###  Add JVM options to the command
 
 ``` gatk --java-options "-Xmx4G" HaplotypeCaller \ ``` <br>
-``` -R data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
-```-O data/sandbox/variants.vcf ```
+``` -R /gatk/data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
+```-O /gatk/data/sandbox/variants.vcf ```
 
 
 ### Run GVCF workflow tools using HaplotypeCaller, GenomicsDBImport and then GenotypeGVCFs to perform joint calling on multiple input samples.
 
 ### Run HaplotypeCaller on three input bams (mother, father, son)
 
-``` gatk HaplotypeCaller -R data/ref/ref.fasta -I data/bams/mother.bam -O data/sandbox/mother.g.vcf -ERC GVCF ```
+``` gatk HaplotypeCaller -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/mother.bam -O /gatk/data/sandbox/mother.g.vcf -ERC GVCF ```
 
-``` gatk HaplotypeCaller -R data/ref/ref.fasta -I data/bams/father.bam -O data/sandbox/father.g.vcf -ERC GVCF ```
+``` gatk HaplotypeCaller -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/father.bam -O /gatk/data/sandbox/father.g.vcf -ERC GVCF ```
 
-```gatk HaplotypeCaller -R data/ref/ref.fasta -I data/bams/son.bam -O data/sandbox/son.g.vcf -ERC GVCF ```
+```gatk HaplotypeCaller -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/son.bam -O /gatk/data/sandbox/son.g.vcf -ERC GVCF ```
 
 ### Run GenomicsDBImport on three GVCFs to consolidate
 
-``` gatk GenomicsDBImport -V data/sandbox/mother.g.vcf \ ``` <br>
-``` -V data/sandbox/father.g.vcf \ ``` <br>
-``` -V data/sandbox/son.g.vcf --genomicsdb-workspace-path \ ``` <br>
-```data/sandbox/trio.gdb_workspace --intervals 20 ```
+``` gatk GenomicsDBImport -V /gatk/data/sandbox/mother.g.vcf \ ``` <br>
+``` -V /gatk/data/sandbox/father.g.vcf \ ``` <br>
+``` -V /gatk/data/sandbox/son.g.vcf --genomicsdb-workspace-path \ ``` <br>
+```//data/sandbox/trio.gdb_workspace --intervals 20 ```
 
 ### Alternatively, use CombinedGVCFs command as an alternative to GenomicsDBImport
 
-```gatk CombineGVCFs -R data/ref/ref.fasta \  ``` <br>
-```-V data/sandbox/father.g.vcf \  ``` <br>
-```-V data/sandbox/mother.g.vcf  -V data/sandbox/son.g.vcf \ ``` <br>
-``` -O data/sandbox/combine_trio_variants.vcf ```
+```gatk CombineGVCFs -R /gatk/data/ref/ref.fasta \  ``` <br>
+```-V /gatk/data/sandbox/father.g.vcf \  ``` <br>
+```-V /gatk/data/sandbox/mother.g.vcf  -V /gatk/data/sandbox/son.g.vcf \ ``` <br>
+``` -O /gatk/data/sandbox/combine_trio_variants.vcf ```
 
 ### Run GenotypeGVCFs on the GDB workspace to produce final multisample VCF
 
-``` gatk GenotypeGVCFs -R data/ref/ref.fasta \   ``` <br>
+``` gatk GenotypeGVCFs -R /gatk/data/ref/ref.fasta \   ``` <br>
 ``` -V gendb://data/sandbox/trio.gdb_workspace \  ``` <br>
-```-G StandardAnnotation -O data/sandbox/trio_variants.vcf ``` <br>
-
-
-### Run a command with local Spark multithreading
-
-``` gatk --java-options "-Xmx6G" MarkDuplicatesSpark -R data/ref/ref.fasta \  ``` <br>
-``` -I data/bams/mother.bam  -O data/sandbox/mother_dedup.bam \  ``` <br>
-``` -M data/sandbox/metrics.txt -- --spark-master local[*] ```
+```-G StandardAnnotation -O /gatk/data/sandbox/trio_variants.vcf ``` <br>
 
 
 ### delete all containers
