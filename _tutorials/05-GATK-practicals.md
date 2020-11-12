@@ -53,10 +53,10 @@ wget https://a3s.fi/Softwares/data.zip
 ``` gatk HaplotypeCaller -R /gatk/data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
 ``` -O /gatk/data/sandbox/variants.vcf ```
 
-###  Add JVM options to the command
+> Note: Add JVM options to the command if you run into memory issues
 
 ``` gatk --java-options "-Xmx4G" HaplotypeCaller \ ``` <br>
-``` -R /gatk/data/ref/ref.fasta -I data/bams/mother.bam \ ``` <br>
+``` -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/mother.bam \ ``` <br>
 ```-O /gatk/data/sandbox/variants.vcf ```
 
 
