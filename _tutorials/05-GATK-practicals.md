@@ -55,9 +55,9 @@ wget https://a3s.fi/Softwares/data.zip
 
 > Note: Add JVM options to the command if you run into memory issues
 
-``` gatk --java-options "-Xmx4G" HaplotypeCaller \ ``` <br>
-``` -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/mother.bam \ ``` <br>
-```-O /gatk/data/sandbox/variants.vcf ```
+> ``` gatk --java-options "-Xmx4G" HaplotypeCaller \ ``` <br>
+> ``` -R /gatk/data/ref/ref.fasta -I /gatk/data/bams/mother.bam \ ``` <br>
+> ```-O /gatk/data/sandbox/variants.vcf ```
 
 
 ### Run GVCF workflow tools using HaplotypeCaller, GenomicsDBImport and then GenotypeGVCFs to perform joint calling on multiple input samples.
