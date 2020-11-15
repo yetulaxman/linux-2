@@ -22,10 +22,9 @@ Make a note about the *tag* we used here. What are all other tags present in thi
 
 ### Get documentation help from Dimpsy tool
 
-```
+```bash
 docker run -it quay.io/biocontainers/dimspy:2.0.0--py_0 bash
 dimspy --help
-
 ```
 what are the different processing steps that dimspy can perform on metabolomics data?
 
@@ -35,12 +34,14 @@ Once you have got some idea about different processing steps.
 
 You can now download some tutorial data  from here:
 
-```
+```bash 
 wget https://github.com/computational-metabolomics/dimspy-galaxy/raw/master/tools/dimspy/test-data/MTBLS79_mzml_triplicates.zip
+
 ```
 
 and  use the following files list:
-```
+
+```bash
 filename	replicate	batch	injectionOrder	classLabel
 batch04_B02_rep01_301.mzML	1	1	1	blank
 batch04_B02_rep02_302.mzML	2	1	2	blank
