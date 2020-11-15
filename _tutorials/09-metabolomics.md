@@ -141,7 +141,3 @@ dimspy merge-peaklists \
 
 ```
 
-
-*Exercise if time permits* : 
-
-1. Perorm a metabolomics data analysis using XCMS software using docker container here: https://hub.docker.com/r/pietrofranceschi/metabolomics_course
