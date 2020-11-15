@@ -141,4 +141,4 @@ dimspy merge-peaklists \
 --output results/peaklists_merged.hdf5
 
 ```
- Please note that once you exit the container all the resulting files from container should be in the directory: /home/biouser/dimspy
+ Please note that once you exit from the container all the resulting files from analysis should be in the directory: /home/biouser/dimspy
