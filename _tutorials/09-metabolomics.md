@@ -61,8 +61,9 @@ save both zip file and  file containing files list (name it as filelist_csl_MTBL
 you can now unzip the mzxml files using the following command from dimspy software:
 
 ```
-docker run -it -v /home/biouser/dimspy:/data quay.io/biocontainers/dimspy:2.0.0--py_0 bash
+docker run -it -v /home/biouser/dimspy:/data quay.io/biocontainers/dimspy:2.0.0--py_0 bash  # go inside the container
 
+# run the following command inside the container
 dimspy unzip \
 --input /data/MTBLS79_mzml_triplicates.zip \
 --output results/
@@ -140,4 +141,4 @@ dimspy merge-peaklists \
 --output results/peaklists_merged.hdf5
 
 ```
-
+ Please note that once you exit the container all the resulting files from container should be in the directory: /home/biouser/dimspy
