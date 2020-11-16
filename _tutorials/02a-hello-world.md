@@ -31,7 +31,7 @@ When a `docker run` command is issued *via* commandline interface (CLI), docker 
   This message shows that your installation appears to be working correctly.
  ```
  
-Note that `docker run` creates a temporary container, executes the command in it and stops the container when it is done.
+Note that `docker run` creates a container, executes the command in it and stops the container when it is done.
 
 #### What will happen if you run above command again? Did you observe any change in terminal output now?
 
