@@ -39,13 +39,13 @@ Docker image has already been downloaded locally and therefore docker can execut
 
 #### What is the default image tag used in `hello-world` example?
 
-By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control like mechanism for docker images.
+By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control-like mechanism for docker images.
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
 ## Exercises
 
-1. Run a container from a image named "Welcome to CSC !" from DockerHub and execute a command inside that container so that output from the container is "hello-world".
+1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
 
 2. How would you run the same *hello-world example* from docker registry with fully qualified reference path for image? Name few third-party docker registries besides DockerHub.
 
