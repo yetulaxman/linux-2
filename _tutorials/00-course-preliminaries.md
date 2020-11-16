@@ -11,7 +11,7 @@ This course provides a VirtualBox image with pre-installed docker and singularit
 
    Download VirtualBox image for course from CSC's [Allas objects storage](https://a3s.fi/Biocontainer/BioContainer.ova) and set-up VirtualBox
 
-2. What is the version of Docker installed in VirtualBox environment for course?
+2. What is the version of Docker installed in VirtualBox environment(=host machine for docker) for course?
 ```
 Docker --Version
 ```
