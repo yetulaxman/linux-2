@@ -17,15 +17,15 @@ One needs get deepvariant docker image, models and test data in order to run the
 ### Download deepvariant docker image
 
 ```
-sudo docker pull gcr.io/deepvariant-docker/deepvariant:0.8.0
+docker pull gcr.io/deepvariant-docker/deepvariant:0.8.0
 ```
 
 #### _Convert the image to singularity image on your own ( or download singularity image and test data below and chnage the file paths appropriately )_ ####
 
 ```
-sudo docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
-sudo docker run -d -p 5000:5000 --restart=always --name registry registry:2
-sudo docker push localhost:5000/deepvariant:0.8.0
+docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker push localhost:5000/deepvariant:0.8.0
 SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:5000/deepvariant:0.8.0
 
 #or 
