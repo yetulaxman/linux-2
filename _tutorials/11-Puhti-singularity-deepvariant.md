@@ -38,6 +38,12 @@ Once you have singularity image, you can copy singularity image to a directory u
 ```
 scp deepvariant_cpu.simg username@puhti.csc.fi:/scratch/project_xxxx/$USER/Deepvariant_singularity
 ```
+You can now login to puhti and  copy testdata for deepvariant analysis as below:
+
+```
+cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  /scratch/project_xxxx/$USER/Deepvariant_singularity
+
+```
 
 ### Prepare slurm scripts to run on Puhti (e.g., deepvariant_puhti.sh)
 
