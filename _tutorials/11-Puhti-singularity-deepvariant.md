@@ -28,9 +28,8 @@ sudo docker run -d -p 5000:5000 --restart=always --name registry registry:2
 sudo docker push localhost:5000/deepvariant:0.8.0
 SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:5000/deepvariant:0.8.0
 
-or 
-
-wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
+#or 
+# wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
 
 ```
 Once you have singularity image, you can copy singularity image to a directory under your username on scratch drive (e.g., /scratch/project_xxxx/$USER/Deepvariant_singularity) using the following command:
