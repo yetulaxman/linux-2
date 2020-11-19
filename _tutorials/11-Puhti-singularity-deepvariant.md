@@ -66,14 +66,16 @@ Please **note** that one can use gpu version of deepvariant with the following s
 #SBATCH --time=00:05:00
 #SBATCH --partition=gputest
 #SBATCH --gres=gpu:v100:1
-#SBATCH --account=project_xxx
+#SBATCH --account=project_2003682
 
 export TMPDIR=$PWD
 
-singularity -s exec --nv -B /users/$USER/Puhti_gpu:/users/$USER/Puhti_gpu \
-deepvariant_gpu.simg   /opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/users/$USER/Puhti_gpu/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/users/$USER/Puhti_gpu/testdata/NA12878_S1.chr20.10_10p1mb.bam  \
---regions "chr20:10,000,000-10,010,000"   --output_vcf=output.vcf.gz  \
---output_gvcf=output.g.vcf.gz
+singularity -s exec --nv  -B $PWD:/scratch/project_2003682/$USER/Deepvariant_singularity  \
+deepvariant_gpu.simg \
+/opt/deepvariant/bin/run_deepvariant \
+--model_type=WGS   --ref=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
+--reads=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
+--regions "chr20:10,000,000-10,010,000"   --output_vcf=outputi_gpu.vcf.gz  \
+--output_gvcf=output_gpu.g.vcf.gz
+
 ```
