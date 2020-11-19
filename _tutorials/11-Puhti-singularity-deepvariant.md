@@ -27,10 +27,10 @@ wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
 
 or
 
-sudo docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:latest
+sudo docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
 sudo docker run -d -p 5000:5000 --restart=always --name registry registry:2
-sudo docker push localhost:5000/deepvariant:latest
-SINGULARITY_NOHTTPS=1 singularity build deepvariant.simg docker://localhost:5000/deepvariant:latest
+sudo docker push localhost:5000/deepvariant:0.8.0
+SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:5000/deepvariant:0.8.0
 
 ```
 
