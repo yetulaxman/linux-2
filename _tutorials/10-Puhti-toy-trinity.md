@@ -6,26 +6,16 @@ title: Running Singularity Container using Trinity Example
 
 ```
 #!/bin/bash
-#SBATCH --time=00:10:00
-#SBATCH --partition=test
-#SBATCH --account=project_XXXX
-export TMPDIR=/scratch/project_XXXXX/$USER
-#export SINGULARITY_CACHEDIR=/scratch/project_2001659/$USER  # store all cache in this directory including image file; by default singularity stores at $HOME/.singularity//cache/shub or oci-tmp
-
-# singularity commands
-
-#singularity run shub://nuitrcs/hello-world #This will run the default script commands written while building image; This is kind of ENTRYPOINT commands in docker container
-#singularity build ubuntu-18.10.simg docker://ubuntu:18.10  # download layers from Docker Hub and assemble them into Singularity container
-#singularity pull  --name /scratch/project_2001659/$USER/rstudio.simg docker://rocker/tidyverse:latest
-
-singularity exec --bind $PWD trinityrnaseq.img \
+#SBATCH --time=01:00:00
+#SBATCH --partition=small
+#SBATCH --account=project_xxx
+export TMPDIR=$PWD
+singularity exec --bind $PWD:/scratch/project_xxx/Trinity trinityrnaseq.simg \
  Trinity --seqType fq \
- --max_memory 120G \
- --CPU 16 \
- --normalize_by_read_set \
- --output TrinityOut \
- --left left_1.gz \
- --right right_2.gz \
- --trimmomatic
-
+ --max_memory 1G \
+ --CPU 5 \
+ --output $PWD/TrinityOut \
+ --left $PWD/reads.left.fq.gz \
+ --right $PWD/reads.right.fq.gz \
+                                   
 ```
