@@ -7,7 +7,7 @@ Run [deepvariant method](https://github.com/google/deepvariant)   to perform var
 
 
 ## How to get started
-One needs the DeepVariant programs ((https://github.com/google/deepvariant) and some test data. One can download data from Pouta object storage  (or from google bucket)  Storage.
+One needs the DeepVariant programs (https://github.com/google/deepvariant) and some test data. One can download data from Pouta object storage  (or from google bucket)  Storage.
 
 ### Prepare deepvariant singulairty image from docker image
 Deepvariant (this example is with version 0.8) uses docker to run the binaries instead of copying binaries to local machines first.
