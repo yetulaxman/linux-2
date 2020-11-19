@@ -23,15 +23,20 @@ sudo docker pull gcr.io/deepvariant-docker/deepvariant:0.8.0
 #### _Convert the image to singularity image on your own ( or download singularity image and test data below and chnage the file paths appropriately )_ ####
 
 ```
-wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
-
-or
-
 sudo docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
 sudo docker run -d -p 5000:5000 --restart=always --name registry registry:2
 sudo docker push localhost:5000/deepvariant:0.8.0
 SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:5000/deepvariant:0.8.0
 
+or 
+
+wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
+
+```
+Once you have singularity image, you can copy singularity image to a directory under your username on scratch drive (e.g., /scratch/project_xxxx/$USER/Deepvariant_singularity) using the following command:
+
+```
+scp deepvariant_cpu.simg username@puhti.csc.fi:/scratch/project_xxxx/$USER/Deepvariant_singularity
 ```
 
 ### Prepare slurm scripts to run on Puhti (e.g., deepvariant_puhti.sh)
