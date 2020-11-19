@@ -40,15 +40,15 @@ SINGULARITY_NOHTTPS=1 singularity build deepvariant.simg docker://localhost:5000
 #!/bin/bash
 #SBATCH --time=00:05:00
 #SBATCH --partition=test
-#SBATCH --account=project_xxx
+#SBATCH --account=project_xxxx
 
 export TMPDIR=$PWD
 
-singularity -s exec -B /users/$USER/Puhti:/users/$USER/Puhti  \
-deepvariant.simg \
+singularity -s exec -B $PWD:/scratch/project_xxxx/$USER/Deepvariant_singularity  \
+deepvariant_cpu.simg \
 /opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/users/$USER/Puhti/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/users/$USER/Puhti/testdata/NA12878_S1.chr20.10_10p1mb.bam \
+--model_type=WGS   --ref=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
+--reads=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
 --regions "chr20:10,000,000-10,010,000"   --output_vcf=output.vcf.gz  \
 --output_gvcf=output.g.vcf.gz
 ```
