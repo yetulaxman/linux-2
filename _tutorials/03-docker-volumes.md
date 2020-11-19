@@ -45,6 +45,10 @@ wget https://a3s.fi/trinity/Luke_test_trinity.zip
 
 unzip Luke_test_trinity.zip
 
+or
+
+scp yetukuri@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
+
 ```
 
 Run Trinity like so (eg. as shown where with a very small test data set):
