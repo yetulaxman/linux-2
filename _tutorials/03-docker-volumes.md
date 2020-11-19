@@ -3,17 +3,15 @@ title: Docker Volumes
 ---
 
 # Learning Objectives
-In scientific appplications, the usage of docker volumes is essential to run docker worlflows. In this session, you will be able to learn:
+In scientific appplications, the usage of docker volumes is essential to persist data when working containers. In this session, you will be able to learn:
 - How docker enables data persistence
 - Different volumes types and how they are created
 
 ## Description
 
- Docker images are stored as read-only layers. When we start a container from a image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the  running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once container is removed.
+Docker images are stored as read-only layers. When we start a container from a image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the  running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once container is removed.
 
- In order to be able to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
-
-> good tutorial: https://www.itgratis.com/learn-docker-storage-volume/
+ In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
 We are essentially going to look at how to manage data within your Docker containers. You have two different ways of mounting persistent data from your container:
 
@@ -22,7 +20,7 @@ We are essentially going to look at how to manage data within your Docker contai
 
 > **Note**: Other type of mount called, **tmpfs mount** which is stored in the host system’s memory only and are never written to the host filesystem. When the container stops, the tmpfs mount is removed, and files written there won’t be persisted. This may be your option If you do't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
 
-**A bind mounts** : When you use a bind mount option, a file or directory on the host directory is mounted into a container.  While  it is easy and connects directly to the host filesystem, non-docker processes on the Docker host  can modify them at any time. One needs to specify it at runtime with no indication on what mounts a given container has, and that you need to deal with backup, migration etc. in an tool outside the Docker ecosystem.
+**A bind mounts** : When you use a bind mount option, a file or directory on the host directory is mounted into a container.  While  it is easy and connects directly to the host filesystem, non-docker processes on the Docker host  can modify them at any time. One needs to specify it at runtime with no indication on what mounts a given container has, and that you need to deal with backup, migration etc. in a tool outside the Docker ecosystem.
 
 
 ## Bind mounts example
@@ -54,7 +52,7 @@ scp yetukuri@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
 Run Trinity like so (eg. as shown where with a very small test data set):
 
 ```
- sudo docker run trinityrnaseq/trinityrnaseq Trinity \
+docker run trinityrnaseq/trinityrnaseq Trinity \
       --seqType fq \
       --left `pwd`/reads.left.fq.gz \
       --right `pwd`/reads.right.fq.gz
@@ -83,9 +81,7 @@ It should work fine and all resuts will be written to "trinity_out_dir" inside t
 -rw-r--r-- 1 root root      791 Jun 12 08:29 Trinity.timing
 ```
 
-
 what if you are not a root user?
-
 
 That will map whatever files are in the `pwd` folder on the host to `pwd` in the container.
 
