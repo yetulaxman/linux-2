@@ -32,7 +32,7 @@ SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:
 # wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
 
 ```
-> note: if there are issues due to mismatching digests while building singularity images, one may use `docker system prune -a` command to fix it.
+> note: if there are issues due to mismatching between Sha256 digests while building singularity image, one may use `docker system prune -a` command to fix it.
 
 Once you have singularity image, you can copy singularity image to a directory under your username on scratch drive (e.g., /scratch/project_xxxx/$USER/Deepvariant_singularity) using the following command:
 
