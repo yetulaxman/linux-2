@@ -30,108 +30,73 @@ Now that your are familiar with basic docker commands, let us try some real worl
 Pull the latest Docker image for Trinity like so:
 
 ```
-docker pull trinityrnaseq/trinityrnaseq
+docker pull biocontainers/fastqc:v0.11.9_cv7
 
 ````
-
-Download trinity dump from allas object storage.
-
-and mount the file inside the trinity container.
+copy fastq files from Puhti as below:
 
 ```
-wget https://a3s.fi/trinity/Luke_test_trinity.zip
-
-unzip Luke_test_trinity.zip
-
-or
-
-scp yetukuri@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
+scp csc-username@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
 
 ```
 
 Run Trinity like so (eg. as shown where with a very small test data set):
 
 ```
-docker run trinityrnaseq/trinityrnaseq Trinity \
-      --seqType fq \
-      --left `pwd`/reads.left.fq.gz \
-      --right `pwd`/reads.right.fq.gz
-      --max_memory 1G --CPU 4 --output `pwd`/trinity_out_dir
-
+docker run biocontainers/fastqc:v0.11.9_cv7 \
+      fastqc /data/reads.left.fq.gz
 ```
 issue:
-> Error, cannot locate file: /home/ubuntu/General/training/Lukr_test/reads.left.fq.gz at /usr/local/bin/trinityrnaseq/Trinity line 2774.
+> Skipping '/data/reads.left.fq.gz' which didn't exist, or couldn't be read
 
 We need to create a mapping between the host system, and the container with the `-v` command:
 
 ``` bash
-docker run --rm -v `pwd`:`pwd` trinityrnaseq/trinityrnaseq Trinity \
-     --seqType fq \
-     --left `pwd`/reads_1.fq.gz \
-     --right `pwd`/reads_2.fq.gz
-     --max_memory 1G --CPU 4 --output `pwd`/trinity_out_dir
+docker run --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
 
 ```
 
-It should work fine and all resuts will be written to "trinity_out_dir" inside the current directory.  if you are root user this is fine, you can view the results.
+It should work fine and all resuts will be written to "host directory" that was mounted inside the container.  if you are root user this is fine, you can view the results. Sometimes it can be an issue.
 
 ```
--rw-r--r-- 1 root root   200578 Jun 12 08:29 Trinity.fasta
--rw-r--r-- 1 root root     3125 Jun 12 08:29 Trinity.fasta.gene_trans_map
--rw-r--r-- 1 root root      791 Jun 12 08:29 Trinity.timing
+-rw------- 1 biouser biouser 14905493 Nov 19 16:08 lung3e_1_subset.fq.gz
+-rw------- 1 biouser biouser 14955814 Nov 19 16:08 lung3e_2_subset.fq.gz
+-rw-rw---- 1 biouser biouser  1252784 Nov 19 14:22 reads2.left.fq.gz
+-rw-rw---- 1 biouser biouser  1274471 Nov 19 14:22 reads2.right.fq.gz
+-rw-r--r-- 1 root    root      263555 Nov 20 02:07 reads.left_fastqc.html
+-rw-r--r-- 1 root    root      345718 Nov 20 02:07 reads.left_fastqc.zip
+-rw-rw---- 1 biouser biouser  1251148 Nov 19 14:22 reads.left.fq.gz
+-rw-rw---- 1 biouser biouser  1272939 Nov 19 14:22 reads.right.fq.gz
 ```
 
 what if you are not a root user?
 
-That will map whatever files are in the `pwd` folder on the host to `pwd` in the container.
+One tedious way is go inside the container and change the permissions of files. 
+
+Alernative option is to set Docker user when running your container:
+
+
+```bash     
+docker run  --user "$(id -u):$(id -g)" --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
 
 ```
 
-sudo docker run -v `pwd`:`pwd` trinityrnaseq/trinityrnaseq ls -l `pwd`
+Above –user “$(id -u):$(id -g)“  flag in run command  informs the container to run with current user id and group id which are obtained dynamically through bash command substitution by running the “id -u” and “id -g” and passing on their values.
 
-```
+Notice the changes in the permissions of files written this time by fastqc as below:
 
-how do we check if the 'pwd' folder is indeed created inside the container.
+```bash
+-rw------- 1 biouser biouser 14905493 Nov 19 16:08  lung3e_1_subset.fq.gz
+-rw------- 1 biouser biouser 14955814 Nov 19 16:08  lung3e_2_subset.fq.gz
+-rw-rw---- 1 biouser biouser  1252784 Nov 19 14:22  reads2.left.fq.gz
+-rw-rw---- 1 biouser biouser  1274471 Nov 19 14:22  reads2.right.fq.gz
+-rw-r--r-- 1 root    root      263555 Nov 20 02:07  reads.left_fastqc.html
+-rw-r--r-- 1 root    root      345718 Nov 20 02:07  reads.left_fastqc.zip
+-rw-rw---- 1 biouser biouser  1251148 Nov 19 14:22  reads.left.fq.gz
+-rw-r--r-- 1 biouser biouser   259532 Nov 20 02:17  reads.right_fastqc.html
+-rw-r--r-- 1 biouser biouser   340578 Nov 20 02:17  reads.right_fastqc.zip
+-rw-rw---- 1 biouser biouser  1272939 Nov 19 14:22  reads.right.fq.gz
 
-```
-
-* Run a `docker container ls` inside the container to check if the files are run.
-
-how do we make host volume read-only?
-
-> The `:ro` attribute is making the host volume read-only, making sure the container can not edit the files on the host.
-
-
-how to avoid permission issues With Docker-Created Files?
-(https://vsupalov.com/docker-shared-permissions/)
-The user of the container (root in the worst case) is completely different than the one on the host.As the container ran with the “root” user by default, we won’t be able to use those files from the host. One way to fix them temporarily, is to take ownership of them again and again and again:
-
-chown -R hostuser:hostuser shared
-
-It is tedious and have to do everytime you do it
-
-Set the Docker user when running your container:
-
-
-  ```bash
-  docker run --rm -v `pwd`:`pwd`\
-   --user "$(id -u):$(id -g)" \
-  trinityrnaseq/trinityrnaseq Trinity \
-       --seqType fq \
-       --left `pwd`/reads_1.fq.gz \
-       --right `pwd`/reads_2.fq.gz
-       --max_memory 1G --CPU 4 --output `pwd`/trinity_out_dir
-
-  ```
-
-–user “$(id -u):$(id -g)“’ ->  tell the container to run with the current user id and group id which are obtained dynamically through bash command substitution by running the “id -u” and “id -g” and passing on their values.
-
-
-```
-total 41664
--rw-r--r-- 1 ubuntu ubuntu   199157 Jun 12 08:40 Trinity.fasta
--rw-r--r-- 1 ubuntu ubuntu     3264 Jun 12 08:40 Trinity.fasta.gene_trans_map
--rw-r--r-- 1 ubuntu ubuntu      791 Jun 12 08:40 Trinity.timing
 ````
 now you have the right permissions to check files and go for the further analysis
 
@@ -163,12 +128,14 @@ DRIVER              VOLUME NAME
 local               data
 ```
 
-Unlike the bindmount, you do not specify where the data is stored on the host.
+Unlike the `bind mount` we discussed above, you don't specify where the data is stored on the host. It is actually stored in the file systems managed by docker.
 
-In the volume API, like for almost all other of Docker’s APIs, there is an `inspect` command giving you low level details. Let’s use it against the html volume.
+There is a `inspect` command to get low levels details of volumes. Let’s use it against the html volume.
 
 ```bash
-docker volume inspect data
+#command
+> docker volume inspect data
+# output
 [
     {
         "Driver": "local",
@@ -185,33 +152,20 @@ You can see that the `data` volumes is mounted at `/var/lib/docker/volumes/data/
 
 > **Note** we will not go through the different drivers. For more info look at Dockers own [example](https://docs.docker.com/engine/admin/volumes/volumes/#use-a-volume-driver).
 
-You can now use this data volume in all containers. Try to mount it to an nginx server with the `docker container run --rm --name www -d -p 8080:80 -v data:/usr/share/nginx/html nginx` command.
+You can now use this data volume in all containers. Try to mount it inside the fastqc container and write some file to data volume as below:
 
-> **Note:** If the volume refer to is empty and we provide the path to a directory that contains data in the base image, that data will be copied into the volume.
-
-Try now to look at the data stored in `/var/lib/docker/volumes/data/_data` on the host:
-
-```bash
-sudo ls /var/lib/docker/volumes/data/_data/
-50x.html  index.html
+```
+docker run --rm -v data:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
 ```
 
-Those two files comes from the Nginx image and is the standard files the webserver has.
+You can see that the file you created is stored in data volume as below:
 
-### Attaching multiple containers to a volume
-
-Multiple containers can attach to the same volume with data. Docker doesn't handle any file locking, so applications must account for the file locking themselves.
-
-Let's try to go in and make a new html page for nginx to serve. We do this by making a new ubuntu container that has the `data` volume attached to `/tmp`, and thereafter create a new html file with the `echo` command:
-
-```bash
-docker container run -ti --rm -v data:/tmp ubuntu bash
-root@9c36fcfcc048:# echo "<html><h1>hello world</h1></html>" > /tmp/hello.html
-root@9c36fcfcc048:# ls /tmp
-hello.html  50x.html  index.html
 ```
+sudo ls -l /var/lib/docker/volumes/data/_data
 
-Head over to your newly created webpage at: `http://<IP>:8080/hello.html`
+-rw-r--r-- 1 root root 0 Nov 20 02:32 text.txt
+
+```
 
 ## cleanup
 
