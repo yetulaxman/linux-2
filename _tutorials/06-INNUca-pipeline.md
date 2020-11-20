@@ -42,7 +42,7 @@ You will learn how to launch a real-world container and explore several subtasks
    # You should specify where the output goes whenever there is an option to do that
    # Whenever possible use the option to specify the number of CPUs/threads to be used
 
-   docker run --rm -u $(id -u):$(id -g) -it -v /home/biouser/data:/data/reads ummidock/innuca:4.2 \
+   docker run --rm -u $(id -u):$(id -g) -it -v /home/biouser/data:/data/reads ummidock/innuca:4.2.2-02 \
        INNUca.py --inputDirectory /data/reads/ \
                  --speciesExpected "Streptococcus agalactiae" \
                  --genomeSizeExpectedMb 2.1 \
