@@ -56,7 +56,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
 5. Explore the different modules present in INNUca pipeline.
 
-   As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting The new version of INNUca is available at [here](https://github.com/INNUENDOCON/INNUca)
+   As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting new version of INNUca as available [here](https://github.com/INNUENDOCON/INNUca)
 
 
 6. Remove docker image from you workspace once you are done with your pipeline
