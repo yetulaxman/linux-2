@@ -17,12 +17,13 @@ Phosphoproteomic experiments typically identify sites within a protein that are 
 - Pull docker image from dockerhub
 
 ```
-docker run -d -p 5000:5000 jdrudolph/photon:dev
+docker pull jdrudolph/photon:dev
+
 ```
 - Launch web-application as below:
 
 ```bash
-docker pull jdrudolph/photon:dev 
+ docker run -d -p 5000:5000 jdrudolph/photon:dev
 ```
 
 Now you can access PHOTON from your browser at: http://localhost:5000
