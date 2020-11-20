@@ -33,6 +33,10 @@ You will learn how to launch a real-world container and explore several subtasks
 
    ```bash
    wget https://a3s.fi/Biocontainer/INNUca_data.tar.gz
+   
+   or 
+   
+   scp  user-name@puhti.csc.fi:/scratch/project_2003682/INNUca/*.gz .
 
    ```
 4. Run INNUca pipeline
