@@ -17,7 +17,7 @@ In our previous `hello-world` example, `docker run` command not only implicitly 
 To get started, let's pull *fastqc* image in the following way:
 
 ```bash
-docker pull biocontainers/fastqc:v0.11.9_cv6   
+docker pull biocontainers/fastqc:v0.11.9_cv7   
 ```
 *Note*: if you don't provide tag (i.e., v0.11.9_cv6), docker deamon looks for `fastqc` image with tag "latest" which may or may not present in DockerHub. While image is being downloaded, look for all available tags for *fastqc* image of *biocontainers* repository in [DockerHub](https://hub.docker.com/).
 
@@ -26,7 +26,7 @@ Here, the `docker pull ...` command fetches the *fastqc* image from the **Docker
 Great! Now let's start a Docker **container** based on fastqc image.
 
 ```bash
-docker create biocontainers/fastqc:v0.11.9_cv6 sleep 300
+docker create biocontainers/fastqc:v0.11.9_cv7 sleep 300
 docker start 410bcd45613a  # 410bcd45613a is a container ID which can be found by using *docker ps* command 
 ```
 
@@ -35,7 +35,7 @@ We have now learned a harder way to launch a container and can be much useful if
 Instead of running all the above steps, we can just run  `docker run ...` command 
 
 ```bash
-docker run biocontainers/fastqc:v0.11.9_cv6 sleep 300
+docker run biocontainers/fastqc:v0.11.9_cv7 sleep 300
 ```
 
 When you run `docker container run ...`, with a command (`sleep`), please note that command was actually run inside the container and the container is exited after running `sleep` command.
@@ -48,7 +48,7 @@ In previous examples, `docker run ...` command exited once a user-defined (or de
 
 ```bash
 
-docker container run -it biocontainers/fastqc:v0.11.9_cv6 /bin/sh
+docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
 
 ```
 Here you ran the  `docker run ...` command with special flags `-it` so that it attaches you to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! Take some time to run write a useful command (e.g., get some documentation help from a software). Remember, you can write `exit` when you want to quit.
@@ -58,7 +58,7 @@ Here you ran the  `docker run ...` command with special flags `-it` so that it a
 Here is an example on how one can get help on fastqc usage:
 
 ```bash
-docker container run -it biocontainers/fastqc:v0.11.9_cv6 fastqc --help
+docker container run -it biocontainers/fastqc:v0.11.9_cv7 fastqc --help
 ```
 
 
@@ -69,7 +69,7 @@ The main disadvantage of running a container in the foreground (the default mode
 Let's launch `fastqc`in the bacground (=detached) mode as below:
 
 ```bash
-docker container run -it -d biocontainers/fastqc:v0.11.9_cv6  sleep inf
+docker container run -it -d biocontainers/fastqc:v0.11.9_cv7  sleep inf
 docker ps -a
 ````
 ## Stopping a running container
