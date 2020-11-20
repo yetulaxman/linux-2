@@ -21,7 +21,7 @@ docker exec <options> <container> <command>
 First, start up our fastqc container and let it be running in the background:
 
 ```bash
-docker run -d  biocontainers/fastqc:v0.11.9_cv6 sleep inf
+docker run -d  biocontainers/fastqc:v0.11.9_cv7 sleep inf
 661c6dd59d78b97f8142d67eff6b1d58fbbd42247900241e08f46abdbad19f06
 ```
 
