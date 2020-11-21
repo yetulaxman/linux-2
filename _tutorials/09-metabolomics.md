@@ -3,14 +3,11 @@ title: Containerised Metabolomics Application
 ---
 ## Learning objectives
 On completion of this session, you will learn:
-- How to check an unknown tool for help
-- To use a docker container for processing Metabolomics data
-- Couple of processing steps in metabolomics
-
+- To explore a containersied metabolomics application and perform some data pre-processing steps.
 
 # Tutorial with dimspy 
 
-In general when we look for a docker container for our needs, we may end-up finding several relavent tools for our needs. It may take sometime to  get used to new tools and often difficult to judge the quality of tools if it is not a popular one. Geeting an unfamiliar tool to work for our needs is good learning process. We will practice it using dimsy software.
+In general, when we look for a docker container for our needs, we may end-up finding several relevant tools for our needs. It may take some time to  get used to new tools and often difficult to judge the quality of tools if it is not a popular one. Getting an unfamiliar tool to work for our needs is a good learning process. We will practice it using dimsy software.
 
 More information about the software can be found [here](https://github.com/computational-metabolomics/dimspy).
 
@@ -32,7 +29,7 @@ Once you have got some idea about different processing steps.
 
 ### Download zip file containing data
 
-You can now download some tutorial data  from here:
+You can now download some tutorial data from here:
 
 ```bash 
 wget https://github.com/computational-metabolomics/dimspy-galaxy/raw/master/tools/dimspy/test-data/MTBLS79_mzml_triplicates.zip
@@ -55,10 +52,10 @@ batch04_S01_rep03_249.mzML	3	1	9	sample
 
 ```
 
-save both zip file and  file containing files list (name it as filelist_csl_MTBLS79_mzml_triplicates.txt) in a directory  (say, /home/biouser/dimspy)
+save both zip file and a file containing files list (name it as `filelist_csl_MTBLS79_mzml_triplicates.txt`) in a directory (e.g., /home/biouser/dimspy).
 
 
-you can now unzip the mzxml files using the following command from dimspy software:
+You can now unzip the mzxml files using the following command from dimspy software:
 
 ```
 docker run -it -v /home/biouser/dimspy:/data quay.io/biocontainers/dimspy:2.0.0--py_0 bash  # go inside the container
@@ -141,4 +138,4 @@ dimspy merge-peaklists \
 --output results/peaklists_merged.hdf5
 
 ```
- Please note that once you exit from the container all the resulting files from analysis should be in the directory: /home/biouser/dimspy
+ Please note that once you exit from the container all the resulting files from above analysis should be in directory: /home/biouser/dimspy
