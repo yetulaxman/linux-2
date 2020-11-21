@@ -38,17 +38,16 @@ Open a web browser and go to port 8080 on your host. The exact address will depe
 If you see a webpage saying "Welcome to rstudio!" then you're done!
 
 
-## Working with your docker container
+## Running rstudio container in the background mode
 
-When running a webserver like rstudio, it's pretty useful that you do not have to have an open session into the server at all times to run it.
-We need to make it run in the background, freeing up our terminal for other things. Docker enables this with the `-d` parameter for run.
+When running a webserver like rstudio, it's pretty useful to run it in the background, freeing up our terminal for other things. Docker enables this with the `-d` flag in `docker run` command
 
 > ```bash
-> docker run --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
+> docker run -d --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
 > ```
 
 **Exercise questions**:
 
 1. Browse Docker Hub for interesting images. What could be useful to you?
-2. Can you update couple of R packages of your choice to a running container?
+2. Can you update few R packages of your choice to a running container?
 
