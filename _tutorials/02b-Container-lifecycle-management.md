@@ -2,7 +2,7 @@
 title: Management of Docker Container Life-cycle
 ---
 ## Learning Objectives
-One of the most useful and often used docker commands is `docker run ...` . We have briefly seen it in `hello-world` example. Here, let's go beyond simple `hello-world` example and explore few more related docker commands.
+One of the most useful and often used docker commands is `docker run ...` . We have briefly seen it in `hello-world` example. Here, let's go beyond a simple `hello-world` example and explore few more related docker commands.
 
 In this episode, you will learn: 
 - Different ways of launching a container
@@ -12,14 +12,14 @@ In this episode, you will learn:
 
 ## Different ways of launching a container
 
-In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a container. No worries ! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container named, [fastqc](https://hub.docker.com/r/biocontainers/fastqc) which is a  quality control tool for raw sequence data coming from high throughput sequencing pipelines.
+In our previous `hello-world` example, `docker run` command not only implicitly fetched its image from DockerHub and but also launched a container on your host machine. What if you just want to download a docker image but not yet ready for running a container. No worries! we've `docker pull ...` command for the same purpose. This time, we'll however  use a well-known bioinformatics container named, [fastqc](https://hub.docker.com/r/biocontainers/fastqc) which is a  quality control tool for raw sequence data coming from high throughput sequencing pipelines.
 
 To get started, let's pull *fastqc* image in the following way:
 
 ```bash
 docker pull biocontainers/fastqc:v0.11.9_cv7   
 ```
-*Note*: if you don't provide tag (i.e., v0.11.9_cv6), docker deamon looks for `fastqc` image with tag "latest" which may or may not present in DockerHub. While image is being downloaded, look for all available tags for *fastqc* image of *biocontainers* repository in [DockerHub](https://hub.docker.com/).
+*Note*: if you don't provide tag (i.e., v0.11.9_cv6), docker daemon looks for `fastqc` image with tag "latest" which may or may not present in DockerHub. While image is being downloaded, look for all available tags for *fastqc* image of *biocontainers* repository in [DockerHub](https://hub.docker.com/).
 
 Here, the `docker pull ...` command fetches the *fastqc* image from the **Docker registry** and saves it locally in your system. It will not run (i.e., does not create any container from image) image yet. We will use *docker create and docker start* commands instead.
 
@@ -40,7 +40,7 @@ docker run biocontainers/fastqc:v0.11.9_cv7 sleep 300
 
 When you run `docker container run ...`, with a command (`sleep`), please note that command was actually run inside the container and the container is exited after running `sleep` command.
 
-So pleas note that **docker create** adds a writeable container on top of your image and sets it up for running whatever command you specified in your CMD. The container ID is reported back but it’s not started. **Start** will start any stopped containers. This includes freshly created containers. **Run** is a combination of create and start i.e., it creates a container and starts it.
+So please note that **docker create** adds a writeable container on top of your image and sets it up for running whatever command you specified in your CMD. The container ID is reported back but it’s not started. **Start** will start any stopped containers. This includes freshly created containers. **Run** is a combination of create and start i.e., it creates a container and starts it.
 
 ## Docker run interactively
 
@@ -66,7 +66,7 @@ docker container run -it biocontainers/fastqc:v0.11.9_cv7 fastqc --help
 
 The main disadvantage of running a container in the foreground (the default mode for dockers) is that you can not access the command prompt anymore. That means you can't run any other commands while the `fastqc` container is running. In order to run a `fastqc` container in the background mode, you can use flag `-d` (--detach).
 
-Let's launch `fastqc`in the bacground (=detached) mode as below:
+Let's launch `fastqc` in the background (=detached) mode as below:
 
 ```bash
 docker container run -it -d biocontainers/fastqc:v0.11.9_cv7  sleep inf
@@ -74,7 +74,7 @@ docker ps -a
 ````
 ## Stopping a running container
 
-`Docker stop` can be used to gracefully stop a running container process i.e., it may take a while to shutdown the container completely. 
+`Docker stop` can be used to gracefully stop a running container process i.e., it may take a while to shut down the container completely. 
 
 ```bash 
 docker stop 410bcd45613a  # container id of a running container which you can check by issuing `docker ps` command 
@@ -84,14 +84,14 @@ In case you want to kill a container without taking some time, you can  use `doc
 
 ## Listing images and containers
 
-if you start working multiple containers, it is possible that multiple images and containers are hanging around in the host system. It is time to manage them now.
+if you start working with multiple containers, it is possible that multiple images and containers are hanging around in the host system. It is time to manage them now.
 
 List running containers using the `ps` command as below:
 
 ```bash
 docker ps #command shows you all containers that are currently running.
 ```
-All containers have an **ID** and a **name**. Both the ID and name is generated every time a new container spins up with a random seed for uniqueness. If you want to assign a specific name to a container then you can use the `--name` option. That can make it easier for you to reference the container going forward.
+All containers have an **ID** and a **name**. Both the ID and name are generated every time a new container spins up with a random seed for uniqueness. If you want to assign a specific name to a container then you can use the `--name` option. That can make it easier for you to reference the container going forward.
 
 List running all containers using `ps -a` command as below:
 
@@ -107,14 +107,14 @@ Try adding the `--no-trunc` flag to see the entire container ID:
 ```bash
  docker container ps -a --no-trunc
 ```
-This long ID is the same as the string that is returned after starting a container with. `docker run ...`
+This long ID is the same as the string that is returned after starting a container with `docker run ...` command.
 
-in order to list only the container IDs using the `-q` flag
+In order to list only container IDs, we can use `-q` flag as below:
 
 ```bash
 docker ps -a -q
 ```
-What you see  a list of all containers that you ran. Notice that the `STATUS` column shows that these containers exited a some time ago.
+What you see  a list of all containers that you ran. Notice that the `STATUS` column shows that these containers exited some time ago.
 
 You can also filter results with the --filter flag; for example, try filtering by exit code:
 ```bash
