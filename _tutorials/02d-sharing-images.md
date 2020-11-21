@@ -62,5 +62,5 @@ All images should be tagged with an appropriate prefix to repository name before
 ```bash
  docker push your-dockerhub-user-name/repo-name[:tag]
 ```
-Once the push  to repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed:[https://hub.docker.com/repos/u/<username>](https://hub.docker.com/repos/u/<username>).
+Once the push  to repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new repository listed [here](https://hub.docker.com/repos/u/<username>).
 
