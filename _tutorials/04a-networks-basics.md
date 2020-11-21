@@ -2,9 +2,8 @@
 title: Networks Basics
 ---
 # Learning Objectives
-You will learn basic  docker networking commands in this exercises
 
-You will complete the following steps as part of this exercises:
+You will complete the following steps to learn basic docker networking commands:
 
 - The `docker network` command
 - List networks
