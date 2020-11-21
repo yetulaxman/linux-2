@@ -4,7 +4,7 @@ title: Docker Terminology and Architecture
 
 
 ### Learning Objectives
-Understanding of docker fundamentals can sometimes be challenging especially in the beginning stage of learning. Part of the challenge comes from terminology of docker eco-system. It is useful to understand some essential jargon first to get started with course.
+Understanding docker fundamentals can sometimes be challenging especially in the beginning stage of learning. Part of the challenge comes from the terminology of docker eco-system. It is useful to understand some essential jargon first to get started with course.
 
 After this session, you will get familiar with:
 - The basic terminology of docker system
@@ -12,15 +12,15 @@ After this session, you will get familiar with:
 
 ### 1. Understand the following basic terminology used in Docker world
 
-Although bit extensive list of [Docker-specific jargon](https://docs.docker.com/glossary/) can be useful, below is the basic terminology we often use in this course:
+Although understanding the extensive list of [Docker-specific jargon](https://docs.docker.com/glossary/) is quite useful, below is the basic terminology we often use in this course:
 
-- **Images**: A Docker image is a read-only file system, comprised of multiple layers, that is used to execute code in a Docker container. A image is created usually from a Dockerfile, which comprises a set of instructions for a complete and executable version of an application. It is a Docker container at rest, i.e., not running.
+- **Images**: A Docker image is a read-only file system, comprised of multiple layers, that is used to execute code in a Docker container. An image is created usually from a Dockerfile, which comprises a set of instructions for a complete and executable version of an application. It is a Docker container at rest, i.e., not running.
 
-- **Containers**: Running instances of Docker images. Containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. 
+- **Containers**: Running instances of Docker images. Containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers and runs as an isolated process in user space on the host OS. 
 
 - **Docker daemon**: The background service running on the host that manages building, running and distributing Docker containers.
 
-- **Docker client**: The command line tool that allows the user to interact with the Docker daemon.
+- **Docker client**: The commandline tool that allows the user to interact with the Docker daemon.
 
 - **Docker Registry**: A remote repository where Docker Images can be stored and made public. Constitutes the point of contact between application developers and their users and allows the distribution of Docker containers.
 
