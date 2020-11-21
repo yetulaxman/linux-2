@@ -30,7 +30,7 @@ what if there are several such containers to be deleted? Well, you can list thos
 ```bash
 docker rm <container-id1> <container-id2> ...
 ```
-or you can use with a `filter` option to remove exited containers:
+or you can use `filter` flag to remove exited containers:
 
 docker rm $(docker ps -qa --filter status=exited)
 
@@ -51,7 +51,7 @@ alpine                                  latest                053cde6e8953      
 hello-world                             latest                48b5124b2768        10 months ago       1.84kB
 ```
 
-Here you can see the images downloaded as well as their size.
+Here you can see the images downloaded as well as their sizes.
 To remove the hello-world image use the `docker image rm` command together with the id of the docker image.
 
 ```bash
@@ -84,7 +84,7 @@ $ docker images purge
 
 ### In general
 
-In the process of pulling, building and running images, we often end-up downloading lot of images. These images will not be deleted as docker takes a very conservative approach to clean up. Docker provides a `prune` command, taking all dangling containers/images/networks/volumes.
+In the process of pulling, building and running images for our daily needs, we often end-up downloading several of images. These images will not be deleted as docker takes a very conservative approach to clean up. Docker provides a `prune` command, taking all dangling containers/images/networks/volumes.
 
 * `docker container prune`
 * `docker image prune`
