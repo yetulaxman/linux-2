@@ -45,17 +45,18 @@ You will learn how to launch a real-world container and explore several subtasks
    # INNUca basic command
    # You should specify where the output goes whenever there is an option to do that
    # Whenever possible use the option to specify the number of CPUs/threads to be used
+   # make sure you have read data under folder: /home/biouser/innuca 
 
-   docker run --rm -u $(id -u):$(id -g) -it -v /home/biouser/data:/data/reads ummidock/innuca:4.2.2-02 \
-       INNUca.py --inputDirectory /data/reads/ \
-                 --speciesExpected "Streptococcus agalactiae" \
-                 --genomeSizeExpectedMb 2.1 \
-                 --outdir /data/genomes/Streptococcus agalactiae/innuca/ \
-                 --threads 2
-                 --fastQCproceed \
-                 --fastQCkeepFiles \
-                 --trimKeepFiles \
-                 --saveExcludedContigs
+   docker run --rm -u $(id -u):$(id -g) -it -v /home/biouser/innuca:/data/reads ummidock/innuca:4.2.2-02 \
+    INNUca.py --inputDirectory /data/reads/ \
+              --speciesExpected "Streptococcus agalactiae" \
+              --genomeSizeExpectedMb 2.1 \
+              --outdir /data/genomes/ \
+              --threads 2
+              --fastQCproceed \
+              --fastQCkeepFiles \
+              --trimKeepFiles \
+              --saveExcludedContigs
     ```
 
 5. Explore the different modules present in INNUca pipeline.
