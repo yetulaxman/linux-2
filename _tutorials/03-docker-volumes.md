@@ -15,7 +15,7 @@ In order to save (persist) data and also to share data between containers, Docke
 
 We are essentially going to look at how to manage data within your Docker containers. You have two different ways of mounting persistent data from your container:
 
-- `Bind mounts` (=Mounting a Host Directory as a Data volume)
+- `Bind mounts` (=Mounting a Host Directory inside a container)
 - `Docker volumes`
 
 > **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host file system. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
