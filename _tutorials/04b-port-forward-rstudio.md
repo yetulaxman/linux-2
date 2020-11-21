@@ -14,7 +14,7 @@ In this session you will learn how to:
 In Docker, the containers themselves can have applications running on ports. When you run a container, if you want to access the application in the container via a port number, you need to map the port number of the container to the port number of the Docker host.
 
 
-Pull down the ``rstudio`` Docker image from the Docker Hub.
+Pull down `rstudio` Docker image from the Docker Hub.
 
 Start a new container from the ``rstudio`` image that exposes port 80 from the container to port 8087 on your host. You will need to use the ``-p`` flag with the docker container run command.
 
@@ -50,5 +50,5 @@ We need to make it run in the background, freeing up our terminal for other thin
 **Exercise questions**:
 
 1. Browse Docker Hub for interesting images. What could be useful to you?
-2. Can you update a R package of your choice to a running container?
+2. Can you update couple of R packages of your choice to a running container?
 
