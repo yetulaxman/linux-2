@@ -45,7 +45,7 @@ docker attach 661c6dd59
 
 ## Installing content inside the container.
 
-As a good design principle, containers only have the bare minimum installations just to perform desired tasks. so if you want to explore the content inside the container, some tools may be missing. For example *fastqc* container does not have vim edior, let's install vim editor here by going inside the container via. *docker exec* command:
+As a good design principle, containers only have the bare minimum installations just to perform desired tasks. so if you want to explore the content inside the container, some tools may be missing. For example, *fastqc* container does not have vim edior, let's install vim editor here by going inside the container via. *docker exec* command:
 
 ```bash
 docker exec -it <661c6dd59> bash # this will let you go insisde fastqc container as mentioned above
@@ -54,13 +54,13 @@ apt-get update && apt-get install vim # this installation now happens inside the
 ```
 Then detach from the container with `Ctrl+p and Ctrl+q`.  
 
-You can go inside the containe again to check *vi* editor is installed properly
+You can go inside the container again to check whether *vi* editor is installed properly
 
 ```bash
 docker container exec -it <container_id> bash
 vi
 ```
-This way you can add some modifications to existing container. Please note that once containers is removed all modifications will disappear. 
+This way you can add some modifications to an existing container. Please note that once containers is removed all modifications will disappear. 
 
 ## Conclusion
-Understand Docker Run vs Docker Exec commands. Docker run is the command you useful in creating a brand new container from an image, whereas docker exec lets you run commands on an already running container. You have also seen how to break out of a container either by terminating the process by `Ctrl+d`, or by detaching from the process by `Ctrl+p Ctrl+q`.
+Understand Docker Run vs Docker Exec commands. `Docker run ...` is the command you use in creating a brand new container from an image, whereas docker exec lets you run commands on an already running container. You have also seen how to break out of a container either by terminating the process by `Ctrl+d`, or by detaching from the process by `Ctrl+p Ctrl+q`.
