@@ -3,15 +3,15 @@ title: Docker Volumes
 ---
 
 # Learning Objectives
-In scientific appplications, the usage of docker volumes is essential to persist data when working containers. In this session, you will be able to learn:
+In scientific appplications, the usage of docker volumes is essential to persist data when working with containers. In this session, you will be able to learn:
 - How docker enables `data persistence` 
-- Different volumes types and how they are created
+- Different volumes types and how they are used
 
 ## Description
 
-Docker images are stored as read-only layers. When we start a container from a image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the  running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once container is removed.
+Docker images are stored as read-only layers. When we start a container from a image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once container is removed.
 
- In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
+In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
 We are essentially going to look at how to manage data within your Docker containers. You have two different ways of mounting persistent data from your container:
 
