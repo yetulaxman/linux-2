@@ -18,9 +18,9 @@ We are essentially going to look at how to manage data within your Docker contai
 - `Bind mounts` (=Mounting a Host Directory as a Data volume)
 - `Docker volumes`
 
-> **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host filesystem. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
+> **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host file system. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
 
-**Bind mounts**: When you use a bind mount option, a file or directory on the host directory is mounted into a container.  While  it is easy and connects directly to the host filesystem, non-docker processes on the Docker host  can modify them at any time. One needs to specify it during runtime.
+**Bind mounts**: When you use a bind mount option, a file or directory on the host directory is mounted into a container.  One needs to specify this option during runtime. While it is easy to use, non-docker processes on the Docker host can modify them at any time.
 
 ## Bind mounts example
 
@@ -80,7 +80,7 @@ Alernative option is to set Docker user when starting your container:
 docker run  --user "$(id -u):$(id -g)" --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
 
 ```
-Above –user “$(id -u):$(id -g)“  flag in run command  informs the container to run with current user id and group id which are obtained dynamically through bash command substitution.
+Above –user “$(id -u):$(id -g)“  flag in run command informs the container to run with current user id and group id which are obtained dynamically through bash command substitution.
 
 you can see the changes in the permissions of files written this time by fastqc as below:
 
@@ -101,7 +101,7 @@ you can see the changes in the permissions of files written this time by fastqc 
 **Docker Volume**: You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
 
 
-docker volumes can be created in three different ways.
+Docker volumes can be created in three different ways:
 
 * By explicitly creating it with the `docker volume create <volume_name>` command
 * By creating a named volume at container creation time with `docker container run -d -v DataVolume:/opt/app/data ...`
@@ -122,7 +122,7 @@ local               mydata
 
 Unlike `bind mount`, you don't need to specify where `mydata` directory is stored on host path. It is actually stored in host's file system managed by docker.
 
-if you are curious, you can use  `inspect` command to view `data`volume created by docker. 
+if you are curious, you can use  `inspect` command to view `mdata` volume created by docker. 
 
 ```bash
 #command
@@ -143,7 +143,7 @@ if you are curious, you can use  `inspect` command to view `data`volume created 
 You can see that `mydata` volume is mounted at `/var/lib/docker/volumes/mdata/` on the host's file system.
 
 
-You can mount `mydata` volume in  your containers. Let's mount it inside `fastqc` container and write some file to data volume as below:
+Let's mount data volume inside `fastqc` container and write some file to it as below:
 
 ```
 docker run --rm -v mydata:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
@@ -160,7 +160,7 @@ sudo ls -l /var/lib/docker/volumes/mydata/_data
 
 ## Tips and tricks
 
-As you have seen, the `-v` flag can create a bind mount or named volume depending on the syntax. If the first argument begins with a / or ~/ you're creating a bindmount. Remove that, and you're naming the volume. For example:
+As you have seen, the `-v` flag can create a bind mount or named volume depending on the syntax. If the first argument begins with a / or ~/ you're creating a *bind mount*. Remove that, and you're naming the volume. For example:
 
 * `-v /path:/path/in/container` mounts the host directory, `/path` at the `/path/in/container`
 * `-v path:/path/in/container` creates a volume named path with no relationship to the host.
