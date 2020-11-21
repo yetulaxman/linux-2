@@ -9,7 +9,7 @@ Phosphoproteomic experiments typically identify sites within a protein that are 
 ## Learning Objectives
 - Start a containerised webb app for analysing phosphoproteomics dataset
 - Perform analysis using a test dataset
-- Appreciate the ease of use of web-container.
+
 
 
 ## Basic usage of docker
