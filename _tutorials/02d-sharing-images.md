@@ -64,5 +64,5 @@ All images should be tagged with an appropriate prefix to repository name before
 ```
 Once the push  to repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new docker image on dockerhub
 
-*Summary*: In this section we have explored two ways of sharing a docker image with rest of the world in the following two ways: 1) tarball approach and 2)dockerhub approach. Dockerhub approach is preferred approach and usually involves providing good documentation including dockerfile. 
+**Summary**: In this section we have explored two ways of sharing a docker image with rest of the world in the following two ways: 1) tarball approach and 2)dockerhub approach. Dockerhub approach is preferred approach and usually involves providing good documentation including dockerfile. 
 
