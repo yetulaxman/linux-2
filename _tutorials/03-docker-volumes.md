@@ -20,9 +20,9 @@ We are essentially going to look at how to manage data within your Docker contai
 
 > **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host file system. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
 
-**Bind mounts**: When you use a bind mount option, a file or directory on the host directory is mounted into a container.  One needs to specify this option during runtime. While it is easy to use, non-docker processes on the Docker host can modify them at any time.
+##Bind mounts##: When you use a bind mount option, a file or directory on the host directory is mounted into a container.  One needs to specify this option during runtime. While it is easy to use, non-docker processes on the Docker host can modify them at any time.
 
-## Bind mounts example
+#### Bind mounts example
 
 Now that you are familiar with basic Docker commands, let us try with *fastqc* container. For now, don't worry about the context of this container if you are not familiar with *fastqc* software.
 
@@ -98,7 +98,7 @@ you can see the changes in the permissions of files written this time by fastqc 
 
 ````
 
-**Docker Volume**: You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
+##Docker Volume##: You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
 
 
 Docker volumes can be created in three different ways:
