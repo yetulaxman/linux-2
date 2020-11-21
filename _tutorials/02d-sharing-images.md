@@ -3,7 +3,7 @@ title: Sharing Docker Images
 ---
 ## Learning Objectives 
 
-We’ve spent sometime in gaining a reasonable understanding of running a docker container. Sometimes, we have to go bit further to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use your custom image after sometime later or even share it with other collaborators. This brings us to the point of sharing your image with others!
+We’ve spent sometime in gaining a reasonable understanding of running a docker container. Sometimes, we have to go bit further to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use new image after sometime later or even share it with other collaborators. This brings us to the point of sharing your image with others!
 
 Upon completion of this session, you will learn: 
 
@@ -25,7 +25,7 @@ docker commit <container id> fastqc-vim:test
 and then save the image using `docker save` command as below:
 
 ```
-docker save d55c1457185e -o  fastqc-vim.test.tar   # where d55c1457185e is image id; it is howver better to use reponame:tag intead of image id (e.g., docker save fastqc-vim:test -o  fastqc-vim-name.test.tar)
+docker save <image id> -o  fastqc-vim.test.tar   # better yet would be to use reponame:tag intead of <image id> (e.g., docker save fastqc-vim:test -o  fastqc-vim-name.test.tar)
 ```
 You can check the existance of tar file in your directory after *docker save* command has been executed successful. You can send this tar file to your colllaborators/friends.
 
