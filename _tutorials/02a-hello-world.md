@@ -33,19 +33,19 @@ When a `docker run` command is issued *via* commandline interface (CLI), docker 
  
 Note that `docker run` creates a container, executes the command in it and stops the container when it is done.
 
-#### What will happen if you run above command again? Did you observe any change in terminal output now?
+#### What will happen if you run the above command again? Did you observe any change in terminal output now?
 
 Docker image has already been downloaded locally and therefore docker can execute the container straight away.
 
 #### What is the default image tag used in `hello-world` example?
 
-By default, image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control-like mechanism for docker images.
+By default, an image is pulled with `latest` tag. It is possible to pull an image with a specified tag and is actually a good practice to use specific tag name for reproducible research. Tag provides a version control-like mechanism for docker images.
 
 Congratulations, you have run a “Hello-World” Docker successfully !!!
 
 ## Exercises
 
-1. Run a container from a image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
+1. Run a container from an image named "alpine" from DockerHub and execute a command inside that container so that output from the container is "Welcome to CSC !"
 
-2. How would you run the same *hello-world example* from docker registry with fully qualified reference path for image? Name few third-party docker registries besides DockerHub.
+2. How would you run the same *hello-world example* from docker registry with fully qualified reference path for an image? Name few third-party docker registries besides DockerHub.
 
