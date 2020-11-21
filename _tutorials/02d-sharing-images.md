@@ -22,11 +22,10 @@ docker commit <container id> fastqc-vim:test
 ```
 > note: It is a good idea to stop the container before saving it 
 
-and then save the image using `docker save` command
+and then save the image using `docker save` command as below:
 
 ```
-docker save d55c1457185e -o  fastqc-vim.test.tar
-
+docker save d55c1457185e -o  fastqc-vim.test.tar   # where d55c1457185e is image id; it is howver better to use reponame:tag intead of image id (e.g., docker save fastqc-vim:test -o  fastqc-vim-name.test.tar)
 ```
 You can check the existance of tar file in your directory after *docker save* command has been executed successful. You can send this tar file to your colllaborators/friends.
 
