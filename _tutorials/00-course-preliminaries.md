@@ -3,7 +3,7 @@ title: Training Environment for Course
 ---
 
 
-This course provides a VirtualBox image with pre-installed docker and singularity clients to facilitate your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is an in-browser linux terminal for docker environment if you have problems in setting-up VirtualBox on your computer. In the later case, you need to sign in PWD with your docker ID.
+This course provides a VirtualBox image with pre-installed docker and singularity clients to facilitate your hands-on tutorials. You may use [Play-with-Docker](https://labs.play-with-docker.com/) (PWD) which is an in-browser Linux terminal for docker environment if you have problems in setting-up VirtualBox on your computer. In the later case, you need to sign in PWD with your docker ID.
 
 ## Getting Started with Course Environment
 
@@ -25,6 +25,6 @@ singularity --version
 > ```bash
 > Copying text inside linux terminal: shift+control+c
 > Pasting text inside linux terminal: shift+control+v
-> Copying/pasting text inside browser should work normally (i.e., control +c and control +v)
+> Copying/pasting text inside the browser should work normally (i.e., control +c and control +v)
 > ```
 
