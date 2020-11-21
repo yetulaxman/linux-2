@@ -55,7 +55,7 @@ docker run --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv
 
 ```
 
-It should work fine and all results will be written to "host directory" that was mounted inside the container. However, pay attention to the file permisssions of newly created files by docker containers. 
+It should work fine and all results will be written to the "host directory" that was mounted inside the container. However, pay attention to the file permissions of newly created files by docker containers. 
 ```
 > ls -l /home/biouser/Downloads
 
@@ -101,9 +101,7 @@ you can see the changes in the permissions of files written this time by fastqc 
 **Docker Volume**: You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
 
 
-## Docker Volume example
-
-Volumes are entities inside docker, and can be created in three different ways.
+docker volumes can be created in three different ways.
 
 * By explicitly creating it with the `docker volume create <volume_name>` command
 * By creating a named volume at container creation time with `docker container run -d -v DataVolume:/opt/app/data ...`
