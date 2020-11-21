@@ -3,36 +3,45 @@ title: Sharing Docker Images
 ---
 ## Learning Objectives 
 
-We’ve spent sometime in gaining a reasonable understanding of running a docker container. Sometimes, we have to go bit further to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use you custome image after sometime or even share it with other collaborators. This brings us to the point of sharing your image with others!
+We’ve spent sometime in gaining a reasonable understanding of running a docker container. Sometimes, we have to go bit further to customise docker images by adding missing software tools or any package dependencies you need for your  analysis. How can you re-use your custom image after sometime later or even share it with other collaborators. This brings us to the point of sharing your image with others!
 
 Upon completion of this session, you will learn: 
 
 - How to share your Docker image w/o DockerHub.
 
-### Sharing Docker Images without DockerHub
+### Sharing Docker Images without DockerHub (=tarball approach)
 
-Sharing a docker image means taking the image you’ve built on your local machine and making them available for other people to use.
+Sharing a docker image means making your local image available for other people to use.
 
-Docker has *save* command option where you can save your image into a tar file. Let's look at our fastqc container into which you have installed a vim editor. And now you wish to share the new image with your friend.
+Docker has *save* command option where you can save your image into a tar file. Let's look at our fastqc container into which you have installed vim editor and you wish to share the new image now with your friend.
 
-Find the fastqc container id and use the following *docker save* command:
-
-```bash
-docker save <container id>  > fastqc.tar
-```
-You can check tar file in your directory after *docker save* command has been executed successful. You can send this tar file to your colllaborators.
-
-One can load the image from the tar file. Once your image is loaded, you can interact with it and run the container as an official image.
+Find the fastqc container id and use the following *docker commit* command:
 
 ```bash
-docker load < fastqc.tar
+docker commit <container id> fastqc-vim:test
 ```
+> note: It is a good idea to stop the container before saving it 
 
-### Sharing your image with DockerHub 
+and then save the image using `docker save` command
+
+```
+docker save d55c1457185e -o  fastqc-vim.test.tar
+
+```
+You can check the existance of tar file in your directory after *docker save* command has been executed successful. You can send this tar file to your colllaborators/friends.
+
+One can load the image from the tar file uisng *docker load * command. 
+
+```bash
+docker load < fastqc-vim.test.tar
+```
+Once image is loaded you can now use as if it is downloaded from dockerhub.
+
+### Sharing your image with DockerHub (=registry approach)
 
 Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of sharing and managing your images. Once image is in a docker registry, anyone can pull it from there. 
 
-However, this involves setting-up in account in Docker registry. Here are few steps you can do fto set-up your account:
+However, this involves setting-up an account in Docker registry. Here are few steps you can do to set-up your account:
 
 - One can create an account on the DockerHub [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
 - Click on Create Repository.
