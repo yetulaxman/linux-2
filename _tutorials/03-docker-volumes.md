@@ -3,13 +3,13 @@ title: Docker Volumes
 ---
 
 # Learning Objectives
-In scientific appplications, the usage of docker volumes is essential to persist data when working with containers. In this session, you will be able to learn:
+In scientific applications, the usage of docker volumes is essential to persist data when working with containers. In this session, you will be able to learn:
 - How docker enables `data persistence` 
 - Different volumes types and how they are used
 
 ## Description
 
-Docker images are stored as read-only layers. When we start a container from a image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once container is removed.
+Docker images are stored as read-only layers. When we start a container from an image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once the container is removed.
 
 In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
@@ -18,28 +18,28 @@ We are essentially going to look at how to manage data within your Docker contai
 - `Bind mounts` (=Mounting a Host Directory as a Data volume)
 - `Docker volumes`
 
-> **Note**: Other type of mount called, **tmpfs mount** which is stored in the host system’s memory only and are never written to the host filesystem. When the container stops, the tmpfs mount is removed, and files written there won’t be persisted. This may be your option If you do't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
+> **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host filesystem. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
 
-**Bind mounts** : When you use a bind mount option, a file or directory on the host directory is mounted into a container.  While  it is easy and connects directly to the host filesystem, non-docker processes on the Docker host  can modify them at any time. One needs to specify it during runtime.
+**Bind mounts**: When you use a bind mount option, a file or directory on the host directory is mounted into a container.  While  it is easy and connects directly to the host filesystem, non-docker processes on the Docker host  can modify them at any time. One needs to specify it during runtime.
 
 ## Bind mounts example
 
-Now that your are familiar with basic docker commands, let us try with fastqc container. For now don't worry about the context of this container if you are not familiar with fastqc software.
+Now that you are familiar with basic Docker commands, let us try with *fastqc* container. For now, don't worry about the context of this container if you are not familiar with *fastqc* software.
 
-Pull the latest Docker image for dastqc as below:
+Pull the latest Docker image of *fastqc* as below:
 
 ```
 docker pull biocontainers/fastqc:v0.11.9_cv7
 
 ````
-copy some toy examples of fastq files from Puhti supercomputer as below:
+copy few toy examples of fastq files from Puhti supercomputer as below:
 
 ```
 scp csc-username@puhti.csc.fi:/scratch/project_2003682/Trinity/*.gz .
 
 ```
 
-Run fastqc analaysis on some example files as shown below:
+Run *fastqc* analaysis on some of example files as shown below:
 
 ```
 docker run biocontainers/fastqc:v0.11.9_cv7 \
@@ -48,15 +48,14 @@ docker run biocontainers/fastqc:v0.11.9_cv7 \
 > issue:
 > Skipping '/data/reads.left.fq.gz' which didn't exist, or couldn't be read
 
-This is an issue because container file system is isolated from the host. So one has to map host's directory inside the docker container with the `-v` flag in docker run command as shown below:
+The issue due to the fact that container file system is isolated from that of host system. So one has to map the host's directory inside the docker container with the `-v` flag in `docker run command` as shown below:
 
 ``` bash
 docker run --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
 
 ```
 
-It should work fine and all resuts will be written to "host directory" that was mounted inside the container.  if you are root user this is fine, you can view the results. Sometimes it can be an issue.
-
+It should work fine and all results will be written to "host directory" that was mounted inside the container. However, pay attention to the file permisssions of newly created files by docker containers. 
 ```
 > ls -l /home/biouser/Downloads
 
@@ -69,12 +68,13 @@ It should work fine and all resuts will be written to "host directory" that was 
 -rw-rw---- 1 biouser biouser  1251148 Nov 19 14:22 reads.left.fq.gz
 -rw-rw---- 1 biouser biouser  1272939 Nov 19 14:22 reads.right.fq.gz
 ```
+You can easily realise that files written by container are owned by root. 
 
-what if you are not a root user? It will become difficult to view those files that are owned by root user.
+What if you are not a root user? It will become difficult to view those files that are owned by a root user.
 
-One tedious way is go inside the container and change the permissions of files. 
+One tedious way is to go inside the container and change the permissions of files. 
 
-Alernative option is to set Docker user when running your container:
+Alernative option is to set Docker user when starting your container:
 
 ```bash     
 docker run  --user "$(id -u):$(id -g)" --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
@@ -98,9 +98,8 @@ you can see the changes in the permissions of files written this time by fastqc 
 
 ````
 
-**A docker Volume** is where you can use a named volume to store external data. You would normally use a volume driver for this, but you can get a host mounted path using the default local volume driver. when you use a volume, a new directory is created within Docker’s storage directory on the host machine, and Docker manages that directory’s contents.
+**Docker Volume**: You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
 
-In the next section, you will get to try both of them.
 
 ## Docker Volume example
 
@@ -110,76 +109,60 @@ Volumes are entities inside docker, and can be created in three different ways.
 * By creating a named volume at container creation time with `docker container run -d -v DataVolume:/opt/app/data ...`
 * By creating an anonymous volume at container creation time with `docker container run -d -v /opt/app/data ...`
 
-First off, lets try to make a data volume called `data`:
+Let's try to make a data volume called `mydata`:
 
 ```bash
-docker volume create data
+docker volume create mydata
 ```
 
-Docker creates the volume and outputs the name of the volume created.
-
-If you run `docker volume ls` you will have a list of all the volumes created and their driver:
+Above docker command creates a volume named `mydata` and can be viewd using `docker volume ls`  command as below:
 
 ```outputs
 DRIVER              VOLUME NAME
-local               data
+local               mydata
 ```
 
-Unlike the `bind mount` we discussed above, you don't specify where the data is stored on the host. It is actually stored in the file systems managed by docker.
+Unlike `bind mount`, you don't need to specify where `mydata` directory is stored on host path. It is actually stored in host's file system managed by docker.
 
-There is a `inspect` command to get low levels details of volumes. Let’s use it against the html volume.
+if you are curious, you can use  `inspect` command to view `data`volume created by docker. 
 
 ```bash
 #command
-> docker volume inspect data
+> docker volume inspect mydata
 # output
 [
     {
         "Driver": "local",
         "Labels": {},
-        "Mountpoint": "/var/lib/docker/volumes/data/_data",
-        "Name": "data",
+        "Mountpoint": "/var/lib/docker/volumes/mydata/_data",
+        "Name": "mydata",
         "Options": {},
         "Scope": "local"
     }
 ]
 ```
 
-You can see that the `data` volumes is mounted at `/var/lib/docker/volumes/data/_data` on the host.
+You can see that `mydata` volume is mounted at `/var/lib/docker/volumes/mdata/` on the host's file system.
 
-> **Note** we will not go through the different drivers. For more info look at Dockers own [example](https://docs.docker.com/engine/admin/volumes/volumes/#use-a-volume-driver).
 
-You can now use this data volume in all containers. Try to mount it inside the fastqc container and write some file to data volume as below:
-
-```
-docker run --rm -v data:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
-```
-
-You can see that the file you created is stored in data volume as below:
+You can mount `mydata` volume in  your containers. Let's mount it inside `fastqc` container and write some file to data volume as below:
 
 ```
-sudo ls -l /var/lib/docker/volumes/data/_data
+docker run --rm -v mydata:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
+```
+
+You can actually view `text.txt` file in docker volume created  as shown below:
+
+```
+sudo ls -l /var/lib/docker/volumes/mydata/_data
 
 -rw-r--r-- 1 root root 0 Nov 20 02:32 text.txt
 
 ```
 
-## cleanup
-
-Exit out of your ubuntu server and execute a `docker container stop www` to stop the nginx container.
-
-Run a `docker container ls` to make sure that no other containers are running.
-
-```bash
-docker container ls
-CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                                                          NAMES
-```
-
-The data volume is still present, and will be there until you remove it with a `docker volume rm data` or make a general cleanup of all the unused volumes by running `docker volume prune`.
-
 ## Tips and tricks
 
-As you have seen, the `-v` flag can both create a bindmount or name a volume depending on the syntax. If the first argument begins with a / or ~/ you're creating a bindmount. Remove that, and you're naming the volume. For example:
+As you have seen, the `-v` flag can create a bind mount or named volume depending on the syntax. If the first argument begins with a / or ~/ you're creating a bindmount. Remove that, and you're naming the volume. For example:
 
 * `-v /path:/path/in/container` mounts the host directory, `/path` at the `/path/in/container`
 * `-v path:/path/in/container` creates a volume named path with no relationship to the host.
