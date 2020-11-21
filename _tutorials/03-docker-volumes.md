@@ -149,7 +149,7 @@ Let's mount data volume inside `fastqc` container and write some file to it as b
 docker run --rm -v mydata:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
 ```
 
-You can actually view `text.txt` file in docker volume created  as shown below:
+You can actually view `text.txt` file in the Docker volume now as shown below:
 
 ```
 sudo ls -l /var/lib/docker/volumes/mydata/_data
