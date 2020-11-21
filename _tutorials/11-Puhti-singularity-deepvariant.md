@@ -12,7 +12,7 @@ One needs the DeepVariant programs (https://github.com/google/deepvariant) and s
 ### Prepare deepvariant singulairty image from docker image
 Deepvariant (this example is with version 0.8) uses docker to run the binaries instead of copying binaries to local machines first.
 
-One needs get deepvariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai).
+One needs to get deepvariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai).
 
 ### Download deepvariant docker image
 
@@ -20,7 +20,7 @@ One needs get deepvariant docker image, models and test data in order to run the
 docker pull gcr.io/deepvariant-docker/deepvariant:0.8.0
 ```
 
-#### _Convert the image to singularity image on your own ( or download singularity image and test data below and chnage the file paths appropriately )_ ####
+#### _Convert docker image to singularity on your own VM ( or download singularity image and test data below and change the file paths appropriately )_ ####
 
 ```
 docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
