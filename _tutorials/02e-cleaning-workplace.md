@@ -3,7 +3,7 @@ title: Cleaning Docker images and containers
 ---
 
 # Cleaning your workspace
- As you work with containers, many containers are created, tested, and abandoned during their lifecycle. In due course of time, you may be piling up containers and images in your work space in host system. Therefore it is important identify unnecessary containers and images to clean them up every now and then from your work environment. Otherwise docker can gradually eat up the disk space of host machine.
+ As you work with containers, many containers are created, tested, and abandoned during their lifecycle. In due course of time, you may be piling up containers and images in your workspace in host system. Therefore it is important to identify unnecessary containers and images to clean them up every now and then from your work environment. Otherwise, docker can gradually eat up the disk space of host machine.
 
 ## Learning objectives
  You will learn how to clean up your unwanted containers and images that you no longer need them.
@@ -30,7 +30,7 @@ what if there are several such containers to be deleted? Well, you can list thos
 ```bash
 docker rm <container-id1> <container-id2> ...
 ```
-or you can use with `filter` option to remove exited containers:
+or you can use with a `filter` option to remove exited containers:
 
 docker rm $(docker ps -qa --filter status=exited)
 
@@ -40,7 +40,7 @@ more useful commands:
 
 ### Deleting docker images
 
-You deleted the container instance above, but not the image of hello-world itself. Real-world docker images comprises multiple layers to run code within a container. Old and outdated images can clutter your system, taking up storage space and making searches more cumbersome. In our case, you do not need e.g., hello-world image anymore so let us delete it.
+You deleted the container instance above, but not the image of hello-world itself. Real-world docker images comprise multiple layers to run code within a container. Old and outdated images can clutter your system, taking up storage space and making searches more cumbersome. In our case, you do not need e.g., hello-world image anymore so let us delete it.
 
 First of all, list all the images you have downloaded to your computer:
 
@@ -84,7 +84,7 @@ $ docker images purge
 
 ### In general
 
-When building, running and rebuilding images, you download and store a lot of layers. These layers will not be deleted, as docker takes a very conservative approach to clean up. Docker provides a `prune` command, taking all dangling containers/images/networks/volumes.
+In the process of pulling, building and running images, we often end-up downloading lot of images. These images will not be deleted as docker takes a very conservative approach to clean up. Docker provides a `prune` command, taking all dangling containers/images/networks/volumes.
 
 * `docker container prune`
 * `docker image prune`
