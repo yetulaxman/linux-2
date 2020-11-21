@@ -32,13 +32,13 @@ Finally, your friend can load the image from tar file uisng *docker load * comma
 ```bash
 docker load < fastqc-vim.test.tar
 ```
-Once image is loaded, you can now use as if it is downloaded from dockerhub. The newly loaded image can be veiwed using `docker images` command on host machine
+Once image is loaded, you can now use it as if it is downloaded from DockerHub. The newly loaded image can be viewed using `docker images` command on host machine
 
 ### Sharing your image with DockerHub (=registry approach)
 
 Sharing an image *via* docker registry such as  DockerHub (the most popular image registry, hosting hundreds of thousands of images) is an efficient way of sharing and managing your images. Once image is in a docker (public) registry, anyone can pull it from there. 
 
-However, this involves setting-up an account in Docker registry. Here are few steps you can do to set-up your account:
+However, this involves setting up an account in Docker registry. Here are few steps you can do to set-up your account:
 
 - One can create an account on the DockerHub using instructions [here](https://hub.docker.com/account/signup/). After verifying your email you are ready to go and upload your first docker image.
 - Click on Create Repository.
@@ -62,7 +62,7 @@ All images should be tagged with an appropriate prefix to repository name before
 ```bash
  docker push your-dockerhub-user-name/repo-name[:tag]
 ```
-Once the push  to repository is successfull, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new docker image on dockerhub
+Once the push  to repository is successful, your image is now available for everyone to use. Go to your profile page on the DockerHub and you should see your new docker image on DockerHub
 
-**Summary**: In this section we have explored two ways of sharing a docker image with rest of the world in the following two ways: 1) tarball approach and 2)dockerhub approach. Dockerhub approach is preferred approach and usually involves providing good documentation including dockerfile. 
+**Summary**: In this section, we have explored two ways of sharing a docker image with the rest of the world in the following two ways: 1) tarball approach and 2)dockerhub approach. Dockerhub approach is the preferred approach and usually involves providing good documentation including dockerfile. 
 
