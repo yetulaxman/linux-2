@@ -4,16 +4,16 @@ title: Attaching and updating a running containers
 ## Learning Objectives
 In this session you will be able to learn:
 - How to connect to a running container
-- How to modify content inside container
+- How to modify content inside a container
 
 ## Executing commands on running containers
 
-This is primarily used for debugging purposes and perhaps updating some programs inisde a running container. If you want to go into a container to execute some ad-hoc commands inside a running container you can use the following docker command:
+This is primarily used for debugging purposes and perhaps updating some programs inside a running container. If you want to go into a container to execute some ad-hoc commands inside a running container you can use the following docker command:
 
 ```bash 
 docker exec <options> <container> <command>
 ```
-`exec`  command starts another process inside the container. This could be a shell, or a script of some sort.
+`exec`  command starts another process inside the container. This can for example be a shell or a script of some sort.
 
 > NOTE:
 > When you attach to an already started container, you can stop it by `Ctrl+d` or detach yourself by `Ctrl+p Ctrl+q`
@@ -25,9 +25,9 @@ docker run -d  biocontainers/fastqc:v0.11.9_cv7 sleep inf
 661c6dd59d78b97f8142d67eff6b1d58fbbd42247900241e08f46abdbad19f06
 ```
 
-You can check list of containers running now in your host machine and identify the container ID corresonding to fastqc container
+You can check the list of containers running in your host machine and identify `container ID` corresonding to `fastqc` container
 
-Step into the fastqc container by executing a bash inside the container:
+Step into `fastqc` container by executing a bash inside the container:
 
 ```bash
 docker exec -it <container id> bash 
@@ -37,7 +37,7 @@ docker exec -it <661c6dd59> bash
 ```
 You are now inside of a running container. 
 
-Other way is to attach to a running  container as below:
+Another way is to use `docker attach` command to attach to a running  container as below:
 
 ```bash
 docker attach 661c6dd59
