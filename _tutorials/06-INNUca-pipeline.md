@@ -3,9 +3,9 @@ title: Running a Containerised Pipeline - INNUca Pipeline
 ---
 # Running a Containerised Pipeline
 
-We have gained some skills so far in handling docker containers.  Let's run a bioinformatics pipeline which has some real world application.
+We have gained some skills so far in handling docker containers.  Let's run a bioinformatics pipeline which has some real-world application.
 
-INNUca is a standardized, fully automated, flexible, portable and pathogen-independent pipeline for bacterial genome assembly and quality control starting from short reads. The new version of INNUca is available at [here](https://github.com/INNUENDOCON/INNUca)
+INNUca is a standardized, fully automated, flexible, portable and pathogen-independent pipeline for bacterial genome assembly and quality control starting from short reads. The new version of INNUca is available [here](https://github.com/INNUENDOCON/INNUca)
 
 ## Learning Objectives
 
@@ -13,7 +13,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
 ## Assembly of high throughput sequencing data using INNUca pipeline
 
-1. It is a good idea to clean all of your work place before start launching INNUca pipeline.
+1. It is a good idea to clean all of your workspace before start launching INNUca pipeline.
 
    Docker image size of INNUca is rather large (~ 4GB) and may take up some considerable disk space on your VirtualBox. So clean up unwanted/unused docker containers and images.
 
@@ -28,7 +28,7 @@ You will learn how to launch a real-world container and explore several subtasks
    ```
 3. Prepare data on your local machine
 
-   For the convenience of this tutorial we have provided some small datasets on CSC'S Allas object storage. You
+   For the convenience of this tutorial, we have provided some small datasets on CSC'S Allas object storage. You
    can download as below:
 
    ```bash
@@ -61,7 +61,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
 5. Explore the different modules present in INNUca pipeline.
 
-   As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting new version of INNUca as available [here](https://github.com/INNUENDOCON/INNUca)
+   As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting the latest version of INNUca as available [here](https://github.com/INNUENDOCON/INNUca)
 
 
 6. Remove docker image from you workspace once you are done with your pipeline
@@ -75,4 +75,4 @@ You will learn how to launch a real-world container and explore several subtasks
     docker rmi <INNUca_Image_ID>
    ```
 ## Conclusion
-In this session you have learned how to use a real world example of a bioinformatics container. This tutorial required using the basic skills you have learned so far. In reality, running actual pipelines may be difficult as pipelines usually require many more subtasks.
+In this session, you have learned how to use a real-world example of a bioinformatics container. This tutorial required using the basic skills you have learned so far. In reality, running actual pipelines may be difficult as pipelines usually require many more subtasks.
