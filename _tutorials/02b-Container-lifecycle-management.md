@@ -90,7 +90,7 @@ List running containers using the `ps` command as below:
 ```bash
 docker ps #command shows you all containers that are currently running.
 ```
-All containers have an **ID** and a **name**. Both the ID and name are generated every time a new container spins up with a random seed for uniqueness. If you want to assign a specific name to a container then you can use the `--name` option. That can make it easier for you to reference the container going forward.
+All containers have an **ID** and a **name**. Both the ID and name are generated randomly every time a new container is created. If you want to assign a specific name to a container then you can use the `--name` option. That can make it easier for you to reference the container later.
 
 List running all containers using `ps -a` command as below:
 
@@ -99,7 +99,7 @@ List running all containers using `ps -a` command as below:
 docker ps -a  
 
 ```
-In the above steps, we saw how to get the short container ID of all our containers using `docker ps -a`
+In the above steps, we saw how to get the shorter container IDs of all our containers using `docker ps -a`
 
 Try adding the `--no-trunc` flag to see the entire container ID:
 
@@ -115,12 +115,6 @@ docker ps -a -q
 ```
 What you see  a list of all containers that you ran. Notice that the `STATUS` column shows that these containers exited some time ago.
 
-You can also filter results with the --filter flag; for example, try filtering by exit code:
-```bash
-docker ps -a --filter "exited=1"
-docker ps -a --filter "exited=0"
-
-```
 
 You can also check whether the fetched image is available on the host system using the following command:
 
