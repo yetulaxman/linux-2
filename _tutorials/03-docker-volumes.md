@@ -69,21 +69,17 @@ It should work fine now and all results will be written to the "host directory" 
 -rw-rw---- 1 biouser biouser  1251148 Nov 19 14:22 reads.left.fq.gz
 -rw-rw---- 1 biouser biouser  1272939 Nov 19 14:22 reads.right.fq.gz
 ```
-You can easily realise that files written by container are owned by root. 
+You can easily realise that files written by container are owned by root. What if you are not a root user? It will become difficult to view those files that are owned by a root user. One tedious way is to go inside the container and change the permissions of files written by the container. 
 
-What if you are not a root user? It will become difficult to view those files that are owned by a root user.
-
-One tedious way is to go inside the container and change the permissions of files. 
-
-Alernative option is to set Docker user when starting your container:
+Alernative option though is to set Docker user when starting your container:
 
 ```bash     
-docker run  --user "$(id -u):$(id -g)" --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
+docker run  --user "$(id -u):$(id -g)" --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.right.fq.gz
 
 ```
-Above –user “$(id -u):$(id -g)“  flag in run command informs the container to run with current user id and group id which are obtained dynamically through bash command substitution.
+Above flagt with *–user “$(id -u):$(id -g)“* in `docker run command` informs the container to run with current user id and group id which are obtained dynamically through bash command substitution.
 
-you can see the changes in the permissions of files written this time by fastqc as below:
+With new command, you can see the changes in the permissions of files written this time by fastqc as below:
 
 ```bash
 -rw------- 1 biouser biouser 14905493 Nov 19 16:08  lung3e_1_subset.fq.gz
@@ -98,14 +94,12 @@ you can see the changes in the permissions of files written this time by fastqc 
 -rw-rw---- 1 biouser biouser  1272939 Nov 19 14:22  reads.right.fq.gz
 
 ````
-
 ## Docker Volumes ##
-You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage directory on the host machine and Docker manages that directory’s contents.
-
+You can use a named or anonymous volume to store external data. When you choose to use this type of volume, a new directory is created within Docker’s storage area on the host machine and Docker manages that directory’s contents.
 
 Docker volumes can be created in three different ways:
 
-* By explicitly creating it with the `docker volume create <volume_name>` command
+* By explicitly creating it with `docker volume create <volume_name>` command
 * By creating a named volume at container creation time with `docker container run -d -v DataVolume:/opt/app/data ...`
 * By creating an anonymous volume at container creation time with `docker container run -d -v /opt/app/data ...`
 
@@ -117,12 +111,13 @@ docker volume create mydata
 
 Above docker command creates a volume named `mydata` and can be viewd using `docker volume ls`  command as below:
 
-```outputs
+```
+> docker volume ls
 DRIVER              VOLUME NAME
 local               mydata
 ```
 
-Unlike `bind mount`, you don't need to specify where `mydata` directory is stored on host path. It is actually stored in host's file system managed by docker.
+Unlike `bind mount`, you don't need to specify where `mydata` directory is stored on host path. As mentioned earlier, it is actually stored in host's file system managed by docker.
 
 if you are curious, you can use  `inspect` command to view `mdata` volume created by docker. 
 
@@ -142,16 +137,13 @@ if you are curious, you can use  `inspect` command to view `mdata` volume create
 ]
 ```
 
-You can see that `mydata` volume is mounted at `/var/lib/docker/volumes/mdata/` on the host's file system.
-
-
-Let's mount data volume inside `fastqc` container and write some file to it as below:
+You can see that `mydata` volume is mounted at `/var/lib/docker/volumes/mydata/` on the host's file system. Let's mount `mydata` volume inside `fastqc` container and write some file into it as below:
 
 ```
 docker run --rm -v mydata:/data_volume biocontainers/fastqc:v0.11.9_cv7  touch /data_volume/text.txt
 ```
 
-You can actually view `text.txt` file in the Docker volume now as shown below:
+You can actually view `text.txt` file in the Docker volume now on host machine as shown below:
 
 ```
 sudo ls -l /var/lib/docker/volumes/mydata/_data
@@ -165,7 +157,7 @@ sudo ls -l /var/lib/docker/volumes/mydata/_data
 As you have seen, the `-v` flag can create a bind mount or named volume depending on the syntax. If the first argument begins with a / or ~/ you're creating a *bind mount*. Remove that, and you're naming the volume. For example:
 
 * `-v /path:/path/in/container` mounts the host directory, `/path` at the `/path/in/container`
-* `-v path:/path/in/container` creates a volume named path with no relationship to the host.
+* `-v path:/path/in/container` creates a volume named `path` to the host machine.
 
 # Conclusion
-Bind mounts and docker volumes are the Docker way of persisting data beyond the lifetime of a container. In this exercise, we saw how to use these two different types of persisting data. 
+Bind mounts and docker volumes are the Docker way of persisting data beyond the lifetime of containers. In this exercise, we saw how to use these two different types of persisting data. 
