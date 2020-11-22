@@ -5,37 +5,26 @@ title: Port-forwarding in Docker Services
 ## Learning objectives
 
 In this session you will learn how to:
-- Launch a Rstudio docker 
-- Perform port mapping (or port forwarding) rstudio docker
-- Understand different environment variables associated with the docker
+- Perform port mapping (or port forwarding) using rstudio app
+- Get familiar with running rstudio
 
 ## Port forwarding using rstudio webserver
 
-In Docker, the containers themselves can have applications running on ports. When you run a container, if you want to access the application in the container via a port number, you need to map the port number of the container to the port number of the Docker host.
+Containers are not accessible to outside world by default. if we want to access the application inside a container *via* port number, you need to map the port number of container to the port number of the Docker host.
 
+Start a new container from the ``rstudio`` image that exposes port 8787 from the container to port 8080 on your host. You will need to use the `-p` flag with `docker container run` command.
 
-Pull down `rstudio` Docker image from the Docker Hub.
+```bash
+ docker run --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
+ ```
+> NB: Mapping ports between your host machine and your containers can get confusing. The trick is to remember that **the host port always goes to the left**,
+> and **the container port always goes to the right.**. Remember it as traffic coming _from_ the host, _to_ the container.
 
-Start a new container from the ``rstudio`` image that exposes port 80 from the container to port 8087 on your host. You will need to use the ``-p`` flag with the docker container run command.
-
-> NB: Mapping ports between your host machine and your containers can get confusing.
-> Here is the syntax you will use:
->
-> ```bash
-> docker run --rm -p 8080:8787 -e PASSWORD=yourpasswordhere rocker/rstudio
-> ```
->
-> The trick is to remember that **the host port always goes to the left**,
-> and **the container port always goes to the right.**
-> Remember it as traffic coming _from_ the host, _to_ the container.
-
-Open a web browser and go to port 8080 on your host. The exact address will depend on how you're running Docker today:
-
+Open a web browser and go to port 8080 on your host as below:
 * **Native Linux** - [http://localhost:8080]
 * **Cloud server** - Make sure firewall rules are configured to allow traffic on port 8080. Open browser and use the hostname (or IP) for your server.
 
-
-If you see a webpage saying "Welcome to rstudio!" then you're done!
+Use username as "rstudio". If you see a webpage saying "Welcome to rstudio!" then you're done!
 
 
 ## Running rstudio container in the background mode
@@ -47,7 +36,5 @@ When running a webserver like rstudio, it's pretty useful to run it in the backg
 > ```
 
 **Exercise questions**:
-
-1. Browse Docker Hub for interesting images. What could be useful to you?
-2. Can you update few R packages of your choice to a running container?
+1. Can you update few R packages of your choice to a running rstudio container?
 
