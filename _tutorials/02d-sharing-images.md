@@ -11,7 +11,7 @@ Upon completion of this session, you will learn:
 
 ### Sharing Docker Images without dockerhub (=tarball approach)
 
-Sharing a docker image involves making your local image available for other people to use. Docker has * docker save* command option where you can save your image into a tar file. Let's look at our *fastqc* container into which you have installed e.g., vim editor and you wish to share the new image now with your friend.
+Sharing a docker image involves making your local image available for other people to use. Docker has *docker save* command option where you can save your image into a tar file. Let's look at our *fastqc* container into which you have installed e.g., vim editor and you wish to share the new image now with your friend.
 
 Find container id corresponding to *fastqc* container (tips: use `docker ps -a`command) and use it with the following *docker commit* command:
 
