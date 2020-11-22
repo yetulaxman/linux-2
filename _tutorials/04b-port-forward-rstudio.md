@@ -4,7 +4,7 @@ title: Port-forwarding in Docker Services
 
 ## Learning objectives
 
-In this session you will learn how to:
+In this short session you will learn how to:
 - Perform port mapping (or port forwarding) using rstudio app
 - Get familiar with running rstudio
 
