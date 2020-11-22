@@ -49,14 +49,14 @@ docker run biocontainers/fastqc:v0.11.9_cv7 \
 > issue:
 > Skipping '/data/reads.left.fq.gz' which didn't exist, or couldn't be read
 
-The above issue has arised as container file system is isolated from that of host system. So one has to mount host's directory inside the docker container with the `-v` flag in `docker run command` as shown below:
+The above issue has arised as container file system is isolated from that of host system. In order to persist data, one has to mount host's directory inside the docker container with the `-v` flag in `docker run command` as shown below:
 
 ``` bash
 docker run --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
 
 ```
 
-It should work fine and all results will be written to the "host directory" that was mounted inside the container. However, pay attention to the file permissions of newly created files by docker containers. 
+It should work fine now and all results will be written to the "host directory" that was mounted inside the container. However, pay attention to the file permissions of newly created files by docker containers. 
 ```
 > ls -l /home/biouser/Downloads
 
