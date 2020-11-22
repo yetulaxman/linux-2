@@ -35,13 +35,14 @@ docker exec -it <container id> bash
 # In this case container id is starting with "661c6dd59...." 
 docker exec -it <661c6dd59> bash
 ```
-You are now inside of a running container. 
+You are now inside of a running container and can run any available commands there.
 
-Another way is to use `docker attach` command to attach to a running  container as below:
+Another way to grab a running container is to use `docker attach` command as below:
 
 ```bash
 docker attach 661c6dd59
 ```
+Think about the difference bewteen docker exec  and  attach command.
 
 ## Installing content inside the container.
 
@@ -49,7 +50,7 @@ As a good design principle, containers only have the bare minimum installations 
 
 ```bash
 docker exec -it <661c6dd59> bash # this will let you go insisde fastqc container as mentioned above
-vi 
+vi  # you will realise that vi editor is not installed in fastqc container
 apt-get update && apt-get install vim # this installation now happens inside the container
 ```
 Then detach from the container with `Ctrl+p and Ctrl+q`.  
