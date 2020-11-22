@@ -5,7 +5,7 @@ title: Docker Volumes
 # Learning Objectives
 In scientific applications, the usage of docker volumes is essential to persist data when working with containers. In this session, you will be able to learn:
 - How docker enables `data persistence` 
-- Different volumes types and how they are used
+- Different storage types and how they are used
 
 ## Description
 
