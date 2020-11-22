@@ -97,4 +97,4 @@ If you want a general cleanup, then `docker system prune` is your friend.
 
 ## Summary
 
-We have seen how to identify the unused docker containers and images and learned how to clean them up from working space.
+We have seen how to identify the unused docker containers/images and clean them up from working space.
