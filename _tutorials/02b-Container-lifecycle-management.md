@@ -44,23 +44,22 @@ So please note that **docker create** adds a writeable container on top of your 
 
 ## Docker run interactively
 
-In previous examples, `docker run ...` command exited once a user-defined (or default) command is executed inside the container. You're probably thinking if there is a way to run more than just one command in a container. So we want command prompt back after running a command. This is possible *via* running docker containers interactively. Running images interactively is useful for testing or development. So let's try the following command:
+In previous examples, `docker run ...` command exited once a user-defined (or default) command is executed inside the container. You're probably thinking if there is a way to run more than just one command in a container. It is possible to get command prompt back by running docker containers interactively. Running images interactively is useful for testing or development. So let's try the following command:
 
 ```bash
 
 docker container run -it biocontainers/fastqc:v0.11.9_cv7 /bin/sh
 
 ```
-Here you ran the  `docker run ...` command with special flags `-it` so that it attaches you to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! Take some time to run write a useful command (e.g., get some documentation help from a software). Remember, you can write `exit` when you want to quit.
-
 *Note*: the flags `-it` are short for `-i -t` which again are the short forms of `--interactive` (Keep STDIN open) and  `--tty` (allocate a terminal).
+
+Here you ran the  `docker run ...` command with special flags `-it` so that it attaches you to an interactive tty in the container. You can run any command inside a container if it is provisioned by author of image! Take some time to run a useful command (e.g., get some documentation help from a software). Remember, you can write `exit` when you want to quit.
 
 Here is an example on how one can get help on fastqc usage:
 
 ```bash
 docker container run -it biocontainers/fastqc:v0.11.9_cv7 fastqc --help
 ```
-
 
 ## Run docker containers in the background
 
