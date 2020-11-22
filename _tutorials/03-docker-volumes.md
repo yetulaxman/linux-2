@@ -13,7 +13,7 @@ Docker images are stored as read-only layers. When we start a container from an 
 
 In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
-We are essentially going to look at how to manage data within your Docker containers. You have two different ways of mounting persistent data from your container:
+we have mainly two different ways of mounting persistent data with docker containers:
 
 - `Bind mounts` (=Mounting a Host Directory inside a container)
 - `Docker volumes`
@@ -25,9 +25,9 @@ When you use a bind mount option, a file or directory on the host directory is m
 
 #### Bind mounts example
 
-Now that you are familiar with basic Docker commands, let us try with *fastqc* container. For now, don't worry about the context of this container if you are not familiar with *fastqc* software.
+Let's use *fastqc* container as an example here. For now, don't worry about the context of this container if you are not familiar with *fastqc* software.
 
-Pull the latest Docker image of *fastqc* as below:
+Pull the latest Docker image of *fastqc* if it is not already available on host machine as below:
 
 ```
 docker pull biocontainers/fastqc:v0.11.9_cv7
@@ -49,7 +49,7 @@ docker run biocontainers/fastqc:v0.11.9_cv7 \
 > issue:
 > Skipping '/data/reads.left.fq.gz' which didn't exist, or couldn't be read
 
-The issue due to the fact that container file system is isolated from that of host system. So one has to map the host's directory inside the docker container with the `-v` flag in `docker run command` as shown below:
+The above issue has arised as container file system is isolated from that of host system. So one has to mount host's directory inside the docker container with the `-v` flag in `docker run command` as shown below:
 
 ``` bash
 docker run --rm -v /home/biouser/Downloads:/data biocontainers/fastqc:v0.11.9_cv7  fastqc /data/reads.left.fq.gz
