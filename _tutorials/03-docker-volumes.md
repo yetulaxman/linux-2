@@ -18,7 +18,7 @@ we have mainly two different ways of mounting persistent data with docker contai
 - `Bind mounts` (=Mounting a Host Directory inside a container)
 - `Docker volumes`
 
-> **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host file system. When the container stops, the tmpfs mount is removed, and files are written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
+> **Note**: Another type of mount called, **tmpfs mount** is stored in the host system’s memory only and is never written to the host file system. When the container stops, the tmpfs mount is removed, and files written there won’t be persisted. This may be your option If you don't want the data to persist either on the host machine or within the container.  This may be for security reasons or to protect the performance of the container when your application needs to write a large volume of non-persistent state data.
 
 ## Bind mounts ##
 When you use a bind mount option, a file or directory on the host directory is mounted into a container.  One needs to specify this option during runtime. While it is easy to use, non-docker processes on the Docker host can modify them at any time.
