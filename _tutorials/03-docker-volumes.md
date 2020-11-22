@@ -9,7 +9,7 @@ In scientific applications, the usage of docker volumes is essential to persist 
 
 ## Description
 
-Docker images are stored as read-only layers. When we start a container from an image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the running container is modified, the file is copied out of the underlying read-only layer and into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once the container is removed.
+Docker images are stored as read-only layers. When we start a container from an image, Docker takes the read-only image and adds a read-write layer on top (Union File System). If a file in the running container is modified, the file is copied out of the underlying read-only layer and put into the top-most read-write layer where the changes are applied. As containers are ephemeral, any changes made inside the container are lost permanently once the container is removed.
 
 In order to save (persist) data and also to share data between containers, Docker came up with the concept of volumes. Quite simply, volumes are directories (or files) that are outside of the default Union File System and exist as normal directories and files on the host filesystem.
 
