@@ -9,6 +9,7 @@ title: Running Singularity Container using Trinity Example
 #SBATCH --time=02:00:00
 #SBATCH --partition=small
 #SBATCH --account=project_xxx
+#SBATCH --cpus-per-task=5
 export TMPDIR=$PWD
 singularity exec --bind $PWD:/scratch/project_xxx/Trinity trinityrnaseq.simg \
  Trinity --seqType fq \
