@@ -33,10 +33,7 @@ docker run -d -e USERPASS=secretpassword  \
 
 ## How to access rstudio server
 
-To access the app, point your web browser at
-    http://localhost:8080/
-
-Dockerfile for RStudio Server
+To access the app, point your web browser at  http://localhost:8080/
 
 ## Perform PCA analysis
 
