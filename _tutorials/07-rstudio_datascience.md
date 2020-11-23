@@ -44,9 +44,7 @@ ir.pca <- prcomp(log.ir,
 plot(ir.pca, type = "l")
 ```
 
-Check if "ggplot2" package has been installed in this rstudio version. 
-
-# Install an R package called "ggplot2" in rstudio using the following command:
+## Install an R package called "ggplot2" in rstudio using the following command:
 
 ```
 install.packages("ggplot2", type = "source")
