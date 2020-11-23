@@ -45,7 +45,7 @@ You will learn how to launch a real-world container and explore several subtasks
    # INNUca basic command
    # You should specify where the output goes whenever there is an option to do that
    # Whenever possible use the option to specify the number of CPUs/threads to be used
-   # make sure you have read data under folder (e.g., /home/biouser/innuca/reads) and mount the folder (e.g,/home/biouser/innuca inside container)
+   # make sure you have downloaded read data inside `/home/biouser/innuca/read` folder and then mount `innuca` folder(e.g,/home/biouser/innuca) inside container
 
    docker run --rm -u $(id -u):$(id -g) -it -v /home/biouser/innuca:/data ummidock/innuca:4.2.2-02 \
     INNUca.py --inputDirectory /data/reads/ \
@@ -61,7 +61,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
 5. Explore the different modules present in INNUca pipeline.
 
-   As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting the latest version of INNUca as available [here](https://github.com/INNUENDOCON/INNUca)
+As it takes some time to run the pipeline, explore different modules available as part of this pipeline by visiting the latest version of INNUca as available [here](https://github.com/INNUENDOCON/INNUca)
 
 
 6. Remove docker image from you workspace once you are done with your pipeline
