@@ -7,7 +7,6 @@ title: GATK Tutorials
 
 - Read overview of GATK4 [here](https://software.broadinstitute.org/gatk/gatk4)
 - Quick start guide [here](https://software.broadinstitute.org/gatk/documentation/quickstart)
-- Presentations materials and recordings [here](https://software.broadinstitute.org/gatk/documentation/presentations)
 - Best Practices workflows [here](https://software.broadinstitute.org/gatk/best-practices/)
 
 ### Download GATK container from Dockerhub
