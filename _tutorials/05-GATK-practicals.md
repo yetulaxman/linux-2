@@ -43,7 +43,7 @@ wget https://a3s.fi/Softwares/data.zip
 ``` docker run -v /path/data:/gatk/data -it broadinstitute/gatk:latest ```
 
 
-### Get usage information of a tool from GATK
+### Get usage information of HaplotypeCaller from GATK
 
 ```gatk HaplotypeCaller --help```
 
@@ -89,32 +89,3 @@ wget https://a3s.fi/Softwares/data.zip
 ``` -V gendb://data/sandbox/trio.gdb_workspace \  ``` <br>
 ```-G StandardAnnotation -O /gatk/data/sandbox/trio_variants.vcf ``` <br>
 
-
-### delete all containers
-
-```sudo docker rm `sudo docker ps --no-trunc -aq` ```
-
-```docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm```
-
-### Delete stopped containers
-
-```docker rm -v $(docker ps -a -q -f status=exited)```
-
-### From within the container’s command prompt, detach and return to the host’s prompt.
-
-```ctrl+p then ctrl+q```
-
-### Getting Docker Container's IP Address from host machine:
-
-```docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)```
-
-### Useful to know
-> ***docker logs*** - gets logs from container <br>
-> ***docker events*** - gets events from container <br>
-> ***docker port*** - shows public facing port of container <br>
-> ***docker top*** - shows running processes in container <br>
-> ***docker stats*** - shows containers' resource usage statistics <br>
-> ***docker diff*** - shows changed files in the container's FS
-
-### add user to docker group  and type ID /check UID
- ```sudo usermod -aG docker $user```
