@@ -6,7 +6,7 @@ title: Running Singularity Container using Trinity Example
 
 ```
 #!/bin/bash
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=small
 #SBATCH --account=project_xxx
 #SBATCH --cpus-per-task=5
