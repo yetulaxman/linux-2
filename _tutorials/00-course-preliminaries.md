@@ -13,7 +13,7 @@ This course provides a VirtualBox image with pre-installed docker and singularit
 
 2. What is the version of Docker installed in VirtualBox environment(=host machine for docker) for course?
 ```
-docker --Version
+docker --version
 ```
 3. What is the version of Singularity installed in this VirtualBox environment?
 ```
