@@ -44,8 +44,14 @@ ir.pca <- prcomp(log.ir,
 plot(ir.pca, type = "l")
 ```
 
-## Install an R package called "ggplot2" in rstudio using the following command:
+## Install an R package called "ggplot2" in rstudio
 
+More often we need to install some R packages in rstudio to perform our analysis. Let's try to install ggplot2 package here as an example.
 ```
+# On Rstudio GUI use the following command
 install.packages("ggplot2", type = "source")
+or 
+# commandline approach
+docker exec -it <CID> bash and us the following command 
+R -e  'install.packages("ggplot2", type = "source")'
 ```
