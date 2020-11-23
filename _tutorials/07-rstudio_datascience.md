@@ -6,29 +6,21 @@ title: Serving Containerised Web Application - Rstudio Demonstration
   -  Collaboration with colleagues
   
 Learning Objectives:
-- Launching RStudio as a Docker container
+- Launching RStudio as a docker container
 - Performing a simple data analysis task using R
 
 
-## How to run
+## How to run (recap from earlier tutorial)
 
-Run using the default password from the Dockerfile build script:
+Run rstudio with default password as below:
 ```
-docker run -d -p 0.0.0.0:8080:8787 -i -t rocker/rstudio
-```
-
-In case you want to set a more secure password for rstudio, you can pass an environment variable for password as below:
-
-```
-docker run -d -p 0.0.0.0:8080:8787 -e USERPASS=secretpassword  -i -t rocker/rstudio
+docker run -d -p 8080:8787 -i -t rocker/rstudio
 ```
 
-In case you want to persist data after analysis, you can mount data directory  with `-v` flag as below:
+Launch rstudio with new password as below:
 
 ```
-docker run -d -e USERPASS=secretpassword  \
-        -v /external/directory/for/user:/home/guest \
-        -p 0.0.0.0:8080:8787 -i -t  rocker/rstudio
+docker run -d -p 8080:8787 -e USERPASS=secretpassword  -i -t rocker/rstudio
 ```
 
 ## How to access rstudio server
@@ -42,7 +34,6 @@ Principal component analysis (PCA) is a method of extracting important variables
 we will use prcomp function from `stats` package. 
 
 ```bash
-library(ggplot2)
 data(iris)
 log.ir <- log(iris[, 1:4])
 
@@ -52,17 +43,11 @@ ir.pca <- prcomp(log.ir,
 # plot method
 plot(ir.pca, type = "l")
 ```
-## Visualising PCA
 
-```bash
-library(ggbiplot)
-g <- ggbiplot(ir.pca, obs.scale = 1, var.scale = 1, 
-              groups = ir.species, ellipse = TRUE, 
-              circle = TRUE)
-g <- g + scale_color_discrete(name = '')
-g <- g + theme(legend.direction = 'horizontal', 
-               legend.position = 'top')
-print(g)
+Check if "ggplot2" package has been installed in this rstudio version. 
+
+# Install an R package called "ggplot2" in rstudio using the following command:
 
 ```
-
+install.packages("ggplot2", type = "source")
+```
