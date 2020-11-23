@@ -17,7 +17,7 @@ You will learn how to launch a real-world container and explore several subtasks
 
    Docker image size of INNUca is rather large (~ 4GB) and may take up some considerable disk space on your VirtualBox. So clean up unwanted/unused docker containers and images.
 
-2. Start pulling INNuca docker image from DockerHub
+2. Start pulling INNUca docker image from DockerHub
 
    Navigate to INNUca repository on [Dockerhub](https://hub.docker.com/r/ummidock/innuca). Explore some information such as author information, docker image and its tags, among others.
 
