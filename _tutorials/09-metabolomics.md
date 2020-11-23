@@ -138,4 +138,4 @@ dimspy merge-peaklists \
 --output results/peaklists_merged.hdf5
 
 ```
- Please note that once you exit (using control+ p and then contrl +q) and c from the container all the resulting files from above analysis should be in directory: /home/biouser/dimspy
+ Please note that once you exit (using control+ p and then contrl +q) from the container after analysis, all the resulting files from analysis should be in directory: /home/biouser/dimspy
