@@ -48,7 +48,7 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singu
 ```
 #!/bin/bash
 #SBATCH --time=00:05:00
-#SBATCH --partition=test
+#SBATCH --partition=small
 #SBATCH --account=project_xxxx
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -76,7 +76,7 @@ Please **note** that one can use gpu version of deepvariant with the following s
 ```
 #!/bin/bash
 #SBATCH --time=00:05:00
-#SBATCH --partition=gputest
+#SBATCH --partition=gpu
 #SBATCH --account=project_xxxx
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
