@@ -35,6 +35,7 @@ export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
 export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
 unset XDG_RUNTIME_DIR
 singularity build deepvariant_cpu.sif docker://gcr.io/deepvariant-docker/deepvariant:0.8.0
+exit
 ```
 Copy test data
 ```
@@ -54,14 +55,16 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singu
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4000
 
-mkdir tmp
+mkdir -p tmp
+export TMPDIR=$PWD/tmp
+
 singularity exec --bind $PWD:$PWD --bind $PWD/tmp:/tmp --bind $PWD/Deepvariant_singularity/testdata:/testdata \
 deepvariant_cpu.sif \
 /opt/deepvariant/bin/run_deepvariant \
 --model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
 --reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000" \  
---output_vcf=$PWD/output.vcf.gz  \
+--regions "chr20:10,000,000-10,010,000" \
+--output_vcf=$PWD/output.vcf.gz \
 --output_gvcf=$PWD/output.g.vcf.gz
 ```
 
@@ -83,14 +86,16 @@ Please **note** that one can use gpu version of deepvariant with the following s
 #SBATCH --mem=4000
 #SBATCH --gres=gpu:v100:1
 
-mkdir tmp
+mkdir -p tmp
+export TMPDIR=$PWD/tmp
+
 singularity exec --nv --bind $PWD:$PWD --bind $PWD/tmp:/tmp --bind $PWD/Deepvariant_singularity/testdata:/testdata \
 deepvariant_gpu.sif \
 /opt/deepvariant/bin/run_deepvariant \
 --model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
 --reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000" \  
---output_vcf=$PWD/output.vcf.gz  \
+--regions "chr20:10,000,000-10,010,000" \
+--output_vcf=$PWD/output.vcf.gz \
 --output_gvcf=$PWD/output.g.vcf.gz
 
 ```
