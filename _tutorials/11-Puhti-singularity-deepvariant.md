@@ -34,7 +34,7 @@ silence some unnecessary warnings.
 export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
 export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
 unset XDG_RUNTIME_DIR
-singularity build deepvariant_cpu.simg docker://gcr.io/deepvariant-docker/deepvariant:0.8.0
+singularity build deepvariant_cpu.sif docker://gcr.io/deepvariant-docker/deepvariant:0.8.0
 ```
 Copy test data
 ```
@@ -54,15 +54,15 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singu
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4000
 
-export TMPDIR=$PWD
-
-singularity -s exec -B $PWD:/scratch/project_xxxx/$USER/Deepvariant_singularity  \
-deepvariant_cpu.simg \
+mkdir tmp
+singularity exec --bind $PWD:$PWD --bind $PWD/tmp:/tmp --bind $PWD/Deepvariant_singularity/testdata:/testdata \
+deepvariant_cpu.sif \
 /opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/scratch/project_xxxx/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000"   --output_vcf=output.vcf.gz  \
---output_gvcf=output.g.vcf.gz
+--model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
+--reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
+--regions "chr20:10,000,000-10,010,000" \  
+--output_vcf=$PWD/output.vcf.gz  \
+--output_gvcf=$PWD/output.g.vcf.gz
 ```
 
 ### Submit the job using sbatch command
@@ -83,14 +83,14 @@ Please **note** that one can use gpu version of deepvariant with the following s
 #SBATCH --mem=4000
 #SBATCH --gres=gpu:v100:1
 
-export TMPDIR=$PWD
-
-singularity -s exec --nv  -B $PWD:/scratch/project_2003682/$USER/Deepvariant_singularity  \
-deepvariant_gpu.simg \
+mkdir tmp
+singularity exec --nv --bind $PWD:$PWD --bind $PWD/tmp:/tmp --bind $PWD/Deepvariant_singularity/testdata:/testdata \
+deepvariant_gpu.sif \
 /opt/deepvariant/bin/run_deepvariant \
---model_type=WGS   --ref=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/ucsc.hg19.chr20.unittest.fasta \
---reads=/scratch/project_2003682/$USER/Deepvariant_singularity/testdata/NA12878_S1.chr20.10_10p1mb.bam \
---regions "chr20:10,000,000-10,010,000"   --output_vcf=outputi_gpu.vcf.gz  \
---output_gvcf=output_gpu.g.vcf.gz
+--model_type=WGS   --ref=/testdata/ucsc.hg19.chr20.unittest.fasta \
+--reads=/testdata/NA12878_S1.chr20.10_10p1mb.bam \
+--regions "chr20:10,000,000-10,010,000" \  
+--output_vcf=$PWD/output.vcf.gz  \
+--output_gvcf=$PWD/output.g.vcf.gz
 
 ```
