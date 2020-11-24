@@ -26,7 +26,7 @@ Singularity image in an interactive session.
 ```
 sinteractive -i
 ```
-Choose the course project. You can use defaults for other parameters.
+Choose the course project. Set memory to 4 GB. You can use defaults for other parameters.
 
 We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will 
 silence some unnecessary warnings.
