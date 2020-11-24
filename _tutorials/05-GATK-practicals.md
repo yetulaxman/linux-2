@@ -74,7 +74,7 @@ wget https://a3s.fi/Softwares/data.zip
 ``` gatk GenomicsDBImport -V /gatk/data/sandbox/mother.g.vcf \ ``` <br>
 ``` -V /gatk/data/sandbox/father.g.vcf \ ``` <br>
 ``` -V /gatk/data/sandbox/son.g.vcf --genomicsdb-workspace-path \ ``` <br>
-```//data/sandbox/trio.gdb_workspace --intervals 20 ```
+```/gatk/data/sandbox/trio.gdb_workspace --intervals 20 ```
 
 ### Alternatively, use CombinedGVCFs command as an alternative to GenomicsDBImport
 
