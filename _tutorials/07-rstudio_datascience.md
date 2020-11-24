@@ -52,6 +52,6 @@ More often we need to install some R packages in rstudio to perform our analysis
 install.packages("ggplot2", type = "source")
 or 
 # commandline approach
-docker exec -it <CID> bash and us the following command 
+docker exec -it <CID> bash 
 R -e  'install.packages("ggplot2", type = "source")'
 ```
