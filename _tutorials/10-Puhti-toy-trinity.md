@@ -27,12 +27,19 @@ Make and save the following batch job script as e.g. trinity.sh
 #SBATCH --mem=4000
 
 export TMPDIR=$PWD
-singularity exec --bind $PWD:/scratch/project_xxx/Trinity /scratch/project_xxx/Trinity/trinityrnaseq_latest.sif \
+singularity exec --bind $PWD:$PWD --bind /scratch/project_xxx/Trinity:/data /scratch/project_xxx/Trinity/trinityrnaseq_latest.sif \
  Trinity --seqType fq \
  --max_memory 1G \
  --CPU 5 \
  --output $PWD/TrinityOut \
- --left $PWD/reads.left.fq.gz \
- --right $PWD/reads.right.fq.gz \
+ --left /data/reads.left.fq.gz \
+ --right /data/reads.right.fq.gz \
                                    
 ```
+Submit the job:
+```
+sbatch trinity.sh
+```
+
+
+
