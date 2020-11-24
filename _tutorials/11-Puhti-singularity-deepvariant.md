@@ -10,39 +10,36 @@ Run [deepvariant method](https://github.com/google/deepvariant)   to perform var
 One needs the DeepVariant programs (https://github.com/google/deepvariant) and some test data. One can download data from Pouta object storage  (or from google bucket)  Storage.
 
 ### Prepare deepvariant singulairty image from docker image
-Deepvariant (this example is with version 0.8) uses docker to run the binaries instead of copying binaries to local machines first.
 
 One needs to get deepvariant docker image, models and test data in order to run the pipeline. Additionally, other prerequisites for running deepvariant method includes 1) obtaining A reference genome in [FASTA](https://en.wikipedia.org/wiki/FASTA_format) format and its corresponding index file (.fai). 2) An aligned reads file in [BAM](http://genome.sph.umich.edu/wiki/BAM) format and its corresponding index file (.bai).
 
-### Download deepvariant docker image
+#### _Convert docker image to singularity_ ####
 
+Log in to Puhti using your CSC credentials
+
+Go to your subdirectory in the project scratch directory (created in last exercise):
 ```
-docker pull gcr.io/deepvariant-docker/deepvariant:0.8.0
+cd /scratch/project_xxxx/$USER
 ```
-
-#### _Convert docker image to singularity on your own VM ( or download singularity image and test data below and change the file paths appropriately )_ ####
-
+Singularity is only available in compute nodes. We can use **sinteractive** to build the 
+Singularity image in an interactive session.
 ```
-docker tag gcr.io/deepvariant-docker/deepvariant:0.8.0 localhost:5000/deepvariant:0.8.0
-docker run -d -p 5000:5000 --restart=always --name registry registry:2
-docker push localhost:5000/deepvariant:0.8.0
-SINGULARITY_NOHTTPS=1 singularity build deepvariant_cpu.simg docker://localhost:5000/deepvariant:0.8.0
-
-#or 
-# wget https://object.pouta.csc.fi/pilot_projects/Deepvariant_singulairty.zip
-
+sinteractive -i
 ```
-> note: if there are issues due to mismatching between Sha256 digests while building singularity image, one may use `docker system prune -a` command to fix it.
+Choose the course project. You can use defaults for other parameters.
 
-Once you have singularity image, you can copy singularity image to a directory under your username on scratch drive (e.g., /scratch/project_xxxx/$USER/Deepvariant_singularity) using the following command:
-
+We want to use LOCAL_SCRATCH for Singularity tmp and cache. Unsetting XDG_RUNTIME_DIR will 
+silence some unnecessary warnings.
 ```
-scp deepvariant_cpu.simg username@puhti.csc.fi:/scratch/project_xxxx/$USER/Deepvariant_singularity
+export SINGULARITY_TMPDIR=$LOCAL_SCRATCH
+export SINGULARITY_CACHEDIR=$LOCAL_SCRATCH
+unset XDG_RUNTIME_DIR
+singularity build deepvariant_cpu.simg docker://gcr.io/deepvariant-docker/deepvariant:0.8.0
 ```
-You can now login to puhti and  copy testdata for deepvariant analysis as below:
-
+Copy test data
 ```
-cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  /scratch/project_xxxx/$USER/Deepvariant_singularity
+mkdir Deepvariant_singularity 
+cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  Deepvariant_singularity
 
 ```
 
@@ -53,6 +50,9 @@ cp -fr /scratch/project_xxxx/Deepvariant_singularity/testdata  /scratch/project_
 #SBATCH --time=00:05:00
 #SBATCH --partition=test
 #SBATCH --account=project_xxxx
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=4000
 
 export TMPDIR=$PWD
 
@@ -77,8 +77,11 @@ Please **note** that one can use gpu version of deepvariant with the following s
 #!/bin/bash
 #SBATCH --time=00:05:00
 #SBATCH --partition=gputest
+#SBATCH --account=project_xxxx
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=4000
 #SBATCH --gres=gpu:v100:1
-#SBATCH --account=project_2003682
 
 export TMPDIR=$PWD
 
