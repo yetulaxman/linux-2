@@ -2,7 +2,7 @@
 Here are few frequently asked questions:
 
 ### Where does docker store all of its files?
-use docker info  command to spot docker root dir 
+use `docker info`  command to spot docker root dir 
 ### How to change the default folder of docker 
 ```
 docker info # to get the current location of docker root dir
