@@ -24,5 +24,4 @@ ls -l /mnt/docker-base
 ```
 
 ## how do we ensure the uniqueness of image while pulling from a registry?
-Tags
-digests
+Tags are more frequent way to ensure the unqiuess of images.  However, under one tag it is possible to have fewer digests, each one is content-addressable identifier. 
