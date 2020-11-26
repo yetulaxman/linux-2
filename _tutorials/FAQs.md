@@ -22,3 +22,7 @@ docker info # check again new root dir of docker
 docker run hello-world # perform some test
 ls -l /mnt/docker-base
 ```
+
+## how do we ensure the uniqueness of image while pulling from a registry?
+Tags
+digests
