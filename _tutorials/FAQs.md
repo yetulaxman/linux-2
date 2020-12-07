@@ -1,5 +1,5 @@
 
-## This section is work in progress
+## (WIP) This section is in progress
 
 ### Where does docker store all of its files on host machine?
 use `docker info`  command to spot docker root dir 
