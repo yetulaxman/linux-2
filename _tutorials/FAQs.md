@@ -1,7 +1,7 @@
 
-Here are few frequently asked questions:
+## This section is work in progress
 
-### Where does docker store all of its files?
+### Where does docker store all of its files on host machine?
 use `docker info`  command to spot docker root dir 
 ### How to change the default folder of docker workspace?
 ```
@@ -24,7 +24,7 @@ ls -l /mnt/docker-base
 ```
 
 ## how do we ensure the uniqueness of image while pulling from a registry?
-Tags are more frequent way to ensure the unqiuess of images.  However, under one tag it is possible to have fewer digests, each one is content-addressable identifier. 
+Tags are more frequent way to ensure the unqiuess of images. While  most application software are updated usually with new tag, it is possible to fewer digests under one tag. Digest is a content-addressable identifier. Image reference with digest value provides better uniqueness in production setting.
 
 ## how can you convert a docker image (e.g.,fastx software) on bioconda environment to singularity container?
 
