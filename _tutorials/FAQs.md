@@ -2,7 +2,7 @@
 ## (WIP) This section is in progress
 
 ### Where does docker store all of its files on host machine?
-use `docker info`  command to spot docker root dir 
+use `docker info`  command to spot docker root directory 
 ### How to change the default folder of docker workspace?
 ```
 docker info # to get the current location of docker root dir
