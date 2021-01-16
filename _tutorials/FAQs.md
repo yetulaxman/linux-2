@@ -45,7 +45,7 @@ Use the following command to convert a docker image to singularity using tag (he
 
 ```
 
-singularity build fastx_toolkit.sif \ docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
+singularity build fastx_toolkit.sif docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
 
 ```
 
