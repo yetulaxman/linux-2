@@ -92,7 +92,7 @@ ls -l work/**/*/.command*
 ```
 
 ## Tutorial 2: A real-world example with `fastqc` software
-In this example,  let's use some real example that involves working with samples from sequencing experiments. We specifically learn :
+In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn :
 - Declaring (and overriding default) pipeline parameters
 - Moving results from analysis to a convenient folder
 - Basic nextflow channels and operations (at theoretical level)
@@ -116,7 +116,7 @@ Here is an example to declare input files for *fastqc* software inside the scrip
 params.reads = "$baseDir/data/*_{1,2}.fq.gz"
 input_ch = Channel.fromPath(params.reads)
 ```
-One can also override the default parameter values (here files inside "$baseDir/data/" directory) by passing them in Nextflow commandline when executing script as shown below:
+One can also override the default parameter values (here files inside `$baseDir/data/` directory) by passing them in Nextflow commandline when executing script as shown below:
 
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
@@ -126,9 +126,7 @@ Please note that *data2* folder has different samples (i.e., lymphnode4a samples
 ```
 ls -l $PWD/work/**/*
 ```
->NB: <br>
->single dash (`-`): The single dash parameters are from a small, language defined subset. <br>
->double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
+> **_NB_**: single dash (`-`): The single dash parameters are from a small, language defined subset. double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
 
 ### Moving results to a convenient directory
 
@@ -421,8 +419,8 @@ source activate nextflow
 
 # Nextflow command here
 nextflow run nf-core/atacseq -r 1.2.1 -profile test,singularity -resume
-```
-copy and paste the above script to a file named "atacseq.sh" and replace your project number with "project_xxxx" in slurm directives. 
+````
+copy and paste the above script to a file named `atacseq.sh` and replace your project number with `project_xxxx` in slurm directives. 
 
 Finally, submit your job 
 
@@ -449,4 +447,4 @@ unset XDG_RUNTIME_DIR
 singularity build fastx_toolkit.sif docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
 ```
 
-Once above script is successfully executed, there should be singularity image named `fastx_toolkit.sif` in current folder
+Once above script is successfully executed, there should be  a singularity image named `fastx_toolkit.sif` in current folder
