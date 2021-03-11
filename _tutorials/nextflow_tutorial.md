@@ -3,7 +3,7 @@ title: Nextflow(101) for Puhti users
 author: CSC Training
 ---
 # Nextflow (101) tutorial for  Puhti users 
-Running and managing workflows for bioinformatics applications can be challening as the workflows usually are fragile eco-systems of several sofwtare tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific pipelines. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
+Running and managing workflows for bioinformatics applications can be challening as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific pipelines. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
  - Workflow management
  - Reproducibility
  - Portability
@@ -369,7 +369,7 @@ profiles {
 }
 ```
 
-In this case, you  can run any script as below: 
+In this case, you can run a nextflow script as below: 
 
 ```
 nextflow run <nextflow_script> -profile puhti
