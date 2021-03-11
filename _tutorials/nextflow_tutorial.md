@@ -34,7 +34,6 @@ Login to Puhti using `ssh` command followed by making a work directory named `ne
 ```nextflow
 ssh <your_csc_username>@puhti.csc.fi
 mkdir -p  /scratch/project_xxxx/$USER/nextflow_tutorial && cd /scratch/project_xxxx/$USER/nextflow_tutorial 
-
 ```
 
 ### Start an interactive session on Puhti
