@@ -1,5 +1,6 @@
 ---
-title: Nextflow (101) tutorial for  Puhti users
+title: Nextflow(101) for Puhti users
+author: CSC Training
 ---
 
 
