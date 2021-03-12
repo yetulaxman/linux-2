@@ -55,7 +55,7 @@ wget https://a3s.fi/nextflow/tutorial_demo.tar.gz
 tar -xavf tutorial_demo.tar.gz && rm tutorial_demo.tar.gz
 ```
 
-There are few directories inside "tutorial_demo" folder including "hello_demo" folder which  has hello-world script (ending with `.nf`) for running hello-world demo. Execute the script by entering the following command on your interactive Puhti terminal: 
+After unpacking `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which  has hello-world script (ending with `.nf`) for running hello-world demo. Execute the script by entering the following command on your interactive Puhti terminal: 
 
 ```nextflow
 cd hello_demo
