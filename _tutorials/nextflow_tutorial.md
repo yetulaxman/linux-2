@@ -48,7 +48,7 @@ source activate nextflow
 ## Tutorial 1: Hello-world example 
 In this Hello-world tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files.
 
-Download course material from CSC's `allas` object storage as shown below:
+Download course material from CSC's `[allas](https://docs.csc.fi/data/Allas/)` object storage as shown below:
 
 ```bash
 wget https://a3s.fi/nextflow/tutorial_demo.tar.gz
