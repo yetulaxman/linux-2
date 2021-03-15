@@ -3,18 +3,18 @@ title: Nextflow(101) for Puhti users
 author: CSC Training
 ---
 # Nextflow (101) tutorial for  Puhti users 
-Running and managing workflows for bioinformatics applications can be challening as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific pipelines. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
+Running and managing workflows for bioinformatics applications can be challenging as the workflows usually are fragile eco-systems of several software tools and their dependencies. We therefore need a workflow manager like Nextflow to manage our scientific pipelines. [Nextflow](https://www.nextflow.io/docs/latest/index.html) is a [groovy-based](https://en.wikipedia.org/wiki/Apache_Groovy) language for expressing the entire workflow in a single script and also facilitates the ease of working with workflows by rendering several useful features as mentioned below: 
  - Workflow management
  - Reproducibility
  - Portability
  - Scalability
- - Parallelisation
+ - Parallelization
  - Easy prototyping 
  - Partial resumption
 
 ## Learning Objectives
 Upon completion of this tutorial, you will be able to learn: 
-- The very basic understanding of how Nextflow works
+- The basic understanding of how Nextflow works
 - The deployment of Nextflow scripts on Puhti supercomputer
 - How to use Singularity containers with Nextflow for your analysis
 
@@ -27,7 +27,7 @@ Upon completion of this tutorial, you will be able to learn:
 - [(Bonus) Converting a bioconda package into singularity image](#bonus-converting-a-bioconda-package-into-singularity-image)
 
 ## Set up your work environment for tutorials on Puhti
-This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either training or user account at CSC for using Puhti supercomputer.
+This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either a training or user account at CSC for using Puhti supercomputer.
 
 Login to Puhti using `ssh` command followed by making a work directory named `nextflow_tutorial` on *scratch* drive as shown below: 
 
@@ -46,22 +46,22 @@ source activate nextflow
 ```
 
 ## Tutorial 1: Hello-world example 
-In this Hello-world tutorial, your will learn how to run a Nextflow script as well as understand the location of resulting files.
+In this Hello-world tutorial, you will learn how to run a Nextflow script as well as understand the location of resulting files.
 
-Download course metarial from CSC's `allas` object storage as shown below:
+Download course material from CSC's `allas` object storage as shown below:
 
 ```bash
 wget https://a3s.fi/nextflow/tutorial_demo.tar.gz
 tar -xavf tutorial_demo.tar.gz && rm tutorial_demo.tar.gz
 ```
 
-After unpacking `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which  has hello-world script (ending with `.nf`) for running hello-world demo. Execute the script by entering the following command on your interactive Puhti terminal: 
+After unpacking the `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which has hello-world script (ending with `.nf`) for running the hello-world demo. Execute the script by entering the following command on your interactive Puhti terminal: 
 
 ```nextflow
 cd hello_demo
 nextflow run hello-world.nf
 ```
-This script defines one process named `sayHello`. This process takes set of greetings from different languages and then writes each one to a separate file.
+This script defines one process named `sayHello`. This process takes a set of greetings from different languages and then writes each one to a separate file.
 
 The resulting terminal output would look similar to the text shown below:
 
@@ -79,11 +79,11 @@ Execute the following command on your terminal:
 ```
 ls -l work/**/*
 ```
-You can clearly see that there is a separate file created under each directory. 
+You can see that there is a separate file created under each directory. 
 
 #### What kind of hidden files exist inside $PWD/work directory?
 
-Hidden files are present in each process directory and these files are quite useful when you want to debug a failed process.
+Hidden files are present in each process directory, and the files are very useful when you want to debug a failed process.
 
 you can find the hidden files as shown below:
 
@@ -95,9 +95,9 @@ ls -l work/**/*/.command*
 In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn :
 - Declaring (and overriding default) pipeline parameters
 - Moving results from analysis to a convenient folder
-- Basic nextflow channels and operations (at theoretical level)
+- Basic Nextflow channels and operations (at a theoretical level)
 
-`fastqc_demo` folder has necessary files for running this tutorial. You can run nextflow script for *fastqc* analysis on your interactive terminal by issuing the following command:
+`fastqc_demo` folder has the necessary files for running this tutorial. You can run Nextflow script for *fastqc* analysis on your interactive terminal by issuing the following command:
 
 ```nextflow
 cd fastqc_demo
@@ -108,7 +108,7 @@ nextflow run fastqc.nf
 *tip*: check $PWD/work directory as shown in previous example
 
 ### Passing parameters to nextflow pipeline
-Nextflow parameters inside a script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on commandline by prefixing the parameter name with a double dash character (e.g., --reads). 
+Nextflow parameters inside a script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the commandline by prefixing the parameter name with a double dash character (e.g., --reads). 
  
 Here is an example to declare input files for *fastqc* software inside the script (NOT for running the command on terminal):
 
@@ -121,23 +121,23 @@ One can also override the default parameter values (here files inside `$baseDir/
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which was used earlier by default. You can see that *fastqc* analysis was performed on new set of samples now as shown below:  
+Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which was used earlier by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
 
 ```
 ls -l $PWD/work/**/*
 ```
-> **_NB_**: single dash (`-`): The single dash parameters are from a small, language defined subset. double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
+> **_NB_**: single dash (`-`): The single dash parameters are from a small, nextflow-defined subset. double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
 
 ### Moving results to a convenient directory
 
-Checking resulting files from a workflow analysis as shown above is quite tedious especially when there are several processes inside a workflow. Nextflow provides an easy way to collect resluting files to a convenient place using a special directive, *publishDir*.
+Checking resulting files from a workflow analysis as shown above is quite tedious especially when there are several processes inside a workflow. Nextflow provides an easy way to collect resulting files to a convenient place using a special directive, *publishDir*.
 
 Open *fastqc.nf* script in any text editor and uncomment (= remove double slashes) the following line:
 
 ```nextflow
 // publishDir 'results' 
 ```
-and then run pipeline again. But this time, let's  use '-resume' flag as we don't need to perform quality control analysis again so that actual analysis is skipped due to the capability of nextflow to track cached results from previous analysis.  
+and then run pipeline again. But this time, let's use '-resume' flag as we don't need to perform quality control analysis again so that actual analysis is skipped due to the capability of nextflow to track cached results from the previous analysis.  
 
 ```nextflow
 nextflow run fastqc.nf -resume
@@ -172,12 +172,12 @@ In this tutorial, you will nextflow script that uses
  - visualisation capabilities
  - batch job script to deploy a pipeline on Puhti
 
-Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular  containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelised access which CSC users *don't* have it on Puhti.
+Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users *don't* have on Puhti.
 
 When working with Nextflow scripts using containers, pay attention to the following things:
-- Nextflow takes care of mounting work directory for that process on container image. Other files/directories needs to mounted through run time options if needed.
-- Required inuput files are staged in and out automatically via Nextflow mechanisms.
-- Nextflow process gets executed in container environment
+- Nextflow takes care of mounting work directory for that process on container image. Other files/directories need to mounted through run time options if needed.
+- Required input files are staged in and out automatically via Nextflow mechanisms.
+- Nextflow process gets executed in a container environment
 
 ### Launch an example nextflow application 
 
@@ -192,7 +192,7 @@ git clone https://github.com/iarcbioinfo/data_test
 ```
 
 ### Using containers with nextflow *via* commandline option
-Here is a simple example syntax (for alternative approach, see *profiles* section below) to use docker/singularity containers: 
+Here is a simple example syntax (for an alternative approach, see *profiles* section below) to use docker/singularity containers: 
 
 ```bash
 ## For Docker
@@ -206,7 +206,7 @@ Because of the way how nextflow works with containers, you **don't** need to hav
 
 ### Using containers with nextflow *via* profiles
 
-We often need to add some other attibutes besides a container flag as mentioned above. This is accomplished using *profiles*. A profile is a set of configuration attributes that can be activated/chosen when launching a pipeline execution.  When a workflow script is launched, Nextflow first looks for a file named `nextflow.config` in the current directory and in the script base directory (if it is not the same as the current directory). Finally it checks for the file $HOME/.nextflow/config. Configuration files can contain the definition of one or more profiles. 
+We often need to add some other attributes besides a container flag as mentioned above. This is accomplished using *profiles*. A profile is a set of configuration attributes that can be activated/chosen when launching a pipeline execution.  When a workflow script is launched, Nextflow first looks for a file named `nextflow.config` in the current directory and in the script base directory (if it is not the same as the current directory). Finally, it checks for the file $HOME/.nextflow/config. Configuration files can contain the definition of one or more profiles. 
 
 Example profiles are shown below:
 
@@ -341,7 +341,7 @@ sbatch nf_coverage.sh # start a fresh job
 ```
 ###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended)
 
-One of the advantages of nextflow is that the actual pipeline functional logic is separated from the excution environment. The same script can be executed in different environment by changing execution environment. Nextflow uses the `executor` information to decide where the job should run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf.
+One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can be executed in different environment by changing the execution environment. Nextflow uses the `executor` information to decide where the job should run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf.
 
 Default executor is `local` where the  process is run in your computer/localhost where Nextflow is launched.  Other executors include:
 
@@ -350,7 +350,7 @@ Default executor is `local` where the  process is run in your computer/localhost
 - Amazon (AWS Batch)
 - SGE (Sun Grid Engine)
 
-To enable the SLURM executor on Puhti, simply set  process.executor property to slurm value in the `nextflow.config` file as shown below:
+To enable the SLURM executor on Puhti, simply set  `process.executor` property to slurm value in the `nextflow.config` file as shown below:
 
 ```
 profiles {
@@ -430,7 +430,7 @@ sbatch atacseq.sh
 
 ## (Bonus) Converting a bioconda package into singularity image
 
-We recommend using singularity containers over conda environment to work with nextflow pipelines on Puhti. You can convert the most of bioconda packges into singualrity images. You can for example take a look at *tastx_toolkit* package as available on [bioconda page](https://bioconda.github.io/recipes/fastx_toolkit/README.html). In order to convert it into a singularity image, you need to know the *url* of image from the docker pull command which in this case appears as below:
+We recommend using singularity containers over conda environment to work with nextflow pipelines on Puhti. You can convert the most of bioconda packges into singularity images. You can for example take a look at *tastx_toolkit* package as available on [bioconda page](https://bioconda.github.io/recipes/fastx_toolkit/README.html). In order to convert it into a singularity image, you need to know the *url* of image from the docker pull command which in this case appears as below:
 
 ```
 docker pull quay.io/biocontainers/fastx_toolkit:<tag>   # url: docker://quay.io/biocontainers/fastx_toolkit:<tag>
