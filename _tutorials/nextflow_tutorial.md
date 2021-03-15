@@ -172,7 +172,7 @@ In this tutorial, you will learn nextflow script that uses
  - visualisation capabilities
  - batch job script to deploy a pipeline on Puhti
 
-Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users *don't* have on Puhti.
+Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have on Puhti.
 
 When working with Nextflow scripts using containers, pay attention to the following things:
 - Nextflow usually takes care of mounting work directory for that process on container image. Other files/directories need to be mounted through run time options if needed.
