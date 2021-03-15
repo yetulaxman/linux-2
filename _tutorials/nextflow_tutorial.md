@@ -46,7 +46,7 @@ source activate nextflow
 ```
 
 ## Tutorial 1: Hello-world example 
-In this Hello-world tutorial, you will learn how to run a Nextflow script as well as understand the location of resulting files.
+In this Hello-world tutorial, you will learn how to run a Nextflow script as well as understand the default location of resulting output files.
 
 Download course material from CSC's `allas` object storage as shown below:
 
@@ -55,7 +55,7 @@ wget https://a3s.fi/nextflow/tutorial_demo.tar.gz
 tar -xavf tutorial_demo.tar.gz && rm tutorial_demo.tar.gz
 ```
 
-After unpacking the `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which has hello-world script (ending with `.nf`) for running the hello-world demo. Execute the script by entering the following command on your interactive Puhti terminal: 
+After unpacking the `tutorial_demo.tar.gz` file, you can see `hello_demo` folder which has hello-world script (ending with `.nf`) for running this demo. Execute the script by entering the following command on your interactive Puhti terminal: 
 
 ```nextflow
 cd hello_demo
@@ -73,17 +73,17 @@ executor >  local (5)
 ```
 #### Where are the output files created from the above hello-world example?
 
-The hexadecimal number, like e2/9aa8c8, identifies the unique process execution and the number is also the prefix of the directory where `sayHello` process is executed. You can inspect the files produced by above script by changing to the directory $PWD/work.
+The hexadecimal number, like e2/9aa8c8, identifies the unique process execution and the number is also the prefix of the directory where `sayHello` process is executed. You can inspect the files produced by above script by changing to directory $PWD/work.
 
 Execute the following command on your terminal:
 ```
 ls -l work/**/*
 ```
-You can see that there is a separate file created under each directory. 
+You can see that there is a separate output file created under each directory. 
 
 #### What kind of hidden files exist inside $PWD/work directory?
 
-Hidden files are present in each process directory, and the files are very useful when you want to debug a failed process.
+Hidden files are present in each process directory, and the files are very handy when you want to debug a failed process.
 
 you can find the hidden files as shown below:
 
@@ -92,7 +92,7 @@ ls -l work/**/*/.command*
 ```
 
 ## Tutorial 2: A real-world example with `fastqc` software
-In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn :
+In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn:
 - Declaring (and overriding default) pipeline parameters
 - Moving results from analysis to a convenient folder
 - Basic Nextflow channels and operations (at a theoretical level)
@@ -110,18 +110,18 @@ nextflow run fastqc.nf
 ### Passing parameters to nextflow pipeline
 Nextflow parameters inside a script are declared by prepending to a variable name with the prefix *params*, separated by dot character (e.g., params.reads). Parameters thus specified in script are used by default. The parameter can also be specified on the commandline by prefixing the parameter name with a double dash character (e.g., --reads). 
  
-Here is an example to declare input files for *fastqc* software inside the script (NOT for running the command on terminal):
+Here is an example to declare parameters (here, input files) to *fastqc* software inside Nextflow script (NOT for running the command on terminal):
 
 ```nextflow
 params.reads = "$baseDir/data/*_{1,2}.fq.gz"
 input_ch = Channel.fromPath(params.reads)
 ```
-One can also override the default parameter values (here files inside `$baseDir/data/` directory) by passing them in Nextflow commandline when executing script as shown below:
+One can also override parameter values (here files inside `$baseDir/data/` directory) in nextflow script by passing the parameters in commandline when executing script as shown below:
 
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which was used earlier by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
+Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which was used by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
 
 ```
 ls -l $PWD/work/**/*
@@ -147,12 +147,12 @@ Once the script is run successfully, you can check the files:
 ```
 ls -l results/
 ````
-By using "-resume" flag, the resulting files from previous analysis are simply copied to folder 'results' directory.
+By using `-resume` flag, the resulting files from previous analysis are simply copied to folder 'results' directory.
 
 ### Understanding nextflow channels and operators 
-We don't spend time here learning different ways of creating channels and operators. But it is worth noting that there are different chanels and operators as core features if nextflow. [Channels](https://www.nextflow.io/docs/latest/channel.html) are like streams of files (or parameter values) you put through your pipeline. Nextflow channels support different data types like `file`, `val` annd `set`
+We don't spend time here learning different ways of creating channels and operators. But it is worth noting that there are different chanels and operators as core features if nextflow. [Channels](https://www.nextflow.io/docs/latest/channel.html) are like streams of files (or parameter values) you put through your pipeline and also support different data types like `file`, `val` annd `set`
 
-Here are few examples on how one can create channels in the script:
+Here are few examples on how one can create channels in nextflow script:
 ```nextflow
 Channel.create(); Channel.empty; Channel.fromPath()
  ```
@@ -166,7 +166,7 @@ join, merge   fork          view
 
 ## Tutorial 3: Nextflow pipeline with containers and other useful features
 
-In this tutorial, you will nextflow script that uses 
+In this tutorial, you will learn nextflow script that uses 
  - singularity container
  - user-defined profiles
  - visualisation capabilities
@@ -175,7 +175,7 @@ In this tutorial, you will nextflow script that uses
 Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users *don't* have on Puhti.
 
 When working with Nextflow scripts using containers, pay attention to the following things:
-- Nextflow takes care of mounting work directory for that process on container image. Other files/directories need to mounted through run time options if needed.
+- Nextflow usually takes care of mounting work directory for that process on container image. Other files/directories need to be mounted through run time options if needed.
 - Required input files are staged in and out automatically via Nextflow mechanisms.
 - Nextflow process gets executed in a container environment
 
