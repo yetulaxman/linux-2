@@ -24,7 +24,7 @@ Upon completion of this tutorial, you will be able to learn:
 - [Tutorial 2: A real-world example with `fastqc` software](#tutorial-2-a-real-world-example-with-fastqc-software)
 - [Tutorial 3: Tutorial 3: Nextflow pipeline with containers and other useful features](#tutorial-3-nextflow-pipeline-with-containers-and-other-useful-features)
 - [(Bonus) Tutorial 4: Running a nf-core pipeline](#bonus-tutorial-4-running-a-nf-core-pipeline)
-- [(Bonus) Converting a bioconda package into singularity image](#bonus-converting-a-bioconda-package-into-singularity-image)
+- [(Bonus) Converting a bioconda docker image into singularity image](#bonus-converting-a-bioconda-docker-image-into-singularity-image)
 
 ## Set up your work environment for tutorials on Puhti
 This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either a training or user account at CSC to access Puhti.
