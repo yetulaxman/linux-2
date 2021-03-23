@@ -26,6 +26,8 @@ Upon completion of this tutorial, you will be able to learn:
 - [(Bonus) Tutorial 4: Running a nf-core pipeline](#bonus-tutorial-4-running-a-nf-core-pipeline)
 - [(Bonus) Converting a bioconda package into singularity image](#bonus-converting-a-bioconda-package-into-singularity-image)
 
+## You can ask your questions via [HackMD](https://hackmd.io/FQUb6gzBQA6TUgw2le3DAw)
+
 ## Set up your work environment for tutorials on Puhti
 This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either a training or user account at CSC to access Puhti.
 
@@ -150,7 +152,7 @@ ls -l results/
 By using `-resume` flag, the resulting files from previous analysis are simply copied to folder 'results' directory.
 
 ### Understanding nextflow channels and operators 
-We don't spend time here learning different ways of creating channels and operators. But it is worth noting that there are different chanels and operators as core features if nextflow. [Channels](https://www.nextflow.io/docs/latest/channel.html) are like streams of files (or parameter values) you put through your pipeline and also support different data types like `file`, `val` annd `set`
+We don't spend time here learning different ways of creating channels and operators. But it is worth noting that there are different chanels and operators as core features of nextflow. [Channels](https://www.nextflow.io/docs/latest/channel.html) are like streams of files (or parameter values) you put through your pipeline and also support different data types like `file`, `val` annd `set`
 
 Here are few examples on how one can create channels in nextflow script:
 ```nextflow
@@ -172,7 +174,7 @@ In this tutorial, you will learn nextflow script that uses
  - visualisation capabilities
  - batch job script to deploy a pipeline on Puhti
 
-Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have on Puhti.
+Containerised applications are highly portable and reproducible for scientific applications. Fortunately, Nextflow smoothly supports integration with popular containers ( e.g., [Docker](https://www.nextflow.io/docs/latest/docker.html) and [Singularity](https://www.nextflow.io/docs/latest/singularity.html)) to provide a light-weight virtualisation layer for running software applications. You can either create your own Docker/Singularity image or download pre-existing one from a container registry. Please note that you can only work with *Singularity* containers on Puhti as *docker* containers require prevelized access which CSC users **don't** have it on Puhti.
 
 When working with Nextflow scripts using containers, pay attention to the following things:
 - Nextflow usually takes care of mounting work directory for that process on container image. Other files/directories need to be mounted through run time options if needed.
@@ -231,7 +233,7 @@ profiles {
 
 open `nextflow.config` file in the current directory and copy and paste above script inside the file.
 
-You can then launch nf_coverage workflow with defined profiles as shown below:
+You can then launch nf_coverage workflow (from `nf_coverage_demo` folder) with defined profiles as shown below:
 
 ```bash
 nextflow run plot_coverage.nf  \
@@ -240,14 +242,14 @@ nextflow run plot_coverage.nf  \
           --bed data_test/BED/TP53_exon2_11.bed
 ```
 
-### Visualising nextflow pipeline
-Nextflow supports several visualisation tools:
+### Reporting and Visualising nextflow pipeline
+Nextflow provides options for reporting and visualisation your pipeline using the following nextflow flags:
 ```bash
 -with-dag
 -with-timeline
 -with-report
 ```
-You can either use the flags in commandline or create profile for each visualisation feature as discussed below:
+You can either use the flags in commandline or create profile for each feature as discussed below:
 
 ####  `dag`
 Either use the following flag (-with-dag) when launching script as below:
@@ -332,16 +334,39 @@ nextflow run plot_coverage.nf  \
        --bam_folder data_test/BAM/BAM_multiple/  \
        --bed data_test/BED/TP53_exon2_11.bed 
 ```
-copy and paste above script to a file (nf_coverage.sh), replace with course project number in slurm directives and submit sbatch script to Puhti cluster:
+copy and paste above script to a file (nf_coverage.sh), replace project number with correct one in slurm directives and finally submit sbatch script to Puhti cluster:
 
 ```
 rm -fr work/    # remove previous analysis results
 rm *.html *.dot *.txt # remove these visualisation files if any
 sbatch nf_coverage.sh # start a fresh job
 ```
-###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended)
 
-One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can be executed in different environment by changing the execution environment. Nextflow uses the `executor` information to decide where the job should run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf.
+### Viewing analysis results on Puhti
+
+Copy all nextflow report and visualisation files from working directory (i.e., .html, .dot and .txt files) to home directory to view them from your local browser.
+
+```
+cp *.html *.dot *.txt > $HOME/
+```
+
+One has to open a port on Puhti login node to access files on your puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. Open a new terminal on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
+
+```
+ssh -L $port:localhost:$port <your_csc_username>puhti.csc.fi  # e.g., with port number: 7077 
+                                                              # ssh -L 7077:localhost:7077 <username>puhti.csc.fi 
+```
+and then run the following command (also use the same port value that you have slected before) on the login node:
+```
+python3 -m http.server $port # with port number: 7077 -> python3 -m http.server 7077
+```
+
+Point your browser to http://localhost:$port (remember to replace your port number with *$port*) on your local machine. You can now view all files available on your Puhti home directory. 
+
+
+###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended at the moment but good to know)
+
+One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can therefore be executed in different environment by changing the execution environment without touching . Nextflow uses the `executor` information to decide where the job should run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf (=you don't need to write sbatch script , nextflow writes for you on the fly instead).
 
 Default executor is `local` where the  process is run in your computer/localhost where Nextflow is launched.  Other executors include:
 
@@ -366,6 +391,7 @@ profiles {
      process.queue = 'small'
      process.memory = '10GB'
     }
+    
 }
 ```
 
@@ -375,24 +401,6 @@ In this case, you can run a nextflow script as below:
 nextflow run <nextflow_script> -profile puhti
 ```
 This will submit each process of your job to Puhti cluster.
-
-### Viewing the results on Puhti
-
-Copy all nextflow visualisation files (i.e., .html, .dot and .txt files) to home directory to view them in your local browser.
-
-Every participant should have a *unique port number* opened on Puhti login node to view files locally on your browser. Open a new terminal on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
-
-```
-ssh -L $port:localhost:$port <your_csc_username>puhti.csc.fi  # e.g., with port number: 7077 
-                                                              # ssh -L 7077:localhost:7077 <username>puhti.csc.fi 
-```
-and then run the following command (also use the same port value that you have slected before) on the login node:
-```
-python3 -m http.server $port # with port number: 7077 -> python3 -m http.server 7077
-```
-
-Point your browser to http://localhost:$port (remember to replace your port number with *$port*) on your local machine. You can now view all files available on your Puhti home directory. 
-
 
 ## (Bonus) Tutorial 4: Running a nf-core pipeline
 
