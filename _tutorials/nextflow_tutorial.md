@@ -434,7 +434,7 @@ Finally, submit your job
 sbatch atacseq.sh
 ```
 
-## (Bonus) Converting a bioconda package into singularity image
+## (Bonus) Converting a bioconda package (image) into singularity image
 
 We recommend using singularity containers over conda environment to work with nextflow pipelines on Puhti. You can convert the most of bioconda packges into singularity images. You can for example take a look at *tastx_toolkit* package as available on [bioconda page](https://bioconda.github.io/recipes/fastx_toolkit/README.html). In order to convert it into a singularity image, you need to know the *url* of image from the docker pull command which in this case appears as below:
 
