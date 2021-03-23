@@ -26,8 +26,6 @@ Upon completion of this tutorial, you will be able to learn:
 - [(Bonus) Tutorial 4: Running a nf-core pipeline](#bonus-tutorial-4-running-a-nf-core-pipeline)
 - [(Bonus) Converting a bioconda package into singularity image](#bonus-converting-a-bioconda-package-into-singularity-image)
 
-## You can ask your questions via [HackMD](https://hackmd.io/FQUb6gzBQA6TUgw2le3DAw/?target=_blank)
-
 ## Set up your work environment for tutorials on Puhti
 This hands-on tutorial uses Puhti supercomputer for executing Nextflow scripts for interactive and batch jobs. One therefore needs to have either a training or user account at CSC to access Puhti.
 
