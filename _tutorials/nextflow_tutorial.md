@@ -126,7 +126,7 @@ Please note that *data2* folder has different samples (i.e., lymphnode4a samples
 ```
 ls -l $PWD/work/**/*
 ```
-> **_NB_**: single dash (`-`): The single dash parameters are from a small, nextflow-defined subset. double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
+> **_NB_**: single dash (`-`): core nextflow parameters (e.g., *-resume*). double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
 
 ### Moving results to a convenient directory
 
