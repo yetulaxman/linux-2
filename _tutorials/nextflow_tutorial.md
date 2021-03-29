@@ -71,9 +71,9 @@ Launching `hello-world.nf` [cheeky_shaw] - revision: 3ffdbdd5c7
 executor >  local (5)
 [e2/9aa8c8] process > sayHello (5) [100%] 5 of 5 ✔
 ```
-#### Where are the output files created from the above hello-world example?
+#### Where are output files created from the above hello-world example?
 
-The hexadecimal number, like e2/9aa8c8, identifies the unique process execution and the number is also the prefix of the directory where `sayHello` process is executed. You can inspect the files produced by above script by changing to directory $PWD/work.
+The hexadecimal number, like e2/9aa8c8, identifies a unique process execution and the number is also the prefix of directory where `sayHello` process is executed. You can inspect the files produced by above script by changing to directory $PWD/work.
 
 Execute the following command on your terminal:
 ```
