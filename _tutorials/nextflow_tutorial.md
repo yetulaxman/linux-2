@@ -77,7 +77,7 @@ The hexadecimal number, like e2/9aa8c8, identifies a unique process execution an
 
 Execute the following command on your terminal:
 ```
-ls -l work/**/*
+ls -l work/*/*
 ```
 You can see that there is a separate output file created under each directory. 
 
@@ -88,7 +88,7 @@ Hidden files are present in each process directory, and the files are very handy
 you can find the hidden files as shown below:
 
 ```
-ls -l work/**/*/.command* # ls -la command in a particular dir can work to find hidden files
+ls -la work/*/*
 ```
 
 ## Tutorial 2: A real-world example with `fastqc` software
