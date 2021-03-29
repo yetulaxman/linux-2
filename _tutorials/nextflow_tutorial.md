@@ -114,7 +114,7 @@ Here is an example to declare parameters (here, input files) to *fastqc* softwar
 
 ```nextflow
 params.reads = "$baseDir/data/*_{1,2}.fq.gz"
-input_ch = Channel.fromPath(params.reads)
+input_ch = Channel.fromFilePairs(params.reads)
 ```
 One can also override parameter values (here files inside `$baseDir/data/` directory) in nextflow script by passing the parameters in commandline when executing script as shown below:
 
