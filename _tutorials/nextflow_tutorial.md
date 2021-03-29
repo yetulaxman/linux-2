@@ -88,7 +88,7 @@ Hidden files are present in each process directory, and the files are very handy
 you can find the hidden files as shown below:
 
 ```
-ls -l work/**/*/.command*
+ls -l work/**/*/.command* # ls -la command in a particular dir can work to find hidden files
 ```
 
 ## Tutorial 2: A real-world example with `fastqc` software
