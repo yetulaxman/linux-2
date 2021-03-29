@@ -121,10 +121,10 @@ One can also override parameter values (here files inside `$baseDir/data/` direc
 ```bash
 nextflow run fastqc.nf --reads data2/*_{1,2}_subset.fq.gz
 ```
-Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which was used by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
+Please note that *data2* folder has different samples (i.e., lymphnode4a samples) than the ones (i.e.,lung3e samples) in *data* folder which ould have been used by default. You can see that *fastqc* analysis was performed on a new set of samples now as shown below:  
 
 ```
-ls -l $PWD/work/**/*
+ls -l $PWD/work/*/*
 ```
 > **_NB_**: single dash (`-`): core nextflow parameters (e.g., *-resume*). double dash (`--`): The double-dash parameters are user-defined and completely extensible -- they are used to populate `params`.
 
