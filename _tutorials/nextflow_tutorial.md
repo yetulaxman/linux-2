@@ -206,7 +206,7 @@ Because of the way how nextflow works with containers, you **don't** need to hav
 
 ### Using containers with nextflow *via* profiles
 
-We often need to add some other attributes besides a container flag as mentioned above. This is accomplished using *profiles*. A profile is a set of configuration attributes that can be activated/chosen when launching a pipeline execution.  When a workflow script is launched, Nextflow first looks for a file named `nextflow.config` in the current directory and in the script base directory (if it is not the same as the current directory). Finally, it checks for the file $HOME/.nextflow/config. Configuration files can contain the definition of one or more profiles. 
+We often need to add some other attributes besides a container flag as mentioned above. This is accomplished using *profiles*. A profile is a set of configuration attributes that can be activated/chosen when launching a pipeline execution.  When a workflow script is launched, Nextflow first looks for a file named `nextflow.config` in the current directory and in the workflow (or script base) directory (if different from current directory). Finally, it checks for the file $HOME/.nextflow/config. Configuration files can contain the definition of one or more profiles. 
 
 Example profiles are shown below:
 
@@ -229,7 +229,7 @@ profiles {
 }
 ```
 
-open `nextflow.config` file in the current directory and copy and paste above script inside the file.
+copy above script and paste in `nextflow.config` file which is located in current directory.
 
 You can then launch nf_coverage workflow (from `nf_coverage_demo` folder) with defined profiles as shown below:
 
@@ -240,7 +240,7 @@ nextflow run plot_coverage.nf  \
           --bed data_test/BED/TP53_exon2_11.bed
 ```
 
-### Reporting and Visualising nextflow pipeline
+### Reporting and visualising nextflow pipeline
 Nextflow provides options for reporting and visualisation your pipeline using the following nextflow flags:
 ```bash
 -with-dag
@@ -307,7 +307,7 @@ For the convenience of this tutorial, configure all visualisation features (i.e.
 
 ### Launch nextflow application as a batch job
 
-Once you have configured profiles for singularity and enabled visualisation features in *nextflow.config* file, you can use the following batch script to submit on Puhti:
+Once you have configured profiles for singularity and enabled reporting/visualisation features in *nextflow.config* file, you can use the following batch script to submit on Puhti:
 
 ```
 #!/bin/bash
@@ -348,7 +348,7 @@ Copy all nextflow report and visualisation files from working directory (i.e., .
 cp *.html *.dot *.txt > $HOME/
 ```
 
-One has to open a port on Puhti login node to access files on your puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. Open a new terminal on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
+One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. Open a new terminal on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
 
 ```
 ssh -L $port:localhost:$port <your_csc_username>puhti.csc.fi  # e.g., with port number: 7077 
@@ -364,9 +364,9 @@ Point your browser to http://localhost:$port (remember to replace your port numb
 
 ###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended at the moment but good to know)
 
-One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can therefore be executed in different environment by changing the execution environment without touching . Nextflow uses the `executor` information to decide where the job should run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf (=you don't need to write sbatch script , nextflow writes for you on the fly instead).
+One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can therefore be executed in different environment by changing the execution environment without touching actual pipeline code. Nextflow uses `executor` information to decide where the job should  be run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf (=you don't need to write sbatch script, nextflow writes on the fly for you, instead).
 
-Default executor is `local` where the  process is run in your computer/localhost where Nextflow is launched.  Other executors include:
+Default executor is `local` where process is run in your computer/localhost where Nextflow is launched.  Other executors include:
 
 - PBS/Torque
 - SLURM
