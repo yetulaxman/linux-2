@@ -364,7 +364,7 @@ python3 -m http.server $port # with port number: 7077 -> python3 -m http.server 
 Point your browser to http://localhost:$port (remember to replace your port number with *$port*) on your local machine. You can now view all files available on your Puhti home directory. 
 
 
-###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended at the moment but good to know)
+###  Nextflow with 'slurm' executor on Puhti (Currently NOT recommended on Puhti but good to know to realise the power of nextflow)
 
 One of the advantages of nextflow is that the actual pipeline functional logic is separated from the execution environment. The same script can therefore be executed in different environment by changing the execution environment without touching actual pipeline code. Nextflow uses `executor` information to decide where the job should  be run. Once executor is configured, Nextflow submits each process to the specified job scheduler on your behalf (=you don't need to write sbatch script, nextflow writes on the fly for you, instead).
 
