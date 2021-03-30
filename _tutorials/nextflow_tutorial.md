@@ -260,6 +260,7 @@ or add the following script to `nextflow.config` file at the end.
 ```
 dag {
   enabled = true
+  file="dag.png"
 }
 ```
 ####  `timeline`
@@ -336,7 +337,7 @@ copy and paste above script to a file (nf_coverage.sh), replace project number w
 
 ```
 rm -fr work/    # remove previous analysis results
-rm *.html *.dot *.txt # remove these visualisation files if any
+rm *.html *.png trace.txt # remove these visualisation files if any
 sbatch nf_coverage.sh # start a fresh job
 ```
 
@@ -346,7 +347,7 @@ Copy all nextflow report and visualisation files from working directory (i.e., .
 
 ```
 mkdir -p $HOME/nextflow_output
-cp *.html *.dot *.txt *.pdf  $HOME/nextflow_output
+cp *.html *.png *.txt *.pdf  $HOME/nextflow_output
 ```
 
 One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. **Open a new terminal** on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
