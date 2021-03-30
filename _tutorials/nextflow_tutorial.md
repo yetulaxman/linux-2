@@ -345,14 +345,15 @@ sbatch nf_coverage.sh # start a fresh job
 Copy all nextflow report and visualisation files from working directory (i.e., .html, .dot and .txt files) to home directory to view them from your local browser.
 
 ```
-cp *.html *.dot *.txt > $HOME/
+mkdir -p $HOME/nextflow_output
+cp *.html *.dot *.txt *.pdf  $HOME/nextflow_output
 ```
 
-One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. Open a new terminal on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
+One has to open a port on Puhti login node to access files on your Puhti home directory from your local computer via browser. In this course, every participant should have a *unique port number* opened on Puhti login node. **Open a new terminal** on your local machine and replace *$port* value with some random number (e.g., a number between 5000 and 9000) before executing the following command:
 
 ```
-ssh -L $port:localhost:$port <your_csc_username>puhti.csc.fi  # e.g., with port number: 7077 
-                                                              # ssh -L 7077:localhost:7077 <username>puhti.csc.fi 
+ssh -L $port:localhost:$port <your_csc_username>@puhti.csc.fi  # e.g., with port number: 7077 
+                                                              # ssh -L 7077:localhost:7077 <username>@puhti.csc.fi 
 ```
 and then run the following command (also use the same port value that you have slected before) on the login node:
 ```
