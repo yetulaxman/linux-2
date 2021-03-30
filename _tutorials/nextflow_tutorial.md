@@ -95,7 +95,7 @@ ls -la work/*/*
 In this example,  let's use some real-world example that involves working with samples from sequencing experiments. We specifically learn:
 - Declaring (and overriding default) pipeline parameters
 - Moving results from analysis to a convenient folder
-- Basic Nextflow channels and operations (at a theoretical level)
+- Basic Nextflow channels and operators (few examples)
 
 `fastqc_demo` folder has the necessary files for running this tutorial. You can run Nextflow script for *fastqc* analysis on your interactive terminal by issuing the following command:
 
@@ -150,7 +150,7 @@ ls -l results/
 By using `-resume` flag, the resulting files from previous analysis are simply copied to folder *results* .
 
 ### Understanding nextflow channels and operators 
-We don't spend much time here learning different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html). But it is worth noting that there are different Channels and operators as core features of nextflow. Channels  support different data types like `file`, `val` annd `set`
+Channels and operators as core features of nextflow. Please read and learn different ways of creating [Channels](https://www.nextflow.io/docs/latest/channel.html) and [operators](https://www.nextflow.io/docs/latest/operator.html) to manupulate content of channels.  Channels  support different data types like `file`, `val` annd `set`
 
 Here are few examples on how one can create channels in nextflow script:
 ```nextflow
@@ -159,9 +159,8 @@ Channel.create(); Channel.empty; Channel.fromPath()
 This default semantics can be changed using the channel operators that Nexflow provides, some of which are shown below:
 
 ```nextflow
-split         merge         close
+split         merge         view
 filter        map/reduce    group
-join, merge   fork          view
 ```
 
 ## Tutorial 3: Nextflow pipeline with containers and other useful features
