@@ -184,7 +184,7 @@ When working with Nextflow scripts using containers, pay attention to the follow
 Let's download material needed for this tutorial from github as shown below:
 
 ```nextflow
-cd nextflow_tutorial 
+cd /scratch/project_xxxx/$USER/nextflow_tutorial 
 git clone https://github.com/yetulaxman/nf_coverage_demo.git
 cd nf_coverage_demo
 git clone https://github.com/iarcbioinfo/data_test
