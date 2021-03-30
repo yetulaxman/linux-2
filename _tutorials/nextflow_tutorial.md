@@ -247,7 +247,7 @@ Nextflow provides options for reporting and visualisation your pipeline using th
 -with-timeline
 -with-report
 ```
-You can either use the flags in commandline or create profile for each feature as discussed below:
+You can either use the flags in commandline or add each feature to config file as discussed below:
 
 ####  `dag`
 Either use the following flag (-with-dag) when launching script as below:
