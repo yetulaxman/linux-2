@@ -135,7 +135,7 @@ Checking resulting files from a workflow analysis as shown above is quite tediou
 Open *fastqc.nf* script in any text editor and uncomment (= remove double slashes) the following line:
 
 ```nextflow
-// publishDir 'results' 
+// publishDir params.outdir 
 ```
 and then run pipeline again. But this time, let's use *-resume* flag as we don't need to perform quality control analysis again so that actual analysis is skipped due to the capability of nextflow to track cached results from the previous analysis.  
 
