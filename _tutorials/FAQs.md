@@ -59,3 +59,17 @@ unset XDG_RUNTIME_DIR
 singularity build fastx_toolkit.sif docker://quay.io/biocontainers/fastx_toolkit:0.0.14--he1b5a44_8
 
 ```
+
+ ### Make blast tutorial
+    
+  ```
+    sinteractive -c 2 -m 4G -d 250
+    singularity build blast.sif docker://quay.io/biocontainers/blast:2.12.0--pl5262h3289130_0
+    singularity exec blast_quay.sif blastp -help
+    wget http://www.uniprot.org/uniprot/P04156.fasta
+    curl -O ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz
+    gunzip zebrafish.1.protein.faa.gz
+    mkdir makeblastdb
+    singularity exec -B $PWD:$PWD blast.sif makeblastdb -in zebrafish.1.protein.faa -dbtype prot
+    singularity exec -B $PWD:$PWD blast.sif blastp -query P04156.fasta -db zebrafish.1.protein.faa -out results.txt
+    ```
