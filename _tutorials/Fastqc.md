@@ -2,7 +2,7 @@
 ## (WIP) This section is in progress
 
 
-## how can you convert a docker image (e.g.,fastx software) on bioconda environment to singularity container?
+## how can you convert a docker image (e.g.,fastx software) on bioconda environment to singularity image?
 
 Expected outcome of this tutorial:
 - Searching a biocontainer from container registry
