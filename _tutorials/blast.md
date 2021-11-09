@@ -1,9 +1,9 @@
-There are many bioinformatics applications available as docker images in  different docker registries ([Docker Hub](https://hub.docker.com), [Red Hat Quay](https://quay.io), [Biocontainers](https://biocontainers.pro))  as part of community-driven effort in biocontainer project. Our aim is just get familiar wth the project and get get more knowledgeable on where to find and what to find and how to get them to HPC environment.  This is really great power to bioinformatician as there are several thousands of applictaions are availble. This tutorial will inftroduce most of the basics needed to get that knowledge.
+There are many bioinformatics applications available as docker images in  different registries such as [Docker Hub](https://hub.docker.com), [Red Hat Quay](https://quay.io) and [Biocontainers](https://biocontainers.pro)). Our aim here is to acquire some basic skills to use any containerised application from the registries for your bioinformatics analysis in HPC environment.  These skills greatly empowers bioinformatician as there are several thousands of containerised applictaions which can be easily deoployed in a reproducible manner. This tutorial provides hands-on experience with one of the popular bioinformatics tool called, BLAST.
 
 ### Expected learning from tutorial:
-
-- Run a bioinformatics application using a pre-existing Docker image 
-- Able to convert and use a docker image in HPC environment
+After this tutorial you will be able to 
+- Search a bioinformatics application (in this case, BLAST) from a registry (from Red Hat Quay)
+- Able to deploy in CSC Puhti environment interactively
 
 
 ### Running BLAST from a container with Docker ###
