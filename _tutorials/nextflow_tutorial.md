@@ -323,8 +323,7 @@ unset XDG_RUNTIME_DIR
 
 
 # Activate  Nextflow on Puhti
-module load bioconda
-source activate nextflow
+module load nextflow
 
 # Nextflow command here
 nextflow run plot_coverage.nf  \
@@ -421,8 +420,7 @@ export SINGULARITY_CACHEDIR=$PWD
 unset XDG_RUNTIME_DIR
 
 # Activate  Nextflow on Puhti
-module load bioconda
-source activate nextflow
+module load nextflow
 
 # Nextflow command here
 nextflow run nf-core/atacseq -r 1.2.1 -profile test,singularity -resume
